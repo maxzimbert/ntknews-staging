@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NTK Wire Scanner</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #161214;
+    --surface: #1e1a1c;
+    --surface2: #252022;
+    --border: rgba(234,217,197,0.1);
+    --text: #EAD9C5;
+    --muted: rgba(234,217,197,0.45);
+    --dim: rgba(234,217,197,0.25);
+    --blue: #0798F2;
+    --amber: #F2AE2E;
+    --teal: #01B2A7;
+    --terra: #DC6550;
+    --purple: #725ABF;
+    --green: #4CAF7D;
+    --red: #e05555;
+    --mono: 'Space Grotesk', monospace;
+    --serif: 'Source Serif 4', serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size:14px; }
+  body { background:var(--bg); color:var(--text); font-family:var(--mono); min-height:100vh; display:flex; flex-direction:column; }
+
+  /* ── TOP BAR ── */
+  .topbar { background:var(--surface); border-bottom:3px solid var(--blue); padding:0 20px; height:52px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-shrink:0; }
+  .topbar-left { display:flex; align-items:center; gap:16px; }
+  .logo { font-size:14px; font-weight:700; letter-spacing:6px; color:var(--text); }
+  .tool-name { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+  .topbar-right { display:flex; align-items:center; gap:10px; }
+  .status-msg { font-size:11px; color:var(--muted); }
+  .btn { font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:7px 16px; border:none; border-radius:2px; cursor:pointer; transition:opacity .15s; }
+  .btn:active { opacity:.75; }
+  .btn-primary { background:var(--blue); color:#fff; }
+  .btn-ghost { background:transparent; border:1px solid var(--border); color:var(--muted); }
+  .btn-ghost:hover { border-color:var(--blue); color:var(--blue); }
+  .btn:disabled { opacity:.35; cursor:default; }
+  .scan-count { font-size:10px; color:var(--teal); background:rgba(1,178,167,.12); border:1px solid rgba(1,178,167,.25); padding:3px 8px; border-radius:2px; }
+
+  /* ── LAYOUT ── */
+  .main { display:flex; flex:1; overflow:hidden; }
+
+  /* ── SIDEBAR ── */
+  .sidebar { width:260px; flex-shrink:0; background:var(--surface); border-right:1px solid var(--border); overflow-y:auto; display:flex; flex-direction:column; }
+  .sidebar-hdr { padding:14px 16px 10px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+  .sidebar-hdr-label { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+  .feed-group { border-bottom:1px solid var(--border); }
+  .feed-group-hdr { display:flex; align-items:center; justify-content:space-between; padding:9px 16px; cursor:pointer; user-select:none; }
+  .feed-group-hdr:hover { background:var(--surface2); }
+  .feed-group-name { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text); }
+  .feed-group-count { font-size:9px; color:var(--muted); }
+  .feed-list { display:none; }
+  .feed-list.open { display:block; }
+  .feed-item { display:flex; align-items:center; gap:8px; padding:6px 16px 6px 28px; cursor:pointer; }
+  .feed-item:hover { background:var(--surface2); }
+  .feed-item input[type=checkbox] { accent-color:var(--blue); flex-shrink:0; cursor:pointer; }
+  .feed-item-label { font-size:11px; color:var(--muted); flex:1; cursor:pointer; line-height:1.3; }
+  .feed-item.active .feed-item-label { color:var(--text); }
+  .feed-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; background:var(--border); }
+  .feed-dot.ok { background:var(--green); }
+  .feed-dot.err { background:var(--red); }
+  .feed-dot.pending { background:var(--amber); }
+
+  /* ── RESULTS ── */
+  .results-area { flex:1; overflow-y:auto; display:flex; flex-direction:column; }
+  .results-toolbar { padding:10px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-shrink:0; background:var(--surface); }
+  .results-toolbar-left { display:flex; align-items:center; gap:12px; }
+  .sort-btn { font-size:10px; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border:1px solid var(--border); border-radius:2px; background:transparent; color:var(--muted); cursor:pointer; }
+  .sort-btn.active { border-color:var(--blue); color:var(--blue); background:rgba(7,152,242,.08); }
+  .flagged-count { font-size:10px; color:var(--amber); }
+  .results-list { flex:1; }
+  .results-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:12px; color:var(--dim); }
+  .results-empty-icon { font-size:32px; opacity:.4; }
+  .results-empty-text { font-size:11px; letter-spacing:2px; text-transform:uppercase; }
+
+  /* ── STORY ITEM ── */
+  .story-item { display:flex; align-items:flex-start; gap:12px; padding:13px 20px; border-bottom:1px solid var(--border); transition:background .1s; }
+  .story-item:hover { background:var(--surface2); }
+  .story-item.flagged { background:rgba(242,174,46,.04); border-left:2px solid var(--amber); padding-left:18px; }
+  .story-flag { flex-shrink:0; background:transparent; border:none; cursor:pointer; font-size:16px; opacity:.3; transition:opacity .15s; padding:2px; line-height:1; }
+  .story-flag:hover { opacity:.8; }
+  .story-item.flagged .story-flag { opacity:1; }
+  .story-body { flex:1; min-width:0; }
+  .story-meta { display:flex; align-items:center; gap:8px; margin-bottom:5px; flex-wrap:wrap; }
+  .story-source { font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:2px 7px; border-radius:2px; white-space:nowrap; }
+  .story-time { font-size:10px; color:var(--muted); white-space:nowrap; }
+  .story-age { font-size:10px; color:var(--dim); }
+  .story-headline { font-family:var(--serif); font-size:15px; font-weight:400; line-height:1.4; color:var(--text); margin-bottom:4px; }
+  .story-headline a { color:inherit; text-decoration:none; }
+  .story-headline a:hover { color:var(--blue); }
+  .story-lede { font-size:11px; color:var(--muted); line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+  /* ── SCANNING STATE ── */
+  .scanning-bar { height:2px; background:var(--surface2); overflow:hidden; flex-shrink:0; }
+  .scanning-progress { height:100%; background:var(--blue); transition:width .3s; }
+
+  /* ── VERDICTS ── */
+  .verdict { display:inline-block; font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:2px 7px; border-radius:2px; margin-left:6px; vertical-align:middle; }
+  .verdict-yes   { background:rgba(1,178,167,.15); color:var(--teal); border:1px solid rgba(1,178,167,.3); }
+  .verdict-maybe { background:rgba(242,174,46,.12); color:var(--amber); border:1px solid rgba(242,174,46,.3); }
+  .verdict-no    { background:rgba(234,217,197,.06); color:var(--dim); border:1px solid rgba(234,217,197,.12); }
+  .verdict-reason { font-size:10px; color:var(--muted); margin-top:3px; font-style:italic; }
+  .copy-panel { background:var(--surface); border-top:1px solid var(--border); padding:12px 20px; display:none; flex-shrink:0; }
+  .copy-panel.visible { display:flex; align-items:center; gap:12px; }
+  .copy-panel-text { font-size:11px; color:var(--muted); flex:1; }
+  .copy-textarea { display:none; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-track { background:transparent; }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjY5IiB6b29tQW5kUGFuPSJtYWduaWZ5IiB2aWV3Qm94PSIwIDAgMjAxLjc1IDEwMC40OTk5OTciIGhlaWdodD0iMTM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiB2ZXJzaW9uPSIxLjAiPjxkZWZzPjxnLz48Y2xpcFBhdGggaWQ9ImVlZmZkM2ZlNGQiPjxwYXRoIGQ9Ik0gNDIuNjEzMjgxIDAgTCAxNTguMjU3ODEyIDAgTCAxNTguMjU3ODEyIDEzLjc2MTcxOSBMIDQyLjYxMzI4MSAxMy43NjE3MTkgWiBNIDQyLjYxMzI4MSAwICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjY0YjZjNWI4MjEiPjxwYXRoIGQ9Ik0gNDUuNjAxNTYyIDAgTCAxNTUuMjQyMTg4IDAgQyAxNTYuODkwNjI1IDAgMTU4LjIyNjU2MiAxLjMzNTkzOCAxNTguMjI2NTYyIDIuOTg0Mzc1IEwgMTU4LjIyNjU2MiAxMC43NzczNDQgQyAxNTguMjI2NTYyIDEyLjQyNTc4MSAxNTYuODkwNjI1IDEzLjc2MTcxOSAxNTUuMjQyMTg4IDEzLjc2MTcxOSBMIDQ1LjYwMTU2MiAxMy43NjE3MTkgQyA0My45NTMxMjUgMTMuNzYxNzE5IDQyLjYxMzI4MSAxMi40MjU3ODEgNDIuNjEzMjgxIDEwLjc3NzM0NCBMIDQyLjYxMzI4MSAyLjk4NDM3NSBDIDQyLjYxMzI4MSAxLjMzNTkzOCA0My45NTMxMjUgMCA0NS42MDE1NjIgMCBaIE0gNDUuNjAxNTYyIDAgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iMTNjNzNjMDllMiI+PHBhdGggZD0iTSAwLjYxMzI4MSAwIEwgMTE2LjIzMDQ2OSAwIEwgMTE2LjIzMDQ2OSAxMy43NjE3MTkgTCAwLjYxMzI4MSAxMy43NjE3MTkgWiBNIDAuNjEzMjgxIDAgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iOTAxYzRhN2I1NyI+PHBhdGggZD0iTSAzLjYwMTU2MiAwIEwgMTEzLjI0MjE4OCAwIEMgMTE0Ljg5MDYyNSAwIDExNi4yMjY1NjIgMS4zMzU5MzggMTE2LjIyNjU2MiAyLjk4NDM3NSBMIDExNi4yMjY1NjIgMTAuNzc3MzQ0IEMgMTE2LjIyNjU2MiAxMi40MjU3ODEgMTE0Ljg5MDYyNSAxMy43NjE3MTkgMTEzLjI0MjE4OCAxMy43NjE3MTkgTCAzLjYwMTU2MiAxMy43NjE3MTkgQyAxLjk1MzEyNSAxMy43NjE3MTkgMC42MTMyODEgMTIuNDI1NzgxIDAuNjEzMjgxIDEwLjc3NzM0NCBMIDAuNjEzMjgxIDIuOTg0Mzc1IEMgMC42MTMyODEgMS4zMzU5MzggMS45NTMxMjUgMCAzLjYwMTU2MiAwIFogTSAzLjYwMTU2MiAwICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjAyM2Y2ODE5NTkiPjxyZWN0IHg9IjAiIHdpZHRoPSIxMTciIHk9IjAiIGhlaWdodD0iMTQiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2FhN2JmNjI4OSI+PHBhdGggZD0iTSA0Mi42MTMyODEgMjEuNzg5MDYyIEwgMTU4LjIyNjU2MiAyMS43ODkwNjIgTCAxNTguMjI2NTYyIDI4LjA1ODU5NCBMIDQyLjYxMzI4MSAyOC4wNTg1OTQgWiBNIDQyLjYxMzI4MSAyMS43ODkwNjIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iNmY5M2QzNmJlMiI+PHBhdGggZD0iTSA0NC4xMDkzNzUgMjEuNzg5MDYyIEwgMTU2LjczNDM3NSAyMS43ODkwNjIgQyAxNTcuNTU4NTk0IDIxLjc4OTA2MiAxNTguMjI2NTYyIDIyLjQ1NzAzMSAxNTguMjI2NTYyIDIzLjI4MTI1IEwgMTU4LjIyNjU2MiAyNi41NjY0MDYgQyAxNTguMjI2NTYyIDI3LjM5MDYyNSAxNTcuNTU4NTk0IDI4LjA1ODU5NCAxNTYuNzM0Mzc1IDI4LjA1ODU5NCBMIDQ0LjEwOTM3NSAyOC4wNTg1OTQgQyA0My4yODUxNTYgMjguMDU4NTk0IDQyLjYxMzI4MSAyNy4zOTA2MjUgNDIuNjEzMjgxIDI2LjU2NjQwNiBMIDQyLjYxMzI4MSAyMy4yODEyNSBDIDQyLjYxMzI4MSAyMi40NTcwMzEgNDMuMjg1MTU2IDIxLjc4OTA2MiA0NC4xMDkzNzUgMjEuNzg5MDYyIFogTSA0NC4xMDkzNzUgMjEuNzg5MDYyICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9ImUwN2ZmZDk1NzciPjxwYXRoIGQ9Ik0gMC42MTMyODEgMC43ODkwNjIgTCAxMTYuMjI2NTYyIDAuNzg5MDYyIEwgMTE2LjIyNjU2MiA3LjA1ODU5NCBMIDAuNjEzMjgxIDcuMDU4NTk0IFogTSAwLjYxMzI4MSAwLjc4OTA2MiAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSI1MzczMjAzMTlhIj48cGF0aCBkPSJNIDIuMTA5Mzc1IDAuNzg5MDYyIEwgMTE0LjczNDM3NSAwLjc4OTA2MiBDIDExNS41NTg1OTQgMC43ODkwNjIgMTE2LjIyNjU2MiAxLjQ1NzAzMSAxMTYuMjI2NTYyIDIuMjgxMjUgTCAxMTYuMjI2NTYyIDUuNTY2NDA2IEMgMTE2LjIyNjU2MiA2LjM5MDYyNSAxMTUuNTU4NTk0IDcuMDU4NTk0IDExNC43MzQzNzUgNy4wNTg1OTQgTCAyLjEwOTM3NSA3LjA1ODU5NCBDIDEuMjg1MTU2IDcuMDU4NTk0IDAuNjEzMjgxIDYuMzkwNjI1IDAuNjEzMjgxIDUuNTY2NDA2IEwgMC42MTMyODEgMi4yODEyNSBDIDAuNjEzMjgxIDEuNDU3MDMxIDEuMjg1MTU2IDAuNzg5MDYyIDIuMTA5Mzc1IDAuNzg5MDYyIFogTSAyLjEwOTM3NSAwLjc4OTA2MiAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSI0NzY1NGU3M2MyIj48cmVjdCB4PSIwIiB3aWR0aD0iMTE3IiB5PSIwIiBoZWlnaHQ9IjgiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iMzcwYWU3ODRhMCI+PHBhdGggZD0iTSA0Mi42MTMyODEgNzIuNjA1NDY5IEwgMTU4LjIyNjU2MiA3Mi42MDU0NjkgTCAxNTguMjI2NTYyIDc4Ljg3NSBMIDQyLjYxMzI4MSA3OC44NzUgWiBNIDQyLjYxMzI4MSA3Mi42MDU0NjkgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iNTIzYWRiMGI1NiI+PHBhdGggZD0iTSA0NC4xMDkzNzUgNzIuNjA1NDY5IEwgMTU2LjczNDM3NSA3Mi42MDU0NjkgQyAxNTcuNTU4NTk0IDcyLjYwNTQ2OSAxNTguMjI2NTYyIDczLjI3MzQzOCAxNTguMjI2NTYyIDc0LjA5NzY1NiBMIDE1OC4yMjY1NjIgNzcuMzgyODEyIEMgMTU4LjIyNjU2MiA3OC4yMDcwMzEgMTU3LjU1ODU5NCA3OC44NzUgMTU2LjczNDM3NSA3OC44NzUgTCA0NC4xMDkzNzUgNzguODc1IEMgNDMuMjg1MTU2IDc4Ljg3NSA0Mi42MTMyODEgNzguMjA3MDMxIDQyLjYxMzI4MSA3Ny4zODI4MTIgTCA0Mi42MTMyODEgNzQuMDk3NjU2IEMgNDIuNjEzMjgxIDczLjI3MzQzOCA0My4yODUxNTYgNzIuNjA1NDY5IDQ0LjEwOTM3NSA3Mi42MDU0NjkgWiBNIDQ0LjEwOTM3NSA3Mi42MDU0NjkgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iN2FkNDU3ZGI1NCI+PHBhdGggZD0iTSAwLjYxMzI4MSAwLjYwNTQ2OSBMIDExNi4yMjY1NjIgMC42MDU0NjkgTCAxMTYuMjI2NTYyIDYuODc1IEwgMC42MTMyODEgNi44NzUgWiBNIDAuNjEzMjgxIDAuNjA1NDY5ICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjczNThiNWQ1YWUiPjxwYXRoIGQ9Ik0gMi4xMDkzNzUgMC42MDU0NjkgTCAxMTQuNzM0Mzc1IDAuNjA1NDY5IEMgMTE1LjU1ODU5NCAwLjYwNTQ2OSAxMTYuMjI2NTYyIDEuMjczNDM4IDExNi4yMjY1NjIgMi4wOTc2NTYgTCAxMTYuMjI2NTYyIDUuMzgyODEyIEMgMTE2LjIyNjU2MiA2LjIwNzAzMSAxMTUuNTU4NTk0IDYuODc1IDExNC43MzQzNzUgNi44NzUgTCAyLjEwOTM3NSA2Ljg3NSBDIDEuMjg1MTU2IDYuODc1IDAuNjEzMjgxIDYuMjA3MDMxIDAuNjEzMjgxIDUuMzgyODEyIEwgMC42MTMyODEgMi4wOTc2NTYgQyAwLjYxMzI4MSAxLjI3MzQzOCAxLjI4NTE1NiAwLjYwNTQ2OSAyLjEwOTM3NSAwLjYwNTQ2OSBaIE0gMi4xMDkzNzUgMC42MDU0NjkgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iODBhOGRhNDEwYSI+PHJlY3QgeD0iMCIgd2lkdGg9IjExNyIgeT0iMCIgaGVpZ2h0PSI3Ii8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9ImY5ZDA3ZDA0YzgiPjxwYXRoIGQ9Ik0gNDIuNjEzMjgxIDg2LjE2NDA2MiBMIDE1OC4yNTc4MTIgODYuMTY0MDYyIEwgMTU4LjI1NzgxMiA5OS45MjU3ODEgTCA0Mi42MTMyODEgOTkuOTI1NzgxIFogTSA0Mi42MTMyODEgODYuMTY0MDYyICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjdjMjM4NWY2ZWQiPjxwYXRoIGQ9Ik0gNDUuNjAxNTYyIDg2LjE2NDA2MiBMIDE1NS4yNDIxODggODYuMTY0MDYyIEMgMTU2Ljg5MDYyNSA4Ni4xNjQwNjIgMTU4LjIyNjU2MiA4Ny41IDE1OC4yMjY1NjIgODkuMTQ4NDM4IEwgMTU4LjIyNjU2MiA5Ni45NDE0MDYgQyAxNTguMjI2NTYyIDk4LjU4OTg0NCAxNTYuODkwNjI1IDk5LjkyNTc4MSAxNTUuMjQyMTg4IDk5LjkyNTc4MSBMIDQ1LjYwMTU2MiA5OS45MjU3ODEgQyA0My45NTMxMjUgOTkuOTI1NzgxIDQyLjYxMzI4MSA5OC41ODk4NDQgNDIuNjEzMjgxIDk2Ljk0MTQwNiBMIDQyLjYxMzI4MSA4OS4xNDg0MzggQyA0Mi42MTMyODEgODcuNSA0My45NTMxMjUgODYuMTY0MDYyIDQ1LjYwMTU2MiA4Ni4xNjQwNjIgWiBNIDQ1LjYwMTU2MiA4Ni4xNjQwNjIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iYWZhM2JmOTIxYiI+PHBhdGggZD0iTSAwLjYxMzI4MSAwLjE2NDA2MiBMIDExNi4yMzA0NjkgMC4xNjQwNjIgTCAxMTYuMjMwNDY5IDEzLjkyNTc4MSBMIDAuNjEzMjgxIDEzLjkyNTc4MSBaIE0gMC42MTMyODEgMC4xNjQwNjIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iNDYzMjQ4NTcyMCI+PHBhdGggZD0iTSAzLjYwMTU2MiAwLjE2NDA2MiBMIDExMy4yNDIxODggMC4xNjQwNjIgQyAxMTQuODkwNjI1IDAuMTY0MDYyIDExNi4yMjY1NjIgMS41IDExNi4yMjY1NjIgMy4xNDg0MzggTCAxMTYuMjI2NTYyIDEwLjk0MTQwNiBDIDExNi4yMjY1NjIgMTIuNTg5ODQ0IDExNC44OTA2MjUgMTMuOTI1NzgxIDExMy4yNDIxODggMTMuOTI1NzgxIEwgMy42MDE1NjIgMTMuOTI1NzgxIEMgMS45NTMxMjUgMTMuOTI1NzgxIDAuNjEzMjgxIDEyLjU4OTg0NCAwLjYxMzI4MSAxMC45NDE0MDYgTCAwLjYxMzI4MSAzLjE0ODQzOCBDIDAuNjEzMjgxIDEuNSAxLjk1MzEyNSAwLjE2NDA2MiAzLjYwMTU2MiAwLjE2NDA2MiBaIE0gMy42MDE1NjIgMC4xNjQwNjIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iZjY1OWMyZTM5YyI+PHJlY3QgeD0iMCIgd2lkdGg9IjExNyIgeT0iMCIgaGVpZ2h0PSIxNCIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSIxODY5ZWRhZjJjIj48cmVjdCB4PSIwIiB3aWR0aD0iMTI2IiB5PSIwIiBoZWlnaHQ9IjQ2Ii8+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2VlZmZkM2ZlNGQpIj48ZyBjbGlwLXBhdGg9InVybCgjNjRiNmM1YjgyMSkiPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIDQyLCAwKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzAyM2Y2ODE5NTkpIj48ZyBjbGlwLXBhdGg9InVybCgjMTNjNzNjMDllMikiPjxnIGNsaXAtcGF0aD0idXJsKCM5MDFjNGE3YjU3KSI+PHBhdGggZmlsbD0iI2YyZjJmMiIgZD0iTSAwLjYxMzI4MSAwIEwgMTE2LjIwMzEyNSAwIEwgMTE2LjIwMzEyNSAxMy43NjE3MTkgTCAwLjYxMzI4MSAxMy43NjE3MTkgWiBNIDAuNjEzMjgxIDAgIiBmaWxsLW9wYWNpdHk9IjEiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjxnIGNsaXAtcGF0aD0idXJsKCNjYWE3YmY2Mjg5KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzZmOTNkMzZiZTIpIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCA0MiwgMjEpIj48ZyBjbGlwLXBhdGg9InVybCgjNDc2NTRlNzNjMikiPjxnIGNsaXAtcGF0aD0idXJsKCNlMDdmZmQ5NTc3KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzUzNzMyMDMxOWEpIj48cGF0aCBmaWxsPSIjZjJmMmYyIiBkPSJNIDAuNjEzMjgxIDAuNzg5MDYyIEwgMTE2LjIyNjU2MiAwLjc4OTA2MiBMIDExNi4yMjY1NjIgNy4wNTg1OTQgTCAwLjYxMzI4MSA3LjA1ODU5NCBaIE0gMC42MTMyODEgMC43ODkwNjIgIiBmaWxsLW9wYWNpdHk9IjEiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjxnIGNsaXAtcGF0aD0idXJsKCMzNzBhZTc4NGEwKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzUyM2FkYjBiNTYpIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCA0MiwgNzIpIj48ZyBjbGlwLXBhdGg9InVybCgjODBhOGRhNDEwYSkiPjxnIGNsaXAtcGF0aD0idXJsKCM3YWQ0NTdkYjU0KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzczNThiNWQ1YWUpIj48cGF0aCBmaWxsPSIjZjJmMmYyIiBkPSJNIDAuNjEzMjgxIDAuNjA1NDY5IEwgMTE2LjIyNjU2MiAwLjYwNTQ2OSBMIDExNi4yMjY1NjIgNi44NzUgTCAwLjYxMzI4MSA2Ljg3NSBaIE0gMC42MTMyODEgMC42MDU0NjkgIiBmaWxsLW9wYWNpdHk9IjEiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjxnIGNsaXAtcGF0aD0idXJsKCNmOWQwN2QwNGM4KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzdjMjM4NWY2ZWQpIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCA0MiwgODYpIj48ZyBjbGlwLXBhdGg9InVybCgjZjY1OWMyZTM5YykiPjxnIGNsaXAtcGF0aD0idXJsKCNhZmEzYmY5MjFiKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzQ2MzI0ODU3MjApIj48cGF0aCBmaWxsPSIjZjJmMmYyIiBkPSJNIDAuNjEzMjgxIDAuMTY0MDYyIEwgMTE2LjIwMzEyNSAwLjE2NDA2MiBMIDExNi4yMDMxMjUgMTMuOTI1NzgxIEwgMC42MTMyODEgMTMuOTI1NzgxIFogTSAwLjYxMzI4MSAwLjE2NDA2MiAiIGZpbGwtb3BhY2l0eT0iMSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9nPjwvZz48L2c+PC9nPjwvZz48L2c+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMSwgMCwgMCwgMSwgNDIsIDI3KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzE4NjllZGFmMmMpIj48ZyBmaWxsPSIjZjJmMmYyIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuMjAzMTk4LCAzNy40Nzc5NTMpIj48Zz48cGF0aCBkPSJNIDI0LjI2NTYyNSAtMTIgTCAyNC4yNjU2MjUgLTI3LjczNDM3NSBMIDMxLjY3MTg3NSAtMjcuNzM0Mzc1IEwgMzEuNjcxODc1IDAgTCAyNS4wMzEyNSAwIEwgOS44NDM3NSAtMTcuMjUgTCA5Ljg0Mzc1IDAgTCAyLjQzNzUgMCBMIDIuNDM3NSAtMjcuNzM0Mzc1IEwgMTAuNzE4NzUgLTI3LjczNDM3NSBaIE0gMjQuMjY1NjI1IC0xMiAiLz48L2c+PC9nPjwvZz48ZyBmaWxsPSIjZjJmMmYyIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjI0NDI2NiwgMzcuNDc3OTUzKSI+PGc+PHBhdGggZD0iTSAxMS4xMjUgLTIwLjgxMjUgTCAwLjY0MDYyNSAtMjAuODEyNSBMIDAuNjQwNjI1IC0yNy43MzQzNzUgTCAyOS40Njg3NSAtMjcuNzM0Mzc1IEwgMjkuNDY4NzUgLTIwLjgxMjUgTCAxOS4wMzEyNSAtMjAuODEyNSBMIDE5LjAzMTI1IDAgTCAxMS4xMjUgMCBaIE0gMTEuMTI1IC0yMC44MTI1ICIvPjwvZz48L2c+PC9nPjxnIGZpbGw9IiNmMmYyZjIiIGZpbGwtb3BhY2l0eT0iMSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODMuMjU4NjEsIDM3LjQ3Nzk1MykiPjxnPjxwYXRoIGQ9Ik0gMzIuNTQ2ODc1IDAgTCAyMi45ODQzNzUgMCBMIDE1LjEyNSAtMTIuMTU2MjUgTCAxMC4yMTg3NSAtNi44NDM3NSBMIDEwLjIxODc1IDAgTCAyLjQzNzUgMCBMIDIuNDM3NSAtMjcuNzM0Mzc1IEwgMTAuMjE4NzUgLTI3LjczNDM3NSBMIDEwLjIxODc1IC0xNS43OTY4NzUgTCAyMS4yNjU2MjUgLTI3LjczNDM3NSBMIDMxLjg3NSAtMjcuNzM0Mzc1IEwgMjEuMzEyNSAtMTYuNjQwNjI1IFogTSAzMi41NDY4NzUgMCAiLz48L2c+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg==" alt="NTK" style="height:28px;width:auto;">
+    <div class="tool-name">Wire Scanner</div>
+  </div>
+  <div class="topbar-right">
+    <span class="status-msg" id="statusMsg"></span>
+    <span class="scan-count" id="scanCount" style="display:none;"></span>
+    <input type="password" id="antKeyInput" placeholder="sk-ant-… for NTK assess" autocomplete="off"
+      style="font-family:var(--mono);font-size:10px;padding:5px 10px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);border-radius:2px;width:200px;outline:none;"
+      oninput="saveKey(this.value)">
+    <button class="btn btn-ghost" id="assessBtn" style="display:none;" onclick="runAssessment()">Assess with NTK →</button>
+    <button class="btn btn-ghost" id="copyFlaggedBtn" style="display:none;" onclick="copyFlagged()">Copy flagged →</button>
+    <button class="btn btn-primary" id="scanBtn" onclick="scan()">Scan feeds →</button>
+  </div>
+</div>
+
+<div class="scanning-bar"><div class="scanning-progress" id="scanProgress" style="width:0%"></div></div>
+
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-hdr">
+      <span class="sidebar-hdr-label">Feeds</span>
+      <div style="display:flex;gap:6px;">
+        <button class="btn-ghost" style="font-size:9px;padding:3px 8px;border:1px solid var(--border);border-radius:2px;cursor:pointer;color:var(--muted);background:transparent;" onclick="toggleAll(true)">All on</button>
+        <button class="btn-ghost" style="font-size:9px;padding:3px 8px;border:1px solid var(--border);border-radius:2px;cursor:pointer;color:var(--muted);background:transparent;" onclick="toggleAll(false)">All off</button>
+      </div>
+    </div>
+    <div id="feedSidebar"></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-area">
+    <div class="results-toolbar">
+      <div class="results-toolbar-left">
+        <button class="sort-btn active" id="sortTime" onclick="setSort('time')">Newest first</button>
+        <button class="sort-btn" id="sortSource" onclick="setSort('source')">By source</button>
+      </div>
+      <span class="flagged-count" id="flaggedCount"></span>
+    </div>
+    <div class="results-list" id="resultsList">
+      <div class="results-empty">
+        <div class="results-empty-icon">📡</div>
+        <div class="results-empty-text">Hit scan to pull feeds</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="copy-panel" id="copyPanel">
+  <span class="copy-panel-text" id="copyPanelText"></span>
+  <button class="btn btn-ghost" onclick="hideCopyPanel()">Dismiss</button>
+</div>
+
+<script>
+// ─── FEED REGISTRY ────────────────────────────────────────────────────────────
+
+const FEEDS = [
+  // WIRES & NATIONALS
+  { group:'Wires & Nationals', color:'#0798F2', id:'ap',        name:'AP Top News',       url:'https://feeds.apnews.com/rss/apf-topnews' },
+  { group:'Wires & Nationals', color:'#0798F2', id:'reuters',   name:'Reuters World',     url:'https://feeds.reuters.com/reuters/topNews' },
+  { group:'Wires & Nationals', color:'#0798F2', id:'bbc',       name:'BBC News',          url:'http://feeds.bbci.co.uk/news/rss.xml' },
+  { group:'Wires & Nationals', color:'#0798F2', id:'npr',       name:'NPR News',          url:'https://feeds.npr.org/1001/rss.xml' },
+  { group:'Wires & Nationals', color:'#0798F2', id:'politico',  name:'Politico',          url:'https://www.politico.com/rss/politicopicks.xml' },
+  { group:'Wires & Nationals', color:'#0798F2', id:'hill',      name:'The Hill',          url:'https://thehill.com/news/feed' },
+  { group:'Wires & Nationals', color:'#0798F2', id:'guardian',  name:'The Guardian US',   url:'https://www.theguardian.com/us/rss' },
+
+  // INTERNATIONAL VOICES
+  { group:'International',     color:'#725ABF', id:'aljazeera', name:'Al Jazeera',        url:'https://www.aljazeera.com/xml/rss/all.xml' },
+  { group:'International',     color:'#725ABF', id:'france24',  name:'France 24',         url:'https://www.france24.com/en/rss' },
+  { group:'International',     color:'#725ABF', id:'dw',        name:'Deutsche Welle',    url:'https://rss.dw.com/xml/rss-en-all' },
+  { group:'International',     color:'#725ABF', id:'cbc',       name:'CBC Top Stories',   url:'https://www.cbc.ca/cmlink/rss-topstories' },
+
+  // NEW YORK
+  { group:'New York', color:'#DC6550', id:'abc7ny',     name:'ABC7 NY (WABC)',   url:'https://abc7ny.com/feed/' },
+  { group:'New York', color:'#DC6550', id:'nbc4ny',     name:'NBC 4 NY (WNBC)',  url:'https://www.nbcnewyork.com/?rss=y' },
+  { group:'New York', color:'#DC6550', id:'fox5ny',     name:'Fox 5 NY (WNYW)',  url:'https://www.fox5ny.com/feeds/' },
+
+  // LOS ANGELES
+  { group:'Los Angeles', color:'#F2AE2E', id:'abc7la',   name:'ABC7 LA (KABC)',    url:'https://abc7.com/feed/' },
+  { group:'Los Angeles', color:'#F2AE2E', id:'nbcla',    name:'NBC LA (KNBC)',     url:'https://www.nbclosangeles.com/?rss=y' },
+  { group:'Los Angeles', color:'#F2AE2E', id:'ktla',     name:'KTLA 5',           url:'https://ktla.com/feed/' },
+
+  // CHICAGO
+  { group:'Chicago', color:'#01B2A7', id:'abc7chi',  name:'ABC7 Chicago (WLS)', url:'https://abc7chicago.com/feed/' },
+  { group:'Chicago', color:'#01B2A7', id:'nbcchi',   name:'NBC Chicago (WMAQ)', url:'https://www.nbcchicago.com/?rss=y' },
+
+  // HOUSTON
+  { group:'Houston', color:'#DC6550', id:'abc13hou', name:'ABC13 (KTRK)',        url:'https://abc13.com/feed/' },
+  { group:'Houston', color:'#DC6550', id:'khou',     name:'CBS KHOU 11',         url:'https://www.khou.com/feeds/syndication/rss/news' },
+
+  // DALLAS / FORT WORTH
+  { group:'Dallas–Fort Worth', color:'#F2AE2E', id:'nbcdfw',  name:'NBC5 DFW (KXAS)',   url:'https://www.nbcdfw.com/news/feed/' },
+  { group:'Dallas–Fort Worth', color:'#F2AE2E', id:'wfaa',    name:'WFAA (ABC8)',       url:'https://www.wfaa.com/feeds/syndication/rss/news' },
+
+  // SAN ANTONIO
+  { group:'San Antonio', color:'#725ABF', id:'ksat', name:'KSAT 12', url:'https://www.ksat.com/rss/' },
+
+  // PHILADELPHIA
+  { group:'Philadelphia', color:'#01B2A7', id:'6abc',      name:'6abc WPVI (ABC)',    url:'https://6abc.com/feed/' },
+  { group:'Philadelphia', color:'#01B2A7', id:'nbcphilly', name:'NBC10 Philadelphia', url:'https://www.nbcphiladelphia.com/?rss=y' },
+
+  // PHOENIX
+  { group:'Phoenix', color:'#DC6550', id:'abc15phx', name:'ABC15 Phoenix (KNXV)', url:'https://www.abc15.com/feed/' },
+  { group:'Phoenix', color:'#DC6550', id:'nbc12phx', name:'12News Phoenix (KPNX)', url:'https://www.12news.com/feeds/syndication/rss' },
+
+  // SAN FRANCISCO / BAY AREA
+  { group:'San Francisco', color:'#F2AE2E', id:'abc7sf',  name:'ABC7 Bay Area',     url:'https://abc7news.com/feed/' },
+  { group:'San Francisco', color:'#F2AE2E', id:'nbcsf',   name:'NBC Bay Area',      url:'https://www.nbcbayarea.com/?rss=y' },
+
+  // SEATTLE
+  { group:'Seattle', color:'#725ABF', id:'kiro7',  name:'KIRO 7 (CBS)',     url:'https://www.kiro7.com/feeds/syndication/rss/' },
+  { group:'Seattle', color:'#725ABF', id:'king5',  name:'KING 5 (NBC)',     url:'https://www.king5.com/feeds/syndication/rss/news' },
+
+  // DENVER
+  { group:'Denver', color:'#01B2A7', id:'9news',  name:'9NEWS (KUSA/NBC)',  url:'https://www.9news.com/feeds/syndication/rss' },
+  { group:'Denver', color:'#01B2A7', id:'kmgh',   name:'Denver7 (KMGH/ABC)', url:'https://www.thedenverchannel.com/feed/' },
+
+  // WASHINGTON DC
+  { group:'Washington DC', color:'#DC6550', id:'nbc4dc',  name:'NBC4 Washington (WRC)', url:'https://www.nbcwashington.com/?rss=y' },
+  { group:'Washington DC', color:'#DC6550', id:'wjla',    name:'ABC7 DC (WJLA)',        url:'https://wjla.com/feed/' },
+
+  // BOSTON
+  { group:'Boston', color:'#F2AE2E', id:'wcvb',  name:'WCVB (ABC5)',       url:'https://www.wcvb.com/feed/' },
+  { group:'Boston', color:'#F2AE2E', id:'nbcbos', name:'NBC10 Boston',     url:'https://www.nbcboston.com/?rss=y' },
+
+  // ATLANTA
+  { group:'Atlanta', color:'#725ABF', id:'wsbtv',  name:'WSB-TV (ABC2)',    url:'https://www.wsbtv.com/feed/' },
+  { group:'Atlanta', color:'#725ABF', id:'11alive', name:'11Alive (WXIA/NBC)', url:'https://www.11alive.com/feeds/syndication/rss/news' },
+
+  // MIAMI
+  { group:'Miami', color:'#01B2A7', id:'nbc6mia', name:'NBC6 Miami (WTVJ)',  url:'https://www.nbcmiami.com/?rss=y' },
+  { group:'Miami', color:'#01B2A7', id:'wsvn',    name:'WSVN Fox 7',         url:'https://wsvn.com/feed' },
+  { group:'Miami', color:'#01B2A7', id:'local10',  name:'Local10 (WPLG/ABC)', url:'https://www.local10.com/feeds/syndication/rss' },
+
+  // MINNEAPOLIS
+  { group:'Minneapolis', color:'#DC6550', id:'kare11', name:'KARE 11 (NBC)',   url:'https://www.kare11.com/feeds/syndication/rss/news' },
+  { group:'Minneapolis', color:'#DC6550', id:'kstp',   name:'KSTP (ABC)',      url:'https://kstp.com/feed/' },
+
+  // TAMPA
+  { group:'Tampa', color:'#F2AE2E', id:'wtsp',   name:'10 Tampa Bay (WTSP)', url:'https://www.wtsp.com/feeds/syndication/rss' },
+  { group:'Tampa', color:'#F2AE2E', id:'wfla',   name:'WFLA NBC8',           url:'https://www.wfla.com/feed/' },
+
+  // PORTLAND
+  { group:'Portland', color:'#725ABF', id:'kgw',  name:'KGW (NBC)',          url:'https://www.kgw.com/feeds/syndication/rss/news' },
+  { group:'Portland', color:'#725ABF', id:'katu',  name:'KATU (ABC)',         url:'https://katu.com/feed/' },
+
+  // ST. LOUIS
+  { group:'St. Louis', color:'#01B2A7', id:'ksdk', name:'KSDK (NBC5)',        url:'https://www.ksdk.com/feeds/syndication/rss' },
+  { group:'St. Louis', color:'#01B2A7', id:'kmov',  name:'KMOV (CBS4)',       url:'https://www.kmov.com/feed/' },
+
+  // CHARLOTTE
+  { group:'Charlotte', color:'#DC6550', id:'wcnc', name:'WCNC (NBC)',         url:'https://www.wcnc.com/feeds/syndication/rss/news' },
+  { group:'Charlotte', color:'#DC6550', id:'wsoctv', name:'WSOC-TV (ABC9)',   url:'https://www.wsoctv.com/feed/' },
+
+  // CLEVELAND / PITTSBURGH
+  { group:'Cleveland–Pittsburgh', color:'#F2AE2E', id:'wews',  name:'News5 Cleveland (ABC)', url:'https://www.news5cleveland.com/feeds/syndication/rss' },
+  { group:'Cleveland–Pittsburgh', color:'#F2AE2E', id:'wpxi',  name:'WPXI Pittsburgh (NBC)', url:'https://www.wpxi.com/feeds/syndication/rss/' },
+
+  // NASHVILLE / NEW ORLEANS
+  { group:'Nashville–New Orleans', color:'#725ABF', id:'wkrn',  name:'WKRN Nashville (ABC)', url:'https://www.wkrn.com/feed/' },
+  { group:'Nashville–New Orleans', color:'#725ABF', id:'wwltv', name:'WWL-TV New Orleans',   url:'https://www.wwltv.com/feeds/syndication/rss' },
+
+  // SACRAMENTO / LAS VEGAS
+  { group:'Sacramento–Las Vegas', color:'#01B2A7', id:'kcra',  name:'KCRA Sacramento (NBC)', url:'https://www.kcra.com/feeds/syndication/rss' },
+  { group:'Sacramento–Las Vegas', color:'#01B2A7', id:'kvvu',  name:'Fox5 Las Vegas (KVVU)',  url:'https://www.fox5vegas.com/feed/' },
+];
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+
+const CORS_PROXY = 'https://corsproxy.io/?';
+
+let enabled = new Set(FEEDS.map(f=>f.id));
+let stories = [];
+let flagged = new Set();
+let assessments = {};   // story link → { verdict, reason }
+let assessing   = false;
+let feedStatus = {};
+let sortMode = 'time';
+let scanning = false;
+
+const COLORS = {};
+FEEDS.forEach(f=>COLORS[f.id]=f.color);
+
+// ─── SIDEBAR ──────────────────────────────────────────────────────────────────
+
+function buildSidebar() {
+  const groups = {};
+  FEEDS.forEach(f=>{
+    if (!groups[f.group]) groups[f.group]=[];
+    groups[f.group].push(f);
+  });
+  const sb = document.getElementById('feedSidebar');
+  sb.innerHTML = '';
+  Object.entries(groups).forEach(([group, feeds])=>{
+    const grpDiv = document.createElement('div');
+    grpDiv.className = 'feed-group';
+    const hdr = document.createElement('div');
+    hdr.className = 'feed-group-hdr';
+    hdr.innerHTML = `<span class="feed-group-name">${group}</span><span class="feed-group-count">${feeds.length}</span>`;
+    const list = document.createElement('div');
+    list.className = 'feed-list open';
+    feeds.forEach(f=>{
+      const item = document.createElement('div');
+      item.className = 'feed-item' + (enabled.has(f.id)?' active':'');
+      item.id = 'feed-item-'+f.id;
+      const dot = document.createElement('div');
+      dot.className = 'feed-dot';
+      dot.id = 'dot-'+f.id;
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = enabled.has(f.id);
+      cb.id = 'cb-'+f.id;
+      cb.addEventListener('change', ()=>{ toggleFeed(f.id, cb.checked); });
+      const lbl = document.createElement('label');
+      lbl.className = 'feed-item-label';
+      lbl.htmlFor = 'cb-'+f.id;
+      lbl.textContent = f.name;
+      item.appendChild(dot);
+      item.appendChild(cb);
+      item.appendChild(lbl);
+      list.appendChild(item);
+    });
+    hdr.addEventListener('click', ()=>list.classList.toggle('open'));
+    grpDiv.appendChild(hdr);
+    grpDiv.appendChild(list);
+    sb.appendChild(grpDiv);
+  });
+}
+
+function toggleFeed(id, on) {
+  if (on) enabled.add(id); else enabled.delete(id);
+  const item = document.getElementById('feed-item-'+id);
+  if (item) item.className = 'feed-item'+(on?' active':'');
+}
+
+function toggleAll(on) {
+  FEEDS.forEach(f=>{
+    const cb = document.getElementById('cb-'+f.id);
+    if (cb) { cb.checked = on; toggleFeed(f.id, on); }
+  });
+}
+
+// ─── SCAN ─────────────────────────────────────────────────────────────────────
+
+async function scan() {
+  if (scanning) return;
+  const active = FEEDS.filter(f=>enabled.has(f.id));
+  if (!active.length) { setStatus('No feeds selected'); return; }
+  scanning = true;
+  stories = [];
+  flagged = new Set();
+  feedStatus = {};
+  document.getElementById('scanBtn').disabled = true;
+  document.getElementById('scanBtn').textContent = 'Scanning…';
+  document.getElementById('scanProgress').style.width = '0%';
+  document.getElementById('resultsList').innerHTML = '';
+  setStatus(`Scanning ${active.length} feeds…`);
+
+  let done = 0;
+  const results = await Promise.allSettled(active.map(f=>fetchFeed(f)));
+  results.forEach((r,i)=>{
+    const f = active[i];
+    if (r.status==='fulfilled' && r.value.length) {
+      feedStatus[f.id]='ok';
+      stories.push(...r.value);
+    } else {
+      feedStatus[f.id]='err';
+    }
+    done++;
+    document.getElementById('scanProgress').style.width = Math.round((done/active.length)*100)+'%';
+    updateDot(f.id);
+  });
+
+  stories.sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+  renderResults();
+  scanning = false;
+  document.getElementById('scanBtn').disabled = false;
+  document.getElementById('scanBtn').textContent = 'Rescan →';
+  setStatus(`${stories.length} stories from ${active.length} feeds`);
+  document.getElementById('scanCount').style.display='';
+  document.getElementById('scanCount').textContent = stories.length+' stories';
+  setTimeout(()=>{ document.getElementById('scanProgress').style.width='0%'; }, 800);
+}
+
+async function fetchFeed(feed) {
+  try {
+    const proxyUrl = CORS_PROXY + encodeURIComponent(feed.url);
+    const res = await fetch(proxyUrl, {signal: AbortSignal.timeout(12000)});
+    if (!res.ok) return [];
+    const text = await res.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, 'text/xml');
+    if (xml.querySelector('parsererror')) return [];
+
+    // Detect RSS vs Atom
+    const isAtom = !!xml.querySelector('feed');
+    const items = isAtom
+      ? Array.from(xml.querySelectorAll('entry'))
+      : Array.from(xml.querySelectorAll('item'));
+
+    return items.slice(0, 20).map(item => {
+      let title, link, pubDate, description;
+      if (isAtom) {
+        title = item.querySelector('title')?.textContent || '';
+        link = item.querySelector('link')?.getAttribute('href')
+            || item.querySelector('link')?.textContent || '#';
+        pubDate = item.querySelector('published,updated')?.textContent || '';
+        description = item.querySelector('summary,content')?.textContent || '';
+      } else {
+        title = item.querySelector('title')?.textContent || '';
+        link = item.querySelector('link')?.textContent
+            || item.querySelector('link')?.getAttribute('href') || '#';
+        pubDate = item.querySelector('pubDate,published')?.textContent || '';
+        description = item.querySelector('description,summary')?.textContent || '';
+      }
+      return {
+        id: feed.id,
+        feedName: feed.name,
+        color: feed.color,
+        title: cleanStr(title),
+        link: link.trim(),
+        pubDate: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString(),
+        description: stripHtml(description),
+      };
+    }).filter(s => s.title);
+  } catch(e) { return []; }
+}
+
+function updateDot(id) {
+  const dot = document.getElementById('dot-'+id);
+  if (!dot) return;
+  const s = feedStatus[id];
+  dot.className = 'feed-dot'+(s==='ok'?' ok':s==='err'?' err':' pending');
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+
+function renderResults() {
+  const list = document.getElementById('resultsList');
+  if (!stories.length) {
+    list.innerHTML='<div class="results-empty"><div class="results-empty-icon">📡</div><div class="results-empty-text">No stories returned</div></div>';
+    return;
+  }
+  let sorted = [...stories];
+  if (sortMode==='source') {
+    sorted.sort((a,b)=>a.feedName.localeCompare(b.feedName)||(new Date(b.pubDate)-new Date(a.pubDate)));
+  }
+  list.innerHTML = sorted.map((s,i)=>{
+    const age = timeAgo(s.pubDate);
+    const isFlagged = flagged.has(s.link);
+    const av = isFlagged && assessments[s.link];
+    const verdictHtml = av
+      ? `<span class="verdict verdict-${av.verdict.toLowerCase()}">${av.verdict}</span>`
+      : '';
+    const reasonHtml = av && av.reason
+      ? `<div class="verdict-reason">${esc(av.reason)}</div>`
+      : '';
+    return `<div class="story-item${isFlagged?' flagged':''}" id="story-${i}">
+      <button class="story-flag" onclick="toggleFlag('${esc(s.link)}',${i})" title="${isFlagged?'Unflag':'Flag as NTK-worthy'}">${isFlagged?'⭐':'☆'}</button>
+      <div class="story-body">
+        <div class="story-meta">
+          <span class="story-source" style="background:${s.color}22;color:${s.color};">${esc(s.feedName)}</span>
+          <span class="story-age">${age}</span>
+        </div>
+        <div class="story-headline"><a href="${esc(s.link)}" target="_blank" rel="noopener">${esc(s.title)}</a>${verdictHtml}</div>
+        ${reasonHtml}
+        ${s.description?`<div class="story-lede">${esc(s.description.slice(0,180))}${s.description.length>180?'…':''}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+  updateFlagCount();
+}
+
+function toggleFlag(link, idx) {
+  if (flagged.has(link)) flagged.delete(link); else flagged.add(link);
+  const item = document.getElementById('story-'+idx);
+  if (item) {
+    const isFlagged = flagged.has(link);
+    item.classList.toggle('flagged', isFlagged);
+    item.querySelector('.story-flag').textContent = isFlagged?'⭐':'☆';
+    item.querySelector('.story-flag').title = isFlagged?'Unflag':'Flag as NTK-worthy';
+  }
+  updateFlagCount();
+}
+
+function saveKey(val) {
+  localStorage.setItem('ntk_ant', val);
+}
+
+function updateFlagCount() {
+  const el  = document.getElementById('flaggedCount');
+  const cpBtn = document.getElementById('copyFlaggedBtn');
+  const assBtn = document.getElementById('assessBtn');
+  const antKey = document.getElementById('antKeyInput')?.value.trim() || localStorage.getItem('ntk_ant')||'';
+  if (flagged.size) {
+    el.textContent = `${flagged.size} flagged`;
+    cpBtn.style.display='';
+    if (antKey) assBtn.style.display='';
+  } else {
+    el.textContent='';
+    cpBtn.style.display='none';
+    assBtn.style.display='none';
+  }
+}
+
+function setSort(mode) {
+  sortMode=mode;
+  document.getElementById('sortTime').classList.toggle('active',mode==='time');
+  document.getElementById('sortSource').classList.toggle('active',mode==='source');
+  renderResults();
+}
+
+// ─── COPY FLAGGED ─────────────────────────────────────────────────────────────
+
+function copyFlagged() {
+  const flaggedStories = stories.filter(s=>flagged.has(s.link));
+  if (!flaggedStories.length) return;
+  const text = flaggedStories.map(s=>`[${s.feedName}] ${s.title}\n${s.link}`).join('\n\n');
+  navigator.clipboard.writeText(text).then(()=>{
+    const panel = document.getElementById('copyPanel');
+    const txt = document.getElementById('copyPanelText');
+    panel.classList.add('visible');
+    txt.textContent = `${flaggedStories.length} stories copied to clipboard.`;
+    setTimeout(hideCopyPanel, 3000);
+  });
+}
+
+async function runAssessment() {
+  const antKey = document.getElementById('antKeyInput').value.trim() || localStorage.getItem('ntk_ant')||'';
+  if (!antKey) { setStatus('Add your Anthropic API key to use NTK Assess'); return; }
+  const flaggedStories = stories.filter(s=>flagged.has(s.link));
+  if (!flaggedStories.length) return;
+
+  assessing = true;
+  const btn = document.getElementById('assessBtn');
+  btn.disabled = true; btn.textContent = 'Assessing…';
+  setStatus(`Sending ${flaggedStories.length} stories to Claude…`);
+
+  const storyList = flaggedStories.map((s,i)=>
+    `${i+1}. [${s.feedName}] ${s.title}${s.description?' — '+s.description.slice(0,120):''}`)
+    .join('\n');
+
+  const TODAY = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  const prompt = `Today is ${TODAY}. You are the NTK News story scanner.
+
+Below are ${flaggedStories.length} flagged headlines from local TV and wire RSS feeds. Evaluate each against NTK's story selection criteria.
+
+NTK READER — "Jamie": busy parent, mostly disengaged from news, anxious about the world. She needs what affects her paycheck, kids, healthcare, safety — and the occasional story she'd text a friend because it's wild or unexpectedly hopeful.
+
+SELECTION CRITERIA:
+COVERAGE: Consequential in last 24-48hrs? Would Jamie feel left out if she missed it?
+QUALITY: Actually new, not noise? Civilian anchor available (named person, dollar figure, institution)?
+MIX VALUE: Story Jamie would text? Verifiable progress? Leaves her better equipped?
+TWO-PRONG: If big enough, both event AND structural pattern deserve separate entries.
+
+VERDICT RULES:
+YES — clears the NTK bar. Include in today's digest.
+MAYBE — has merit but competes with stronger stories, or needs a sharper angle.
+NO — noise, weather, sports, crime without pattern, or too local without national implication.
+
+Return ONLY a valid JSON array, one object per headline in input order. No markdown fences.
+[{"verdict":"YES","reason":"one sentence max 15 words"}]
+
+HEADLINES TO ASSESS:
+${storyList}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':antKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    let raw = data.content[0].text.trim().replace(/^```json?\n?/,'').replace(/\n?```$/,'').trim();
+    const results = JSON.parse(raw);
+    results.forEach((r,i)=>{
+      if (flaggedStories[i]) assessments[flaggedStories[i].link]={verdict:(r.verdict||'MAYBE').toUpperCase(),reason:r.reason||''};
+    });
+    const yes=results.filter(r=>(r.verdict||'').toUpperCase()==='YES').length;
+    const maybe=results.filter(r=>(r.verdict||'').toUpperCase()==='MAYBE').length;
+    setStatus(`NTK Assessment: ${yes} YES · ${maybe} MAYBE · ${results.length-yes-maybe} NO`);
+  } catch(e) {
+    setStatus('Assessment failed: '+e.message);
+  }
+  assessing=false; btn.disabled=false; btn.textContent='Re-assess →';
+  renderResults();
+}
+
+function hideCopyPanel() {
+  document.getElementById('copyPanel').classList.remove('visible');
+}
+
+// ─── UTILS ────────────────────────────────────────────────────────────────────
+
+function setStatus(msg) { document.getElementById('statusMsg').textContent=msg; }
+
+function timeAgo(dateStr) {
+  const d = new Date(dateStr);
+  if (isNaN(d)) return '—';
+  const mins = Math.round((Date.now()-d)/60000);
+  if (mins<1) return 'Just now';
+  if (mins<60) return `${mins}m ago`;
+  const hrs = Math.round(mins/60);
+  if (hrs<24) return `${hrs}h ago`;
+  return `${Math.round(hrs/24)}d ago`;
+}
+
+function stripHtml(html) {
+  return html.replace(/<[^>]*>/g,'').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/\s+/g,' ').trim();
+}
+
+function cleanStr(s) { return s.replace(/\s+/g,' ').trim(); }
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+
+buildSidebar();
+// Pre-fill API key if already stored from production tool
+const _k = localStorage.getItem('ntk_ant');
+if (_k) { const inp = document.getElementById('antKeyInput'); if(inp) inp.value=_k; }
+</script>
+</body>
+</html>

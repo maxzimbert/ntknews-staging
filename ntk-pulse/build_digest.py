@@ -1,0 +1,1041 @@
+#!/usr/bin/env python3
+"""NTK Digest — full automated build.
+
+Runs unattended, triggered by a push from Pulse's Publish button. Takes
+whatever's currently in the lineup and turns it into the live site: no
+paste, no download, no terminal.
+
+URLs (v2 dropped from public paths, 2026-09-10 — netlify.toml 301s every
+old /digest/v2/... link to its /digest/... equivalent):
+  /digest/                      live app (Today at /today, Backstory at
+                                /backstory, Profile at /me — all rewrites
+                                to this same file, see netlify.toml)
+  /digest/YYYY-MM-DD/           frozen edition
+  /digest/YYYY-MM-DD/<slug>/    story permalink page
+  /digest/images/<slug>.jpg     decoded story image
+  /digest/archive/              archive index
+
+What it does, in order:
+  1. Reads the published story data (committed by Pulse's Publish button).
+  2. Picks today's "fun fact" — grounded in Wikipedia's real On This Day
+     feed, never invented (see pick_fun_fact()).
+  3. Regenerates digest/index.html's `const stories` and `const funFact`
+     blocks in place — the live homepage, not a copy. Everything else in
+     that file (the swipe-app shell, styling, JS) is left untouched; this
+     only touches the two blocks that used to be hand-pasted.
+  4. Decodes each story's base64 image into a real file.
+  5. Writes a standalone permalink page per story, real OG/Twitter tags.
+  6. Freezes today's edition at a permanent dated path.
+  7. Rebuilds the archive index from what's actually on disk.
+  8. Writes a last-published timestamp Pulse can read and show you.
+
+Writes DIRECTLY to digest/ — no test-folder detour. That was the right
+call while this was unverified; it's a deliberate, later decision to skip
+it now that the mechanics are proven and there's no live audience yet.
+
+Stdlib only.
+"""
+import base64
+import json
+import os
+import re
+import sys
+import unicodedata
+import urllib.request
+from datetime import datetime, timezone
+from pathlib import Path
+
+TEAL = "#01B2A7"
+# The same teal, calibrated for the cream ground. #01B2A7 on #EAD9C5 measures
+# 1.92:1 — barely a colour difference. This step measures 4.51:1. Accents on
+# this site were tuned against the ink ground and reused against cream; where
+# the ground is cream, use this one.
+TEAL_DEEP = "#016D66"
+INK = "#261F23"
+CREAM = "#EAD9C5"
+GOLD = "#F2AE2E"
+API_URL = "https://api.anthropic.com/v1/messages"
+MODEL = "claude-haiku-4-5"
+
+
+def log(msg):
+    print(f"[build] {msg}", flush=True)
+
+
+# ─── fun fact: grounded in a real source, never invented ───
+def fetch_on_this_day():
+    """Wikipedia's own editorial pick of the day's most notable historical
+    events — same en.wikipedia.org/api/rest_v1 domain Summon Context
+    already calls, no new infrastructure, no API key."""
+    now = datetime.now(timezone.utc)
+    url = f"https://en.wikipedia.org/api/rest_v1/feed/onthisday/selected/{now.month:02d}/{now.day:02d}"
+    req = urllib.request.Request(url, headers={"User-Agent": "NTK-News-Build/1.0"})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        data = json.loads(resp.read())
+    events = data.get("selected", [])
+    return [{"year": e.get("year"), "text": e.get("text", "")} for e in events if e.get("text")]
+
+
+def call_claude(api_key, prompt, max_tokens=300):
+    body = {"model": MODEL, "max_tokens": max_tokens,
+            "messages": [{"role": "user", "content": prompt}]}
+    req = urllib.request.Request(
+        API_URL, data=json.dumps(body).encode("utf-8"),
+        headers={"Content-Type": "application/json", "x-api-key": api_key,
+                 "anthropic-version": "2023-06-01"}, method="POST")
+    with urllib.request.urlopen(req, timeout=45) as resp:
+        data = json.loads(resp.read())
+    return "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
+
+
+def pick_fun_fact(api_key):
+    """One real event, selected and written up — never generated from
+    nothing. If Wikipedia or the API call fails, falls back to the
+    existing funFact already in the file rather than writing something
+    unsourced."""
+    try:
+        events = fetch_on_this_day()
+        if not events:
+            return None
+        listing = "\n".join(f"- {e['year']}: {e['text']}" for e in events[:20])
+        prompt = (
+            "Pick ONE event from this real, verified list of things that happened on this "
+            "date in history. Choose whichever is most surprising, delightful, or humanizing "
+            "— not necessarily the most famous. Write it up in 35-50 words, plain and warm, "
+            "in the spirit of a closing 'moment of zen' — something a reader closes the day "
+            "on, not more news to process.\n\n"
+            "Judge only what's on this list. Do not add detail beyond what's stated. If "
+            "nothing here is genuinely delightful, pick the most human one anyway.\n\n"
+            f"{listing}\n\n"
+            "Return ONLY the 35-50 word write-up, no preamble, no quotation marks around it."
+        )
+        text = call_claude(api_key, prompt, max_tokens=200).strip()
+        return text if text else None
+    except Exception as e:
+        log(f"  fun fact generation failed, keeping existing: {e}")
+        return None
+
+
+# ─── homepage regeneration: touch only the two blocks that were hand-pasted ───
+def jsEsc(s):
+    return (s or "").replace("\\", "\\\\").replace('"', '\\"').replace("\n", " ").strip()
+
+
+def jsEscMultiline(s):
+    """Same as jsEsc but preserves paragraph structure — collapsing to a
+    real newline for a JS string literal isn't valid, so this escapes to
+    the two-character \\n sequence instead of jsEsc's newline-to-space,
+    which would otherwise flatten every paragraph break to nothing.
+    Today's overview is the one field where that structure actually
+    matters — the client-side parser splits on blank lines to rebuild
+    paragraphs and bullet blocks, and jsEsc alone would silently destroy
+    the very thing it's splitting on."""
+    return (s or "").replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n").strip()
+
+
+def build_stories_block(stories):
+    lines = ["const stories = ["]
+    for s in stories:
+        img_fields = ""
+        if s.get("featuredImage"):
+            img_fields = (f',\n    featuredImage: "{jsEsc(s["featuredImage"])}"'
+                          f',\n    overlayColor: "{jsEsc(s.get("overlayColor", "#0798F2"))}"'
+                          f',\n    overlayOpacity: {s.get("overlayOpacity", 45)}')
+        permalink_field = ""
+        if s.get("permalink"):
+            permalink_field = f',\n    permalink: "{jsEsc(s["permalink"])}"'
+        backstory_field = ""
+        if s.get("backstoryRow"):
+            backstory_field = (f',\n    backstoryRow: "{jsEsc(s["backstoryRow"])}"'
+                                f',\n    backstoryTitle: "{jsEsc(s["backstoryTitle"])}"')
+        lines.append(f'  {{\n'
+                      f'    key: "{jsEsc(s.get("key",""))}",\n'
+                      f'    category: "{jsEsc(s.get("category",""))}",\n'
+                      # subject is what Expertise keys to; entity is texture
+                      # beneath it. Both fall back to empty rather than to
+                      # category: the digest decides what to do with a missing
+                      # subject, and hiding the gap here would make an edition
+                      # published before T-0016 indistinguishable from one
+                      # where the editor left the field blank.
+                      f'    subject: "{jsEsc(s.get("subject",""))}",\n'
+                      f'    entity: "{jsEsc(s.get("entity",""))}",\n'
+                      f'    headline: "{jsEsc(s.get("headline",""))}",\n'
+                      f'    lede: "{jsEsc(s.get("lede",""))}",\n'
+                      f'    truth: "{jsEsc(s.get("truth",""))}",\n'
+                      f'    prob: "{jsEsc(s.get("prob",""))}",\n'
+                      f'    poss: "{jsEsc(s.get("poss",""))}",\n'
+                      f'    lies: "{jsEsc(s.get("lies",""))}"{img_fields}{permalink_field}{backstory_field}\n'
+                      f'  }},')
+    lines.append("]; // ← END OF DAILY CONTENT. Do not edit below this line.")
+    return "\n".join(lines)
+
+
+def regenerate_hero_story(html, stories, date_str):
+    """Fills in the root landing page's `heroStory` block — this const and
+    the JS that applies it to the DOM were already built (comment in the
+    file literally says 'regenerated automatically by build_digest.py on
+    every publish'), but nothing ever actually wrote to it, so it's been
+    permanently frozen on whatever story was hardcoded in as a demo.
+    json.dumps rather than jsEsc here deliberately: this object holds much
+    messier content than jsEsc's single-line fields were built for —
+    multi-paragraph HTML, base64 images, arbitrary quotes — and JSON is a
+    valid (if differently-styled) JS object literal, so it's the safer
+    serializer for content this large and unpredictable."""
+    if not stories:
+        return html
+    lead = stories[0]
+    date_label = datetime.now(timezone.utc).strftime("%A, %B %-d") + " — today's edition"
+    hero = {
+        "date": date_label,
+        "storyCount": f"{1:02d} / {len(stories):02d}",
+        "category": lead.get("category", ""),
+        "headline": lead.get("headline", ""),
+        "truth": lead.get("truth", ""),
+        "prob": lead.get("prob", ""),
+        "poss": lead.get("poss", ""),
+        "lies": lead.get("lies", ""),
+        "permalink": lead.get("permalink", ""),
+    }
+    if lead.get("featuredImage"):
+        hero["featuredImage"] = lead["featuredImage"]
+        hero["overlayColor"] = lead.get("overlayColor", "#0798F2")
+    hero_js = "const heroStory = " + json.dumps(hero, indent=2) + ";"
+
+    hero_re = re.compile(r"const heroStory = \{.*?\n\};", re.DOTALL)
+    new_html, n = hero_re.subn(lambda m: hero_js, html)
+    if n != 1:
+        log(f"  WARNING: expected 1 heroStory match, found {n} — leaving root landing page's lead story untouched")
+        return html
+    return new_html
+
+
+def regenerate_today(html, today):
+    """Same pattern as the funFact block: one hand-pasted `const` marker,
+    regex-replaced in place. `today` is {"text": "...", "generatedAt": "..."}
+    or None if nothing's been generated yet in Pulse — in which case this
+    leaves whatever's already live untouched rather than blanking it out,
+    same defensive posture as pick_fun_fact's fallback."""
+    if not today or not today.get("text"):
+        return html
+    today_re = re.compile(r'const todayOverview = "(?:[^"\\]|\\.)*";')
+    new_html, n = today_re.subn(lambda m: f'const todayOverview = "{jsEscMultiline(today["text"])}";', html)
+    if n != 1:
+        log(f"  WARNING: expected 1 todayOverview match, found {n} — leaving Today overview untouched")
+        return html
+    return new_html
+
+
+def regenerate_homepage(html, stories, fun_fact):
+    """Regex-replace the two hand-pasted blocks in place. Everything else
+    in the file — the swipe-app shell, all its JS and CSS — is left
+    completely untouched. This is deliberately NOT a from-scratch
+    regeneration of the page; duplicating that logic here would be a
+    second place for it to drift out of sync with the real, working app."""
+    stories_re = re.compile(
+        r"const stories = \[.*?\];\s*// ← END OF DAILY CONTENT\. Do not edit below this line\.",
+        re.DOTALL)
+    stories_block = build_stories_block(stories)
+    new_html, n = stories_re.subn(lambda m: stories_block, html)
+    if n != 1:
+        raise RuntimeError(f"expected exactly 1 stories block match, found {n} — "
+                            "homepage template may have changed; refusing to guess")
+
+    if fun_fact:
+        fact_re = re.compile(r'const funFact = "(?:[^"\\]|\\.)*";')
+        fact_replacement = f'const funFact = "{jsEsc(fun_fact)}";'
+        new_html, n2 = fact_re.subn(lambda m: fact_replacement, new_html)
+        if n2 != 1:
+            log(f"  WARNING: expected 1 funFact match, found {n2} — leaving funFact untouched")
+            new_html = html if n != 1 else new_html  # safety, though n==1 already checked above
+
+    return new_html
+
+
+# ─── per-story permalinks (unchanged logic from the earlier build) ───
+def slugify(text, max_len=60):
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
+    text = re.sub(r"[^a-zA-Z0-9\s-]", "", text).strip().lower()
+    text = re.sub(r"[\s-]+", "-", text)
+    return text[:max_len].strip("-") or "story"
+
+
+def drop_headless(stories):
+    """Remove stories the model refused to write, before anything is built.
+
+    A story with no headline is one that came back as [INSUFFICIENT SOURCE
+    MATERIAL]. That is GLOBAL's anti-invention guardrail working. On
+    2026-09-18 one shipped anyway: a blank card, plus a permalink built from
+    slugify()'s "story" fallback that returned 200 to crawlers.
+
+    Dropping them here is the single place that covers the card, the hero, the
+    slug, the permalink page, the archive and _headlines.json at once, because
+    everything downstream reads this list. Skipped rather than raised: one bad
+    story should cost the edition a card, never the whole publish.
+    """
+    keep = [s for s in stories if (s.get("headline") or "").strip()]
+    for s in stories:
+        if not (s.get("headline") or "").strip():
+            log("SKIPPED - story has no headline, nothing will be built for it: "
+                f"key={s.get('key', '?')} category={s.get('category', '?')}")
+    if len(keep) != len(stories):
+        log(f"{len(stories) - len(keep)} headless story(s) skipped, {len(keep)} remain")
+    if not keep:
+        raise RuntimeError("no publishable stories: every story in the payload "
+                           "has an empty headline")
+    return keep
+
+
+def unique_slugs(stories):
+    seen, out = {}, []
+    for s in stories:
+        base = slugify(s.get("headline", "story"))
+        slug, n = base, 2
+        while slug in seen:
+            slug = f"{base}-{n}"; n += 1
+        seen[slug] = True
+        out.append(slug)
+    return out
+
+
+def decode_image(data_uri, out_path):
+    if not data_uri or not data_uri.startswith("data:image"):
+        return False
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_bytes(base64.b64decode(data_uri.split(",", 1)[1]))
+    return True
+
+
+def html_esc(s):
+    return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def strip_html_for_description(html, max_len=200):
+    text = re.sub(r"<[^>]+>", " ", html or "")
+    text = re.sub(r"\s+", " ", text).strip()
+    return (text[:max_len] + "…") if len(text) > max_len else text
+
+
+LOGO_DATA_URI = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjY5IiB6b29tQW5kUGFuPSJtYWduaWZ5IiB2aWV3Qm94PSIwIDAgMjAxLjc1IDEwMC40OTk5OTciIGhlaWdodD0iMTM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0IiB2ZXJzaW9uPSIxLjAiPjxkZWZzPjxnLz48Y2xpcFBhdGggaWQ9ImVlZmZkM2ZlNGQiPjxwYXRoIGQ9Ik0gNDIuNjEzMjgxIDAgTCAxNTguMjU3ODEyIDAgTCAxNTguMjU3ODEyIDEzLjc2MTcxOSBMIDQyLjYxMzI4MSAxMy43NjE3MTkgWiBNIDQyLjYxMzI4MSAwICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjY0YjZjNWI4MjEiPjxwYXRoIGQ9Ik0gNDUuNjAxNTYyIDAgTCAxNTUuMjQyMTg4IDAgQyAxNTYuODkwNjI1IDAgMTU4LjIyNjU2MiAxLjMzNTkzOCAxNTguMjI2NTYyIDIuOTg0Mzc1IEwgMTU4LjIyNjU2MiAxMC43NzczNDQgQyAxNTguMjI2NTYyIDEyLjQyNTc4MSAxNTYuODkwNjI1IDEzLjc2MTcxOSAxNTUuMjQyMTg4IDEzLjc2MTcxOSBMIDQ1LjYwMTU2MiAxMy43NjE3MTkgQyA0My45NTMxMjUgMTMuNzYxNzE5IDQyLjYxMzI4MSAxMi40MjU3ODEgNDIuNjEzMjgxIDEwLjc3NzM0NCBMIDQyLjYxMzI4MSAyLjk4NDM3NSBDIDQyLjYxMzI4MSAxLjMzNTkzOCA0My45NTMxMjUgMCA0NS42MDE1NjIgMCBaIE0gNDUuNjAxNTYyIDAgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iMTNjNzNjMDllMiI+PHBhdGggZD0iTSAwLjYxMzI4MSAwIEwgMTE2LjIzMDQ2OSAwIEwgMTE2LjIzMDQ2OSAxMy43NjE3MTkgTCAwLjYxMzI4MSAxMy43NjE3MTkgWiBNIDAuNjEzMjgxIDAgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iOTAxYzRhN2I1NyI+PHBhdGggZD0iTSAzLjYwMTU2MiAwIEwgMTEzLjI0MjE4OCAwIEMgMTE0Ljg5MDYyNSAwIDExNi4yMjY1NjIgMS4zMzU5MzggMTE2LjIyNjU2MiAyLjk4NDM3NSBMIDExNi4yMjY1NjIgMTAuNzc3MzQ0IEMgMTE2LjIyNjU2MiAxMi40MjU3ODEgMTE0Ljg5MDYyNSAxMy43NjE3MTkgMTEzLjI0MjE4OCAxMy43NjE3MTkgTCAzLjYwMTU2MiAxMy43NjE3MTkgQyAxLjk1MzEyNSAxMy43NjE3MTkgMC42MTMyODEgMTIuNDI1NzgxIDAuNjEzMjgxIDEwLjc3NzM0NCBMIDAuNjEzMjgxIDIuOTg0Mzc1IEMgMC42MTMyODEgMS4zMzU5MzggMS45NTMxMjUgMCAzLjYwMTU2MiAwIFogTSAzLjYwMTU2MiAwICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjAyM2Y2ODE5NTkiPjxyZWN0IHg9IjAiIHdpZHRoPSIxMTciIHk9IjAiIGhlaWdodD0iMTQiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2FhN2JmNjI4OSI+PHBhdGggZD0iTSA0Mi42MTMyODEgMjEuNzg5MDYyIEwgMTU4LjIyNjU2MiAyMS43ODkwNjIgTCAxNTguMjI2NTYyIDI4LjA1ODU5NCBMIDQyLjYxMzI4MSAyOC4wNTg1OTQgWiBNIDQyLjYxMzI4MSAyMS43ODkwNjIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iNmY5M2QzNmJlMiI+PHBhdGggZD0iTSA0NC4xMDkzNzUgMjEuNzg5MDYyIEwgMTU2LjczNDM3NSAyMS43ODkwNjIgQyAxNTcuNTU4NTk0IDIxLjc4OTA2MiAxNTguMjI2NTYyIDIyLjQ1NzAzMSAxNTguMjI2NTYyIDIzLjI4MTI1IEwgMTU4LjIyNjU2MiAyNi41NjY0MDYgQyAxNTguMjI2NTYyIDI3LjM5MDYyNSAxNTcuNTU4NTk0IDI4LjA1ODU5NCAxNTYuNzM0Mzc1IDI4LjA1ODU5NCBMIDQ0LjEwOTM3NSAyOC4wNTg1OTQgQyA0My4yODUxNTYgMjguMDU4NTk0IDQyLjYxMzI4MSAyNy4zOTA2MjUgNDIuNjEzMjgxIDI2LjU2NjQwNiBMIDQyLjYxMzI4MSAyMy4yODEyNSBDIDQyLjYxMzI4MSAyMi40NTcwMzEgNDMuMjg1MTU2IDIxLjc4OTA2MiA0NC4xMDkzNzUgMjEuNzg5MDYyIFogTSA0NC4xMDkzNzUgMjEuNzg5MDYyICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9ImUwN2ZmZDk1NzciPjxwYXRoIGQ9Ik0gMC42MTMyODEgMC43ODkwNjIgTCAxMTYuMjI2NTYyIDAuNzg5MDYyIEwgMTE2LjIyNjU2MiA3LjA1ODU5NCBMIDAuNjEzMjgxIDcuMDU4NTk0IFogTSAwLjYxMzI4MSAwLjc4OTA2MiAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSI1MzczMjAzMTlhIj48cGF0aCBkPSJNIDIuMTA5Mzc1IDAuNzg5MDYyIEwgMTE0LjczNDM3NSAwLjc4OTA2MiBDIDExNS41NTg1OTQgMC43ODkwNjIgMTE2LjIyNjU2MiAxLjQ1NzAzMSAxMTYuMjI2NTYyIDIuMjgxMjUgTCAxMTYuMjI2NTYyIDUuNTY2NDA2IEMgMTE2LjIyNjU2MiA2LjM5MDYyNSAxMTUuNTU4NTk0IDcuMDU4NTk0IDExNC43MzQzNzUgNy4wNTg1OTQgTCAyLjEwOTM3NSA3LjA1ODU5NCBDIDEuMjg1MTU2IDcuMDU4NTk0IDAuNjEzMjgxIDYuMzkwNjI1IDAuNjEzMjgxIDUuNTY2NDA2IEwgMC42MTMyODEgMi4yODEyNSBDIDAuNjEzMjgxIDEuNDU3MDMxIDEuMjg1MTU2IDAuNzg5MDYyIDIuMTA5Mzc1IDAuNzg5MDYyIFogTSAyLjEwOTM3NSAwLjc4OTA2MiAiIGNsaXAtcnVsZT0ibm9uemVybyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSI0NzY1NGU3M2MyIj48cmVjdCB4PSIwIiB3aWR0aD0iMTE3IiB5PSIwIiBoZWlnaHQ9IjgiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iMzcwYWU3ODRhMCI+PHBhdGggZD0iTSA0Mi42MTMyODEgNzIuNjA1NDY5IEwgMTU4LjIyNjU2MiA3Mi42MDU0NjkgTCAxNTguMjI2NTYyIDc4Ljg3NSBMIDQyLjYxMzI4MSA3OC44NzUgWiBNIDQyLjYxMzI4MSA3Mi42MDU0NjkgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iNTIzYWRiMGI1NiI+PHBhdGggZD0iTSA0NC4xMDkzNzUgNzIuNjA1NDY5IEwgMTU2LjczNDM3NSA3Mi42MDU0NjkgQyAxNTcuNTU4NTk0IDcyLjYwNTQ2OSAxNTguMjI2NTYyIDczLjI3MzQzOCAxNTguMjI2NTYyIDc0LjA5NzY1NiBMIDE1OC4yMjY1NjIgNzcuMzgyODEyIEMgMTU4LjIyNjU2MiA3OC4yMDcwMzEgMTU3LjU1ODU5NCA3OC44NzUgMTU2LjczNDM3NSA3OC44NzUgTCA0NC4xMDkzNzUgNzguODc1IEMgNDMuMjg1MTU2IDc4Ljg3NSA0Mi42MTMyODEgNzguMjA3MDMxIDQyLjYxMzI4MSA3Ny4zODI4MTIgTCA0Mi42MTMyODEgNzQuMDk3NjU2IEMgNDIuNjEzMjgxIDczLjI3MzQzOCA0My4yODUxNTYgNzIuNjA1NDY5IDQ0LjEwOTM3NSA3Mi42MDU0NjkgWiBNIDQ0LjEwOTM3NSA3Mi42MDU0NjkgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iN2FkNDU3ZGI1NCI+PHBhdGggZD0iTSAwLjYxMzI4MSAwLjYwNTQ2OSBMIDExNi4yMjY1NjIgMC42MDU0NjkgTCAxMTYuMjI2NTYyIDYuODc1IEwgMC42MTMyODEgNi44NzUgWiBNIDAuNjEzMjgxIDAuNjA1NDY5ICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjczNThiNWQ1YWUiPjxwYXRoIGQ9Ik0gMi4xMDkzNzUgMC42MDU0NjkgTCAxMTQuNzM0Mzc1IDAuNjA1NDY5IEMgMTE1LjU1ODU5NCAwLjYwNTQ2OSAxMTYuMjI2NTYyIDEuMjczNDM4IDExNi4yMjY1NjIgMi4wOTc2NTYgTCAxMTYuMjI2NTYyIDUuMzgyODEyIEMgMTE2LjIyNjU2MiA2LjIwNzAzMSAxMTUuNTU4NTk0IDYuODc1IDExNC43MzQzNzUgNi44NzUgTCAyLjEwOTM3NSA2Ljg3NSBDIDEuMjg1MTU2IDYuODc1IDAuNjEzMjgxIDYuMjA3MDMxIDAuNjEzMjgxIDUuMzgyODEyIEwgMC42MTMyODEgMi4wOTc2NTYgQyAwLjYxMzI4MSAxLjI3MzQzOCAxLjI4NTE1NiAwLjYwNTQ2OSAyLjEwOTM3NSAwLjYwNTQ2OSBaIE0gMi4xMDkzNzUgMC42MDU0NjkgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iODBhOGRhNDEwYSI+PHJlY3QgeD0iMCIgd2lkdGg9IjExNyIgeT0iMCIgaGVpZ2h0PSI3Ii8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9ImY5ZDA3ZDA0YzgiPjxwYXRoIGQ9Ik0gNDIuNjEzMjgxIDg2LjE2NDA2MiBMIDE1OC4yNTc4MTIgODYuMTY0MDYyIEwgMTU4LjI1NzgxMiA5OS45MjU3ODEgTCA0Mi42MTMyODEgOTkuOTI1NzgxIFogTSA0Mi42MTMyODEgODYuMTY0MDYyICIgY2xpcC1ydWxlPSJub256ZXJvIi8+PC9jbGlwUGF0aD48Y2xpcFBhdGggaWQ9IjdjMjM4NWY2ZWQiPjxwYXRoIGQ9Ik0gNDUuNjAxNTYyIDg2LjE2NDA2MiBMIDE1NS4yNDIxODggODYuMTY0MDYyIEMgMTU2Ljg5MDYyNSA4Ni4xNjQwNjIgMTU4LjIyNjU2MiA4Ny41IDE1OC4yMjY1NjIgODkuMTQ4NDM4IEwgMTU4LjIyNjU2MiA5Ni45NDE0MDYgQyAxNTguMjI2NTYyIDk4LjU4OTg0NCAxNTYuODkwNjI1IDk5LjkyNTc4MSAxNTUuMjQyMTg4IDk5LjkyNTc4MSBMIDQ1LjYwMTU2MiA5OS45MjU3ODEgQyA0My45NTMxMjUgOTkuOTI1NzgxIDQyLjYxMzI4MSA5OC41ODk4NDQgNDIuNjEzMjgxIDk2Ljk0MTQwNiBMIDQyLjYxMzI4MSA4OS4xNDg0MzggQyA0Mi42MTMyODEgODcuNSA0My45NTMxMjUgODYuMTY0MDYyIDQ1LjYwMTU2MiA4Ni4xNjQwNjIgWiBNIDQ1LjYwMTU2MiA4Ni4xNjQwNjIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iYWZhM2JmOTIxYiI+PHBhdGggZD0iTSAwLjYxMzI4MSAwLjE2NDA2MiBMIDExNi4yMzA0NjkgMC4xNjQwNjIgTCAxMTYuMjMwNDY5IDEzLjkyNTc4MSBMIDAuNjEzMjgxIDEzLjkyNTc4MSBaIE0gMC42MTMyODEgMC4xNjQwNjIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iNDYzMjQ4NTcyMCI+PHBhdGggZD0iTSAzLjYwMTU2MiAwLjE2NDA2MiBMIDExMy4yNDIxODggMC4xNjQwNjIgQyAxMTQuODkwNjI1IDAuMTY0MDYyIDExNi4yMjY1NjIgMS41IDExNi4yMjY1NjIgMy4xNDg0MzggTCAxMTYuMjI2NTYyIDEwLjk0MTQwNiBDIDExNi4yMjY1NjIgMTIuNTg5ODQ0IDExNC44OTA2MjUgMTMuOTI1NzgxIDExMy4yNDIxODggMTMuOTI1NzgxIEwgMy42MDE1NjIgMTMuOTI1NzgxIEMgMS45NTMxMjUgMTMuOTI1NzgxIDAuNjEzMjgxIDEyLjU4OTg0NCAwLjYxMzI4MSAxMC45NDE0MDYgTCAwLjYxMzI4MSAzLjE0ODQzOCBDIDAuNjEzMjgxIDEuNSAxLjk1MzEyNSAwLjE2NDA2MiAzLjYwMTU2MiAwLjE2NDA2MiBaIE0gMy42MDE1NjIgMC4xNjQwNjIgIiBjbGlwLXJ1bGU9Im5vbnplcm8iLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iZjY1OWMyZTM5YyI+PHJlY3QgeD0iMCIgd2lkdGg9IjExNyIgeT0iMCIgaGVpZ2h0PSIxNCIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSIxODY5ZWRhZjJjIj48cmVjdCB4PSIwIiB3aWR0aD0iMTI2IiB5PSIwIiBoZWlnaHQ9IjQ2Ii8+PC9jbGlwUGF0aD48L2RlZnM+PGcgY2xpcC1wYXRoPSJ1cmwoI2VlZmZkM2ZlNGQpIj48ZyBjbGlwLXBhdGg9InVybCgjNjRiNmM1YjgyMSkiPjxnIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIDQyLCAwKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzAyM2Y2ODE5NTkpIj48ZyBjbGlwLXBhdGg9InVybCgjMTNjNzNjMDllMikiPjxnIGNsaXAtcGF0aD0idXJsKCM5MDFjNGE3YjU3KSI+PHBhdGggZmlsbD0iI2YyZjJmMiIgZD0iTSAwLjYxMzI4MSAwIEwgMTE2LjIwMzEyNSAwIEwgMTE2LjIwMzEyNSAxMy43NjE3MTkgTCAwLjYxMzI4MSAxMy43NjE3MTkgWiBNIDAuNjEzMjgxIDAgIiBmaWxsLW9wYWNpdHk9IjEiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjxnIGNsaXAtcGF0aD0idXJsKCNjYWE3YmY2Mjg5KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzZmOTNkMzZiZTIpIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCA0MiwgMjEpIj48ZyBjbGlwLXBhdGg9InVybCgjNDc2NTRlNzNjMikiPjxnIGNsaXAtcGF0aD0idXJsKCNlMDdmZmQ5NTc3KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzUzNzMyMDMxOWEpIj48cGF0aCBmaWxsPSIjZjJmMmYyIiBkPSJNIDAuNjEzMjgxIDAuNzg5MDYyIEwgMTE2LjIyNjU2MiAwLjc4OTA2MiBMIDExNi4yMjY1NjIgNy4wNTg1OTQgTCAwLjYxMzI4MSA3LjA1ODU5NCBaIE0gMC42MTMyODEgMC43ODkwNjIgIiBmaWxsLW9wYWNpdHk9IjEiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjxnIGNsaXAtcGF0aD0idXJsKCMzNzBhZTc4NGEwKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzUyM2FkYjBiNTYpIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCA0MiwgNzIpIj48ZyBjbGlwLXBhdGg9InVybCgjODBhOGRhNDEwYSkiPjxnIGNsaXAtcGF0aD0idXJsKCM3YWQ0NTdkYjU0KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzczNThiNWQ1YWUpIj48cGF0aCBmaWxsPSIjZjJmMmYyIiBkPSJNIDAuNjEzMjgxIDAuNjA1NDY5IEwgMTE2LjIyNjU2MiAwLjYwNTQ2OSBMIDExNi4yMjY1NjIgNi44NzUgTCAwLjYxMzI4MSA2Ljg3NSBaIE0gMC42MTMyODEgMC42MDU0NjkgIiBmaWxsLW9wYWNpdHk9IjEiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjxnIGNsaXAtcGF0aD0idXJsKCNmOWQwN2QwNGM4KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzdjMjM4NWY2ZWQpIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLCAwLCAwLCAxLCA0MiwgODYpIj48ZyBjbGlwLXBhdGg9InVybCgjZjY1OWMyZTM5YykiPjxnIGNsaXAtcGF0aD0idXJsKCNhZmEzYmY5MjFiKSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzQ2MzI0ODU3MjApIj48cGF0aCBmaWxsPSIjZjJmMmYyIiBkPSJNIDAuNjEzMjgxIDAuMTY0MDYyIEwgMTE2LjIwMzEyNSAwLjE2NDA2MiBMIDExNi4yMDMxMjUgMTMuOTI1NzgxIEwgMC42MTMyODEgMTMuOTI1NzgxIFogTSAwLjYxMzI4MSAwLjE2NDA2MiAiIGZpbGwtb3BhY2l0eT0iMSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9nPjwvZz48L2c+PC9nPjwvZz48L2c+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMSwgMCwgMCwgMSwgNDIsIDI3KSI+PGcgY2xpcC1wYXRoPSJ1cmwoIzE4NjllZGFmMmMpIj48ZyBmaWxsPSIjZjJmMmYyIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEuMjAzMTk4LCAzNy40Nzc5NTMpIj48Zz48cGF0aCBkPSJNIDI0LjI2NTYyNSAtMTIgTCAyNC4yNjU2MjUgLTI3LjczNDM3NSBMIDMxLjY3MTg3NSAtMjcuNzM0Mzc1IEwgMzEuNjcxODc1IDAgTCAyNS4wMzEyNSAwIEwgOS44NDM3NSAtMTcuMjUgTCA5Ljg0Mzc1IDAgTCAyLjQzNzUgMCBMIDIuNDM3NSAtMjcuNzM0Mzc1IEwgMTAuNzE4NzUgLTI3LjczNDM3NSBaIE0gMjQuMjY1NjI1IC0xMiAiLz48L2c+PC9nPjwvZz48ZyBmaWxsPSIjZjJmMmYyIiBmaWxsLW9wYWNpdHk9IjEiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjI0NDI2NiwgMzcuNDc3OTUzKSI+PGc+PHBhdGggZD0iTSAxMS4xMjUgLTIwLjgxMjUgTCAwLjY0MDYyNSAtMjAuODEyNSBMIDAuNjQwNjI1IC0yNy43MzQzNzUgTCAyOS40Njg3NSAtMjcuNzM0Mzc1IEwgMjkuNDY4NzUgLTIwLjgxMjUgTCAxOS4wMzEyNSAtMjAuODEyNSBMIDE5LjAzMTI1IDAgTCAxMS4xMjUgMCBaIE0gMTEuMTI1IC0yMC44MTI1ICIvPjwvZz48L2c+PC9nPjxnIGZpbGw9IiNmMmYyZjIiIGZpbGwtb3BhY2l0eT0iMSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODMuMjU4NjEsIDM3LjQ3Nzk1MykiPjxnPjxwYXRoIGQ9Ik0gMzIuNTQ2ODc1IDAgTCAyMi45ODQzNzUgMCBMIDE1LjEyNSAtMTIuMTU2MjUgTCAxMC4yMTg3NSAtNi44NDM3NSBMIDEwLjIxODc1IDAgTCAyLjQzNzUgMCBMIDIuNDM3NSAtMjcuNzM0Mzc1IEwgMTAuMjE4NzUgLTI3LjczNDM3NSBMIDEwLjIxODc1IC0xNS43OTY4NzUgTCAyMS4yNjU2MjUgLTI3LjczNDM3NSBMIDMxLjg3NSAtMjcuNzM0Mzc1IEwgMjEuMzEyNSAtMTYuNjQwNjI1IFogTSAzMi41NDY4NzUgMCAiLz48L2c+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg=="
+
+STORY_PAGE_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{headline} — NTK News</title>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NTK News">
+<meta property="og:title" content="{headline_esc}">
+<meta property="og:description" content="{description_esc}">
+<meta property="og:url" content="{canonical_url}">
+{og_image_tags}
+<meta name="twitter:card" content="{twitter_card_type}">
+<meta name="twitter:title" content="{headline_esc}">
+<meta name="twitter:description" content="{description_esc}">
+{twitter_image_tag}
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root {{
+    --blue:   #0798F2;
+    --amber:  #F2AE2E;
+    /* Light-ground steps. The bright accents were tuned against the ink
+       header and fail on the white body: blue 3.10, amber 1.93. These
+       clear 4.6 on white, cream and the Lies tint. */
+    --blue-deep:  #045E96;
+    --amber-deep: #7A5308;
+    --terra:  #DC6550;
+    --teal:   #01B2A7;
+    --teal-deep: #016D66;
+    --cream:  {cream};
+    --dark:   {ink};
+    --white:  #FFFFFF;
+  }}
+
+  * {{ margin:0; padding:0; box-sizing:border-box; }}
+
+  body {{
+    font-family: 'Newsreader', Georgia, serif;
+    background: var(--cream);
+    max-width: 640px;
+    margin: 0 auto;
+  }}
+
+  a {{ color: var(--blue-deep); }}
+
+  .story-header {{
+    background: var(--dark);
+    border-bottom: 3px solid var(--blue);
+  }}
+
+  .story-header-inner {{
+    padding: 0 20px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }}
+
+
+  .story-header-logo {{ text-decoration: none; margin-left: auto; display: flex; align-items: center; }}
+  .ntk-logo-img-sm {{ height: 20px; width: auto; display: block; }}
+
+  .story-hero-wrap {{ background: var(--dark); }}
+
+  .story-hero-image-wrap {{
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+  }}
+
+  .story-hero-image-wrap img {{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }}
+
+  .story-hero {{
+    background: var(--dark);
+    padding: 24px 20px 28px;
+  }}
+
+  .story-hero-category {{
+    font-family: 'Overpass', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }}
+
+  .story-hero-headline {{
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: clamp(20px, 5vw, 26px);
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }}
+
+  .story-hero-lede {{
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: rgba(234,217,197,0.75);
+  }}
+
+  .story-sections {{ padding: 0 0 60px; }}
+
+  .story-section {{ border-bottom: 1px solid rgba(38,31,35,0.1); }}
+
+  .section-header {{
+    padding: 18px 20px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+  }}
+
+  .lies-section .section-header {{ background: rgba(220,101,80,0.04); }}
+
+  .section-dot {{ width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }}
+
+  .section-title {{
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 600;
+    font-size: 16px;
+    font-variant: small-caps;
+    letter-spacing: .05em;
+    color: var(--dark);
+  }}
+
+  /* A descending ladder of certainty, not four categories. Same ramp as the
+     landing page: established, then likely, then plausible, with Lies
+     reversed because it is the negation rather than the fourth rung.
+     Verified on the white section ground: faintest rung 6.36:1, Lies 6.27:1. */
+  .sec-1 .section-title {{ color: var(--dark); }}
+  .sec-2 .section-title {{ color: rgba(38,31,35,0.82); }}
+  .sec-3 .section-title {{ color: rgba(38,31,35,0.72); }}
+  .sec-4 .section-title {{ color: #A33421; font-style: italic; }}
+  .sec-1 .section-dot {{ background: var(--dark); }}
+  .sec-2 .section-dot {{ background: rgba(38,31,35,0.60); }}
+  .sec-3 .section-dot {{ background: rgba(38,31,35,0.34); }}
+  .sec-4 .section-dot {{ background: #A33421; }}
+
+  .section-body {{
+    padding: 0 20px 22px;
+    background: var(--white);
+  }}
+
+  .lies-section .section-body {{ background: rgba(220,101,80,0.04); }}
+
+  .section-body p {{
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(38,31,35,0.8);
+    margin-bottom: 14px;
+  }}
+
+  .section-body p:last-child {{ margin-bottom: 0; }}
+
+  .ntk-pullquote {{
+    border-left: 3px solid var(--blue);
+    margin: 18px 0;
+    padding: 12px 16px;
+    background: rgba(7,152,242,0.04);
+  }}
+  .ntk-pq-text {{
+    font-family: 'Newsreader', serif;
+    font-size: 20px !important;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5 !important;
+    color: var(--dark);
+    margin-bottom: 7px !important;
+  }}
+  .ntk-pq-cite {{
+    display: block;
+    font-family: 'Overpass', sans-serif;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    font-style: normal;
+  }}
+  .ntk-stat {{
+    border-left: 3px solid var(--amber-deep);
+    margin: 18px 0;
+    padding: 14px 16px;
+    background: rgba(242,174,46,0.05);
+  }}
+  .ntk-stat-num {{
+    font-family: 'Overpass', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--amber-deep);
+    line-height: 1.1;
+    margin-bottom: 5px;
+  }}
+  .ntk-stat-ctx {{
+    font-family: 'Newsreader', serif;
+    font-size: 13px;
+    color: rgba(38,31,35,0.72);
+    line-height: 1.5;
+  }}
+
+  .end-mark {{
+    text-align: center;
+    font-family: 'Newsreader', serif;
+    font-size: 13px;
+    letter-spacing: .24em;
+    color: rgba(38,31,35,0.67);
+    border-top: 1px solid rgba(38,31,35,0.14);
+    margin: 22px 20px 0;
+    padding-top: 20px;
+  }}
+
+  .back-footer {{
+    display: block;
+    text-align: center;
+    padding: 28px 20px 40px;
+    font-family: 'Overpass', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue-deep);
+    text-decoration: none;
+  }}
+
+  /* T-0046: the one place this page points somewhere other than back to
+     /digest — same terra used for "worse"/unverified across the app,
+     reserved for exactly this kind of "there's more, elsewhere" signal. */
+  .backstory-link {{
+    display: block;
+    margin: 26px 20px 0;
+    padding: 16px 18px;
+    background: rgba(220,101,80,0.06);
+    border: 1px solid rgba(220,101,80,0.3);
+    text-decoration: none;
+  }}
+  .backstory-link-kicker {{
+    font-family: 'Overpass', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 6px;
+  }}
+  .backstory-link-title {{
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--dark);
+  }}
+
+  .story-actions {{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+    padding: 0 20px;
+  }}
+  .action-btn {{
+    font-family: 'Overpass', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    border: none;
+    border-radius: 2px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }}
+  .listen-btn {{ background: var(--teal); }}
+  .listen-btn.speaking {{
+    background: rgba(38,31,35,0.08);
+    color: var(--teal-deep);
+    border: 1px solid var(--teal-deep);
+  }}
+  .share-btn {{ background: var(--blue); }}
+</style>
+</head>
+<body>
+
+  <header class="story-header">
+    <div class="story-header-inner">
+      <a class="story-header-logo" href="/digest" aria-label="Back to the digest">
+        <img src="{logo}" alt="NTK" class="ntk-logo-img-sm">
+      </a>
+    </div>
+  </header>
+
+  <div class="story-hero-wrap">
+    {hero_img}
+    <div class="story-hero">
+      <div class="story-hero-category">{category}</div>
+      <div class="story-hero-headline">{headline_esc}</div>
+      <div class="story-hero-lede">{lede_esc}</div>
+    </div>
+  </div>
+
+  <div class="story-sections">
+
+    <div class="story-section sec-1">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <span class="section-title">Truths — What Happened</span>
+      </div>
+      <div class="section-body">{truth}</div>
+    </div>
+
+    <div class="story-section sec-2">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <span class="section-title">Probabilities — What Will Likely Happen</span>
+      </div>
+      <div class="section-body">{prob}</div>
+    </div>
+
+    <div class="story-section sec-3">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <span class="section-title">Possibilities — What Could Happen</span>
+      </div>
+      <div class="section-body">{poss}</div>
+    </div>
+
+    <div class="story-section lies-section sec-4">
+      <div class="section-header">
+        <div class="section-dot"></div>
+        <span class="section-title">Lies / Narrative Distortions</span>
+      </div>
+      <div class="section-body">{lies}</div>
+    </div>
+
+  </div>
+
+  <div class="end-mark">&mdash; 30 &mdash;</div>
+
+  <div class="story-actions">
+    <button type="button" class="action-btn listen-btn" id="listenBtn" onclick="toggleListen()">&#128266; Listen</button>
+    <button type="button" class="action-btn share-btn" id="shareBtn" onclick="shareStory()">Share this story</button>
+  </div>
+
+  {backstory_link}
+
+  <a class="back-footer" href="../">Back to today's digest</a>
+
+<script>
+  // Browser-native text-to-speech — same Web Speech API approach as the
+  // app's own Listen button (digest/index.html). T-0039: a reader who
+  // arrives from a shared link lands here, not in the app, and should not
+  // lose the features the app's story view has.
+  var STORY_TEXT = {{
+    headline: "{headline_js}",
+    lede: "{lede_js}",
+    truth: "{truth_js}",
+    prob: "{prob_js}",
+    poss: "{poss_js}",
+    lies: "{lies_js}"
+  }};
+
+  function htmlToText(html) {{
+    if (!html) return '';
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent.replace(/\\s+/g, ' ').trim();
+  }}
+
+  var currentUtterance = null;
+
+  function resetListenBtn() {{
+    var btn = document.getElementById('listenBtn');
+    if (!btn) return;
+    btn.textContent = '\\u{{1F50A}} Listen';
+    btn.classList.remove('speaking');
+  }}
+
+  function toggleListen() {{
+    if (!('speechSynthesis' in window)) return;
+    var synth = window.speechSynthesis;
+    var btn = document.getElementById('listenBtn');
+
+    if (synth.speaking && !synth.paused) {{
+      synth.pause();
+      btn.textContent = '▶ Resume';
+      return;
+    }}
+    if (synth.paused) {{
+      synth.resume();
+      btn.textContent = '⏸ Pause';
+      return;
+    }}
+
+    var parts = [STORY_TEXT.headline, STORY_TEXT.lede,
+      htmlToText(STORY_TEXT.truth), htmlToText(STORY_TEXT.prob),
+      htmlToText(STORY_TEXT.poss), htmlToText(STORY_TEXT.lies)];
+    var text = parts.filter(Boolean).join('. ');
+    if (!text) return;
+
+    synth.cancel();
+    currentUtterance = new SpeechSynthesisUtterance(text);
+    currentUtterance.rate = 1.0;
+    currentUtterance.onend = resetListenBtn;
+    currentUtterance.onerror = resetListenBtn;
+    synth.speak(currentUtterance);
+    btn.textContent = '⏸ Pause';
+    btn.classList.add('speaking');
+  }}
+
+  window.addEventListener('pagehide', function() {{
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  }});
+
+  // Same share pattern as the app's share bar (shareStory() in
+  // digest/index.html): the native share sheet where it's available, an
+  // alert with the URL as a fallback.
+  function shareStory() {{
+    var shareUrl = location.href;
+    if (navigator.share) {{
+      navigator.share({{ title: STORY_TEXT.headline, text: STORY_TEXT.lede, url: shareUrl }});
+    }} else {{
+      alert('Share: ' + STORY_TEXT.headline + '\\n\\n' + shareUrl);
+    }}
+  }}
+</script>
+
+</body>
+</html>
+"""
+
+
+def build_story_page(story, image_rel_url, image_abs_url, canonical_url):
+    headline = story.get("headline", "")
+    description = story.get("lede") or strip_html_for_description(story.get("truth", ""))
+    has_image = bool(image_abs_url)
+    og_image_tags = (
+        f'<meta property="og:image" content="{image_abs_url}">\n'
+        f'<meta property="og:image:width" content="1200">\n'
+        f'<meta property="og:image:height" content="630">' if has_image else "")
+    twitter_image_tag = (f'<meta name="twitter:image" content="{image_abs_url}">' if has_image else "")
+    hero_img = (f'<div class="story-hero-image-wrap"><img src="{image_rel_url}" alt=""></div>'
+                if has_image else "")
+    backstory_link = ""
+    if story.get("backstoryRow"):
+        backstory_link = (
+            f'<a class="backstory-link" href="/backstory/{html_esc(story["backstoryRow"])}/">'
+            f'<div class="backstory-link-kicker">The Backstory</div>'
+            f'<div class="backstory-link-title">{html_esc(story["backstoryTitle"])}</div></a>')
+    return STORY_PAGE_TEMPLATE.format(
+        headline=headline.replace("<", "").replace(">", ""),
+        headline_esc=html_esc(headline), description_esc=html_esc(description),
+        canonical_url=canonical_url, og_image_tags=og_image_tags,
+        twitter_card_type="summary_large_image" if has_image else "summary",
+        twitter_image_tag=twitter_image_tag, ink=INK, cream=CREAM,
+        logo=LOGO_DATA_URI,
+        category=html_esc(story.get("category", "")), lede_esc=html_esc(description),
+        hero_img=hero_img,
+        truth=story.get("truth", ""), prob=story.get("prob", ""),
+        poss=story.get("poss", ""), lies=story.get("lies", ""),
+        headline_js=jsEsc(headline), lede_js=jsEsc(story.get("lede", "")),
+        truth_js=jsEsc(story.get("truth", "")), prob_js=jsEsc(story.get("prob", "")),
+        poss_js=jsEsc(story.get("poss", "")), lies_js=jsEsc(story.get("lies", "")),
+        backstory_link=backstory_link)
+
+
+ARCHIVE_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archive — NTK News</title>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet">
+<style>
+  * {{ box-sizing:border-box; }}
+  body {{ background:{cream}; color:{ink}; font-family:'Newsreader',Georgia,serif;
+    max-width:660px; margin:0 auto; padding:0 20px 80px; }}
+  .masthead {{ padding:46px 0 0; }}
+  h1 {{ font-family:'Newsreader',serif; font-weight:600; font-size:34px;
+    letter-spacing:-.01em; margin:0 0 6px; }}
+  .standfirst {{ font-size:16px; color:rgba(38,31,35,.68); margin:0 0 34px; max-width:46ch; }}
+  .ed {{ border-top:1px solid rgba(38,31,35,.22); padding:18px 0 22px; }}
+  .ed-head {{ display:flex; justify-content:space-between; align-items:baseline;
+    gap:16px; margin-bottom:12px; }}
+  .ed-date {{ font-family:'Newsreader',serif; font-size:16px; font-weight:600;
+    letter-spacing:.01em; color:{ink}; }}
+  .ed a.day {{ font-family:'Overpass',sans-serif; font-size:13px; letter-spacing:.1em;
+    text-transform:uppercase; color:{teal_deep}; text-decoration:none;
+    border-bottom:1px solid rgba(1,109,102,.38); padding-bottom:2px; white-space:nowrap; }}
+  .ed a.day:hover {{ border-bottom-color:{teal_deep}; }}
+  .ed-list {{ display:flex; flex-direction:column; gap:9px; }}
+  .ed-list a {{ font-size:16px; line-height:1.4; color:{ink}; text-decoration:none;
+    border-bottom:1px solid rgba(38,31,35,.18); padding-bottom:2px; }}
+  .ed-list a:hover {{ border-bottom-color:{ink}; }}
+  footer {{ border-top:1px solid rgba(38,31,35,.22); margin-top:8px; padding-top:20px;
+    font-size:13px; color:rgba(38,31,35,.72); }}
+  footer a {{ color:{teal_deep}; }}
+  @media (max-width:560px) {{
+    .ed-head {{ flex-direction:column; gap:4px; }}
+  }}
+</style>
+</head>
+<body>
+<div class="masthead">
+  <h1>Archive</h1>
+  <p class="standfirst">Every edition NTK has published, newest first. Each one ended when you finished it, and still does.</p>
+</div>
+{editions}
+<footer><a href="/today">Today&rsquo;s edition</a></footer>
+</body>
+</html>
+"""
+
+
+def rebuild_archive(digest_dir, base_url):
+    date_dirs = sorted([d for d in digest_dir.iterdir()
+                        if d.is_dir() and re.match(r"\d{4}-\d{2}-\d{2}$", d.name)], reverse=True)
+    blocks = []
+    for d in date_dirs:
+        meta_path = d / "_headlines.json"
+        if not meta_path.exists():
+            continue
+        headlines = json.loads(meta_path.read_text())
+        items = "\n".join(
+            f'    <a href="{base_url}/digest/{d.name}/{h["slug"]}/">{html_esc(h["headline"])}</a>'
+            for h in headlines)
+        # A dateline a person would say out loud, not a sort key. Falls back to
+        # the raw folder name if a directory is ever named something unexpected.
+        try:
+            pretty = datetime.strptime(d.name, "%Y-%m-%d").strftime("%A, %-d %B %Y")
+        except ValueError:
+            pretty = d.name
+        blocks.append(f'<div class="ed">\n'
+                       f'  <div class="ed-head">\n'
+                       f'    <div class="ed-date">{pretty}</div>\n'
+                       f'    <a class="day" href="{base_url}/digest/{d.name}/">Full edition</a>\n'
+                       f'  </div>\n'
+                       f'  <div class="ed-list">\n{items}\n  </div>\n'
+                       f'</div>')
+    archive_dir = digest_dir / "archive"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    (archive_dir / "index.html").write_text(
+        ARCHIVE_TEMPLATE.format(cream=CREAM, ink=INK, teal_deep=TEAL_DEEP,
+                                editions="\n".join(blocks)))
+    log(f"archive rebuilt: {len(date_dirs)} editions listed")
+
+
+def main():
+    repo_root = Path(os.environ.get("GITHUB_WORKSPACE", "."))
+    story_json_path = Path(sys.argv[1]) if len(sys.argv) > 1 else DATA_DEFAULT
+    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    base_url = "https://ntknews.org"
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+
+    digest_dir = repo_root / "digest"
+    live_index_path = digest_dir / "index.html"
+
+    payload = json.loads(story_json_path.read_text())
+    # Back-compat: a bare array is the old (pre-2026-08-27) shape, in case
+    # this ever runs against a stale lineup-publish.json left over from
+    # before Today overview was wired through the same publish step.
+    if isinstance(payload, list):
+        stories, today = payload, None
+    else:
+        stories, today = payload.get("stories", []), payload.get("today")
+    log(f"{len(stories)} stories loaded from {story_json_path}"
+        + (" (no Today overview in this payload)" if not today else ""))
+
+    # A story with no headline is one the model refused to write. GLOBAL tells
+    # it to emit [INSUFFICIENT SOURCE MATERIAL] rather than invent, which is
+    # the guardrail working; on 2026-09-18 one of those shipped anyway, as a
+    # blank card plus a permalink built from slugify()'s "story" fallback that
+    # returned 200 to crawlers. Dropping it here is the single place that
+    # covers the card, the hero, the slug, the permalink page, the archive and
+    # _headlines.json at once, because everything downstream reads this list.
+    # Skipped rather than raised: a late story going bad should cost the
+    # edition one card, never the whole publish.
+    stories = drop_headless(stories)
+
+    # 1. Fun fact — real source, graceful fallback to whatever's already there.
+    fun_fact = pick_fun_fact(api_key) if api_key else None
+    if fun_fact:
+        log(f"fun fact: {fun_fact[:70]}...")
+    else:
+        log("no fresh fun fact generated — leaving today's existing one in place")
+
+    # 2. Compute this edition's slugs and per-story permalinks FIRST — the
+    # homepage regeneration in step 3 needs these already attached to each
+    # story dict so the interactive share button has a real URL to use,
+    # not the swipe-app's own page. (Previously this ran after step 3,
+    # which meant `permalink` didn't exist yet when the stories block was
+    # written — the bug behind the share button sharing the wrong URL.)
+    slugs = unique_slugs(stories)
+    for story, slug in zip(stories, slugs):
+        story["permalink"] = f"{base_url}/digest/{date_str}/{slug}/"
+
+    # 2b. T-0046: cross-link with Backstory, both directions. Each story
+    # that paired to a row today gets a backstoryRow/backstoryTitle field
+    # (read by build_stories_block() and build_story_page() below). The
+    # reverse direction — a Backstory permalink page's "In the digest"
+    # list linking straight to the actual paired story, not just to
+    # /digest generally — needs the real permalink just computed above,
+    # which only exists here; so this writes it back into
+    # digest/data/backstory.json's todays_pairings for
+    # build_backstory_pages.py (run right after this script in
+    # pulse-publish.yml) to pick up. Best-effort throughout: a missing or
+    # stale backstory.json must never fail the digest build.
+    backstory_path = repo_root / BACKSTORY_JSON_DEFAULT
+    backstory = load_backstory(backstory_path)
+    if backstory:
+        permalink_by_id = {s.get("key"): s["permalink"] for s in stories if s.get("key")}
+        touched = 0
+        for p in backstory.get("todays_pairings", []):
+            link = permalink_by_id.get(p.get("story_id"))
+            if link:
+                p["story_permalink"] = link
+                touched += 1
+        if touched:
+            backstory_path.write_text(json.dumps(backstory, indent=2, ensure_ascii=False) + "\n")
+            log(f"  backstory.json enriched with {touched} story permalink(s)")
+        for story in stories:
+            link = backstory_link_for(story.get("key"), backstory)
+            if link:
+                story["backstoryRow"] = link["row_id"]
+                story["backstoryTitle"] = link["row_title"]
+        log(f"  {sum(1 for s in stories if s.get('backstoryRow'))} of {len(stories)} stories cross-link to Backstory today")
+
+    # 3. Regenerate the LIVE homepage in place. This is the piece that
+    # makes the whole chain zero-click: no more paste, ever.
+    current_html = live_index_path.read_text()
+    new_html = regenerate_homepage(current_html, stories, fun_fact)
+    new_html = regenerate_today(new_html, today)
+    live_index_path.write_text(new_html)
+    log(f"live homepage regenerated: {live_index_path}")
+
+    # 3b. Root landing page's lead-story teaser — separate file from the
+    # digest app above, was never wired to real data until now.
+    root_index_path = repo_root / "index.html"
+    if root_index_path.exists():
+        root_html = root_index_path.read_text()
+        new_root_html = regenerate_hero_story(root_html, stories, date_str)
+        if new_root_html != root_html:
+            root_index_path.write_text(new_root_html)
+            log(f"root landing page lead story updated: {root_index_path}")
+    else:
+        log(f"  root index.html not found at {root_index_path} — skipping hero story update")
+
+    # 4. Freeze today's now-correct homepage at a permanent dated path.
+    dated_dir = digest_dir / date_str
+    dated_dir.mkdir(parents=True, exist_ok=True)
+    (dated_dir / "index.html").write_text(new_html)
+
+    # 5. Per-story permalinks + images. Slugs already computed in step 2 —
+    # reused here rather than recomputed, so the permalink written into the
+    # homepage's stories array and the actual page built on disk can never
+    # drift apart from each other.
+    headlines_meta = []
+    for story, slug in zip(stories, slugs):
+        story_dir = dated_dir / slug
+        story_dir.mkdir(parents=True, exist_ok=True)
+        canonical_url = story["permalink"]
+
+        image_rel_url = image_abs_url = None
+        if story.get("featuredImage"):
+            img_name = f"{slug}.jpg"
+            if decode_image(story["featuredImage"], digest_dir / "images" / img_name):
+                image_rel_url = f"../../images/{img_name}"
+                image_abs_url = f"{base_url}/digest/images/{img_name}"
+
+        page = build_story_page(story, image_rel_url, image_abs_url, canonical_url)
+        (story_dir / "index.html").write_text(page)
+        headlines_meta.append({"slug": slug, "headline": story.get("headline", "")})
+        log(f"  story page: {slug}/  (image: {'yes' if image_abs_url else 'no'})")
+
+    (dated_dir / "_headlines.json").write_text(json.dumps(headlines_meta, indent=1))
+
+    # 6. Archive, rebuilt from what's actually on disk.
+    rebuild_archive(digest_dir, base_url)
+
+    # 7. Last-published marker — what Pulse's button reads to show you
+    # "last published: N ago" without you having to go check GitHub.
+    (repo_root / "ntk-pulse" / "data" / "last-published.json").write_text(
+        json.dumps({"at": datetime.now(timezone.utc).isoformat(), "stories": len(stories)}, indent=1))
+
+    log("")
+    log(f"Done. Live at {base_url}/today")
+
+
+DATA_DEFAULT = Path("ntk-pulse/data/lineup-publish.json")
+BACKSTORY_JSON_DEFAULT = Path("digest/data/backstory.json")
+
+
+def load_backstory(path):
+    """T-0046: cross-link data, read best-effort. pulse-publish.yml runs
+    build_pairings.py before this script specifically so today's pairings
+    are fresh here — but that step is continue-on-error (a classifier
+    hiccup must never block a publish), so this must degrade to "no
+    cross-links today" rather than crash the whole digest build if the
+    file is missing, stale, or malformed."""
+    try:
+        return json.loads(path.read_text())
+    except Exception as e:
+        log(f"  no backstory cross-link data ({type(e).__name__}: {e}) — publishing without it")
+        return None
+
+
+def backstory_link_for(story_id, backstory):
+    """{row_id, row_title} for this story's pairing today, or None."""
+    if not backstory:
+        return None
+    rows_by_id = {r["id"]: r for r in backstory.get("rows", [])}
+    for p in backstory.get("todays_pairings", []):
+        if p.get("story_id") == story_id:
+            row = rows_by_id.get(p.get("row"))
+            if row:
+                return {"row_id": row["id"], "row_title": row["title"]}
+    return None
+
+if __name__ == "__main__":
+    main()

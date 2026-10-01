@@ -1,0 +1,331 @@
+{
+ "assembled_at": "2026-10-01T20:51:51.227351+00:00",
+ "slot_plan": "A",
+ "displacement": "MANUAL",
+ "daytype": "weekday",
+ "target_size": [
+  8,
+  10
+ ],
+ "actual_size": 10,
+ "lint_failures": [
+  "no item answers 'what do I do with this'"
+ ],
+ "slots_unfilled": [],
+ "stories": [
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "136e38e2d77eee34",
+   "title": "Tennessee execution fails; inmate survives lethal injections",
+   "beat": "national",
+   "publisher_count": 13,
+   "publishers": [
+    "BBC",
+    "New York Times",
+    "The Guardian",
+    "Yahoo News",
+    "ABC News",
+    "CBS News",
+    "Fox News",
+    "NBC News",
+    "ABC Australia",
+    "Daily Mail",
+    "Fox 5 Atlanta",
+    "Fox 5 DC",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 5,
+    "explainability": 5,
+    "actionability": 1,
+    "conversational_currency": 5
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "A Tennessee execution failed when lethal injections did not kill the inmate; she remains hospitalized in critical condition.",
+   "assembly_score": 12.56
+  },
+  {
+   "slot": "money_me",
+   "slot_label": "Money & me",
+   "key": "360b1f5d2b9a5f27",
+   "title": "Mortgage rates hit three-year high as bond yields surge",
+   "beat": "business",
+   "publisher_count": 3,
+   "publishers": [
+    "New York Times",
+    "Fox 5 Atlanta",
+    "Fox 5 DC"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 5,
+    "actionability": 3,
+    "conversational_currency": 4
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Bond yields and mortgage rates climb to multiyear highs, making home purchases more expensive for borrowers.",
+   "assembly_score": 7.17
+  },
+  {
+   "slot": "body_mind",
+   "slot_label": "Body & mind",
+   "key": "d0fb64a5fde8979a",
+   "title": "Millions of Cancers Linked to Infections, Study Says",
+   "beat": "health",
+   "publisher_count": 1,
+   "publishers": [
+    "MedPage Today"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 3,
+    "actionability": 3,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "",
+   "assembly_score": 3.85
+  },
+  {
+   "slot": "work_machines",
+   "slot_label": "Work & machines",
+   "key": "280d0a9a74fa163f",
+   "title": "OpenAI adds virtual try-on and product-saving to ChatGPT",
+   "beat": "tech",
+   "publisher_count": 2,
+   "publishers": [
+    "TechCrunch",
+    "Techmeme"
+   ],
+   "scores": {
+    "emotional_load": 1,
+    "explainability": 5,
+    "actionability": 1,
+    "conversational_currency": 2
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "OpenAI adds virtual try-on and product-saving features to ChatGPT, expanding the chatbot into shopping.",
+   "assembly_score": 4.61
+  },
+  {
+   "slot": "group_chat",
+   "slot_label": "The group chat",
+   "key": "4e419a2cfc3b7af5",
+   "title": "Cornell rape allegation reignites push to reform New York sexual assault law",
+   "beat": "education",
+   "publisher_count": 4,
+   "publishers": [
+    "BBC",
+    "NPR",
+    "Al Jazeera",
+    "CBS News"
+   ],
+   "scores": {
+    "emotional_load": 5,
+    "explainability": 5,
+    "actionability": 3,
+    "conversational_currency": 4
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "A Cornell student alleges she was raped by fraternity members after being drugged; her case is sparking calls to change New York's sexual assault laws.",
+   "assembly_score": 7.35
+  },
+  {
+   "slot": "elsewhere",
+   "slot_label": "Elsewhere, but here",
+   "key": "e8cdcc62e769e5cd",
+   "title": "HMRC urged to scrutinise tax implications of Man City case",
+   "beat": "international",
+   "publisher_count": 2,
+   "publishers": [
+    "BBC",
+    "Al Jazeera"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 3,
+    "actionability": 3,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "",
+   "assembly_score": 4.49
+  },
+  {
+   "slot": "close",
+   "slot_label": "The close",
+   "key": "a4a364c677da7854",
+   "title": "Judge blocks Trump from firing Seattle federal prosecutor",
+   "beat": "national",
+   "publisher_count": 2,
+   "publishers": [
+    "CBS News",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 3,
+    "actionability": 1,
+    "conversational_currency": 4
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "A federal judge blocked Trump from firing the U.S. attorney for Western Washington, ruling he cannot remove prosecutors appointed under court process.",
+   "assembly_score": 4.83
+  },
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "51772e69f0de6658",
+   "title": "U.S. pushes Europe to tap emergency diesel reserves as prices surge",
+   "beat": "business",
+   "publisher_count": 4,
+   "publishers": [
+    "BBC",
+    "Financial Times",
+    "The Guardian",
+    "NBC News"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 4
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Trump administration pressures European allies to release strategic diesel reserves as U.S. prices spike 70% since Iran war began.",
+   "assembly_score": 4.63
+  },
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "b0d5432e3cb57890",
+   "title": "Judge dismisses Reflecting Pool case, citing Trump pressure on prosecutors",
+   "beat": "national",
+   "publisher_count": 9,
+   "publishers": [
+    "NPR",
+    "The Guardian",
+    "Yahoo News",
+    "ABC News",
+    "CBS News",
+    "CNBC",
+    "Daily Beast",
+    "Atlanta Black Star",
+    "Fox 5 DC"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 3
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "A judge permanently dismissed vandalism charges against former Olympian David Hearn in the DC Reflecting Pool case, citing improper pressure.",
+   "assembly_score": 3.18
+  },
+  {
+   "slot": "flex",
+   "slot_label": "Flex",
+   "key": "f10a44ecbd9474e3",
+   "title": "From Super Bowl champ to master architect: Mike Tomlin\u2019s sprawling Minecraft city is magnificent",
+   "beat": "international",
+   "publisher_count": 2,
+   "publishers": [
+    "The Guardian",
+    "NBC News"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 3,
+    "actionability": 3,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "",
+   "assembly_score": 4.48
+  }
+ ],
+ "excluded_sample": [
+  {
+   "title": "Trump\u2019s Border Chiefs Blindsided by Secret Spending Move",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Chaos, coffins and 'Claudiapatra' steal the show in Celebrity Traitors",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Celebrity Traitors - FIVE-STAR Review: Dazzling. Thrilling. Utterly unpredictable... it's only episode one and Traitors fever has me howling at the moon!",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "8 Comedians Bringing Laughter to the DC Area This Fall",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Is the Taco Bell ultra marathon the toughest event in sports and why is the answer a resounding yes?",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "LA mayoral hopeful stumbles through favorite rappers from the city, host calls her 'media trained'",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Darien Mayo",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Megan Fox flaunts her curves in a red catsuit as she fronts ad campaign for erectile dysfunction medication",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Wales v Norway, Denmark v Portugal, Germany v Serbia: Nations League \u2013 live",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "7 Best PDRN Serums We Tested 2026, According to K-Beauty Experts",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Just Announced Shows in NYC",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Democratic-Aligned Groups Raise Record Funds for Midterms",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Prince Harry tells military chiefs he lost 'purpose and identity' when he left the Army as he stresses the importance of Nato",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Unstable connections",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "To Be Good Financial Stewards, FHFA Inspector General's Budget Will Match the Budgets of Peer Agencies (FHFA.gov)",
+   "why": "triage verdict NO"
+  }
+ ]
+}
