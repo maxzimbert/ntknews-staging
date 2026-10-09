@@ -1,0 +1,318 @@
+{
+  "generated_at": "2026-10-09T21:37:21.046911+00:00",
+  "date": "20261009",
+  "episodes": [
+    {
+      "id": "nx-s1-20261009-0800",
+      "hour": "08:00"
+    },
+    {
+      "id": "nx-s1-20261009-0900",
+      "hour": "09:00"
+    },
+    {
+      "id": "nx-s1-20261009-1000",
+      "hour": "10:00"
+    },
+    {
+      "id": "nx-s1-20261009-1100",
+      "hour": "11:00"
+    },
+    {
+      "id": "nx-s1-20261009-1200",
+      "hour": "12:00"
+    },
+    {
+      "id": "nx-s1-20261009-1300",
+      "hour": "13:00"
+    },
+    {
+      "id": "nx-s1-20261009-1400",
+      "hour": "14:00"
+    },
+    {
+      "id": "nx-s1-20261009-1500",
+      "hour": "15:00"
+    },
+    {
+      "id": "nx-s1-20261009-1600",
+      "hour": "16:00"
+    },
+    {
+      "id": "nx-s1-20261009-1700",
+      "hour": "17:00"
+    }
+  ],
+  "latest_hour": "17:00",
+  "latest_topics": [
+    "Trump says U.S. will obtain diesel fuel from Russia after deal with Putin",
+    "State Department announces sanctions on International Criminal Court, vowing to dismantle it",
+    "Trump picks Katie Zaccaria as new White House press secretary after Caroline Levitt's departure",
+    "Hurricane Isaias forecast to make landfall on northern Gulf Coast as Category 3 storm",
+    "Wealthiest American families are over 75, while youngest families' wealth declined, Fed survey shows",
+    "Federal officers shoot and wound Dominican man Oscar Belgaal in New York, with child in car",
+    "Kenya confirms Ebola death of man returning from Congo, its first case in this outbreak",
+    "Alaska pollock trawling fight: fishing nets catch salmon as western Alaska runs collapse"
+  ],
+  "threads": [
+    {
+      "text": "Hurricane Isaias expected to make landfall on Northern Gulf Coast as Category 2 storm tonight",
+      "hours": [
+        "08:00",
+        "09:00",
+        "10:00",
+        "11:00",
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00",
+        "16:00",
+        "17:00"
+      ],
+      "count": 10
+    },
+    {
+      "text": "Navi Pillay, former U.N. human rights chief, wins Nobel Peace Prize for Palestinian territory inquiry",
+      "hours": [
+        "08:00",
+        "09:00",
+        "10:00",
+        "11:00",
+        "13:00",
+        "15:00",
+        "16:00",
+        "17:00"
+      ],
+      "count": 8
+    },
+    {
+      "text": "Homeland Security Secretary defends ICE agents who shot and wounded Dominican migrant in New York",
+      "hours": [
+        "10:00",
+        "11:00",
+        "12:00",
+        "14:00",
+        "17:00"
+      ],
+      "count": 5
+    },
+    {
+      "text": "Legendary former NFL coach and player Mike Ditka dies at age 86",
+      "hours": [
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00",
+        "16:00"
+      ],
+      "count": 5
+    },
+    {
+      "text": "Defense Secretary Pete Hegseth announces execution of Nidal Hassan by firing squad will be live-streamed in December",
+      "hours": [
+        "08:00",
+        "14:00",
+        "15:00",
+        "16:00"
+      ],
+      "count": 4
+    },
+    {
+      "text": "President Trump says United States will not attack Iran before midterm elections",
+      "hours": [
+        "08:00",
+        "10:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Alaska gubernatorial debate held with four-way ranked choice race, Democrat Tompkins leading Republican field",
+      "hours": [
+        "08:00",
+        "13:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Two stolen Renoir paintings recovered in France, six people arrested in connection with museum heist",
+      "hours": [
+        "08:00",
+        "11:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "NFL joins New Jersey asking Supreme Court to let states regulate sports betting markets",
+      "hours": [
+        "09:00",
+        "11:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Curtis Flowers dies at 56; Mississippi man wrongly imprisoned for murder dies at home",
+      "hours": [
+        "10:00",
+        "12:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Russia lifts public health restrictions after lab worker's death at Siberian plague research institute",
+      "hours": [
+        "13:00",
+        "14:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Trump claims diesel deal with Russia as fuel prices hit record highs",
+      "hours": [
+        "16:00",
+        "17:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Trump orders White House hearing on mortgage fraud allegations against Fed Governor Lisa Cook",
+      "hours": [
+        "16:00",
+        "17:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Saudi Arabia says Houthi missile attacks on Riyadh airport kill three people, second attack this week",
+      "hours": [
+        "08:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Ukrainian military uses drones and robots to reclaim 68 square miles from Russians in Donbas",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Russia fires drones and missiles at Ukrainian civilian targets, killing at least 85 people",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Mortgage rates rise to 7.4 percent for 30-year fixed loans amid inflation concerns",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Federal deficit reaches nearly $2 trillion for fiscal year 2026, highest in non-crisis period",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Army investigation finds systematic errors contributed to Reagan National Airport plane-helicopter collision killing 67",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "World Trade Organization raises global trade forecast despite Middle East conflict disruptions",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Mortgage rates climb to highest level in almost three years at 7.4 percent average",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Russia lifts health restrictions after death of 28-year-old lab worker at plague research institute",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Rising diesel fuel prices strain truck drivers; average price now $6.30 per gallon",
+      "hours": [
+        "11:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Federal forecast projects record electricity use in U.S. this year and next, driven by AI growth",
+      "hours": [
+        "12:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Leon Botstein resigns from all Bard College positions amid scrutiny over Jeffrey Epstein connections",
+      "hours": [
+        "12:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "British police arrest and release two Latvian men for trespassing at RAF Molesworth military base",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Amnesty's Agnes Callamard and others decry plan to livestream Nidal Hasan's execution",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Magnitude 7.6 earthquake strikes near Pitalosa, Panama; evacuations and shaking felt in capital",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Chinese government hackers expand attacks with help from Integrity Technology Group, officials warn",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "CDC reports weekly rise in U.S. measles cases, now totaling 4,080",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Kenya confirms Ebola death of man returning from Congo, its first case in this outbreak",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Alaska pollock trawling fight: fishing nets catch salmon as western Alaska runs collapse",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    }
+  ]
+}

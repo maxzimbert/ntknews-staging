@@ -1,0 +1,416 @@
+{
+ "e3bdee91c6b74d76": {
+  "id": "e3bdee91c6b74d76",
+  "class": "DEVELOPMENT",
+  "what_new": "Bronze RFK bust stolen from outside demolished RFK Stadium, undetected for ~two weeks per police report.",
+  "unique": "News4 obtained the D.C. police report on the theft.",
+  "credits": [
+   "Washington Post"
+  ],
+  "contradicts": "",
+  "ledger_id": "e3bdee91c6b74d76",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "5225f7ebaaa98d2d": {
+  "id": "5225f7ebaaa98d2d",
+  "class": "DEVELOPMENT",
+  "what_new": "Tropical Storm Isaias forms in Gulf, forecast to become hurricane by Thursday, approach northern Gulf Coast Friday",
+  "unique": "Earliest formation timeline and forecast track",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "d558dfdbf2ae171c",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "e91bd09a575a2e6b": {
+  "id": "e91bd09a575a2e6b",
+  "class": "DEVELOPMENT",
+  "what_new": "Isaias becomes first hurricane of 2026 Atlantic season, threatening Mississippi to Florida Panhandle",
+  "unique": "Specifies geographic range Mississippi to Florida Panhandle",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "d558dfdbf2ae171c",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "94edeec40fb10b71": {
+  "id": "94edeec40fb10b71",
+  "class": "DEVELOPMENT",
+  "what_new": "NHC says Isaias strengthened to Category 1 hurricane, warns of coastal flooding, damaging winds, heavy rain",
+  "unique": "Category 1 designation and specific hazard warnings from NHC",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "d558dfdbf2ae171c",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "d558dfdbf2ae171c": {
+  "id": "d558dfdbf2ae171c",
+  "class": "DEVELOPMENT",
+  "what_new": "States of emergency declared in Alabama and Florida as storm nears Gulf Coast",
+  "unique": "Reports states of emergency in Alabama and Florida; Al Roker on-air coverage",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "d558dfdbf2ae171c",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "a577b5832b287ccc": {
+  "id": "a577b5832b287ccc",
+  "class": "DEVELOPMENT",
+  "what_new": "Texas executed Jamaal Howard after Supreme Court rejected appeal citing pentobarbital risks from Pike's botched execution",
+  "unique": "Names pentobarbital as the specific drug at issue",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "689d06fe993c533f": {
+  "id": "689d06fe993c533f",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "7163500997c9c22e": {
+  "id": "7163500997c9c22e",
+  "class": "DEVELOPMENT",
+  "what_new": "Specifies Howard's execution came one week after Pike's failed execution",
+  "unique": "Provides the one-week timeframe between the two executions",
+  "credits": [
+   "Associated Press"
+  ],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "8a4d2ef12dba965d": {
+  "id": "8a4d2ef12dba965d",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "917797c7e18703af": {
+  "id": "917797c7e18703af",
+  "class": "DEVELOPMENT",
+  "what_new": "Pike's attorneys report she has pneumonia and cannot move her arms after the botched execution",
+  "unique": "New medical details on Pike's post-execution condition",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "bf9dec3179c7c8f7": {
+  "id": "bf9dec3179c7c8f7",
+  "class": "DEVELOPMENT",
+  "what_new": "Attorneys accuse Tennessee officials of delaying access to Pike over two hours after she regained consciousness",
+  "unique": "Specific two-hour delay accusation and detail of what she asked upon waking",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "7a8345602dde5cc3": {
+  "id": "7a8345602dde5cc3",
+  "class": "DEVELOPMENT",
+  "what_new": "Lawyers say Pike was nearly taken off life support before she unexpectedly woke",
+  "unique": "Reveals she was nearly removed from life support",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "bc7a6368bdd06a42": {
+  "id": "bc7a6368bdd06a42",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "b0c53f1792be389a": {
+  "id": "b0c53f1792be389a",
+  "class": "DEVELOPMENT",
+  "what_new": "SpaceX signed MOUs with Jio and Airtel in 2025; Musk accuses 'certain oligarchs' of blocking Starlink launch",
+  "unique": "Names specific MOU partners Jio and Airtel",
+  "credits": [
+   "CNBC"
+  ],
+  "contradicts": "",
+  "ledger_id": "ba343e4554cfceab",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "ba343e4554cfceab": {
+  "id": "ba343e4554cfceab",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "ba343e4554cfceab",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "c80108c7d6063ef9": {
+  "id": "c80108c7d6063ef9",
+  "class": "DEVELOPMENT",
+  "what_new": "Trump will award Musk and other tech executives the National Medal of Science on Thursday",
+  "unique": "White House confirmation via NewsNation of award ceremony",
+  "credits": [
+   "NewsNation"
+  ],
+  "contradicts": "",
+  "ledger_id": "ba343e4554cfceab",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "a536ba0fc850f690": {
+  "id": "a536ba0fc850f690",
+  "class": "DEVELOPMENT",
+  "what_new": "Valkyries become first WNBA team to surpass $100m annual revenue; valued at $1bn.",
+  "unique": "Revenue and valuation figures attributed to Sportico report.",
+  "credits": [
+   "Sportico"
+  ],
+  "contradicts": "",
+  "ledger_id": "54a225193911d83b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "b2e144e4d1645430": {
+  "id": "b2e144e4d1645430",
+  "class": "DEVELOPMENT",
+  "what_new": "Dream take 2-0 semifinal lead over Liberty; Reese scored 6 OT points, Hillmon's go-ahead layup won it.",
+  "unique": "Names Hillmon's go-ahead layup and Reese's OT scoring burst.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "54a225193911d83b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "54a225193911d83b": {
+  "id": "54a225193911d83b",
+  "class": "DEVELOPMENT",
+  "what_new": "Final score 101-98; Reese scored 23 points total; Hillmon's layup came with 20.8 seconds left; Ionescu missed free throws.",
+  "unique": "Full final score and exact game-clock details with Ionescu's role.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "54a225193911d83b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "e24494b086073062": {
+  "id": "e24494b086073062",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "54a225193911d83b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "0885933b8040ceb6": {
+  "id": "0885933b8040ceb6",
+  "class": "DEVELOPMENT",
+  "what_new": "EU's top trade envoy in Beijing; Brussels blames China's car exports for tens of thousands of lost manufacturing jobs",
+  "unique": "Focus on car industry job losses blamed on Chinese exports",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "0885933b8040ceb6",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "ade3d1861aff9d07": {
+  "id": "ade3d1861aff9d07",
+  "class": "DEVELOPMENT",
+  "what_new": "Talks center on \u20ac1bn daily EU-China trade deficit and rare earth export restrictions",
+  "unique": "Cites \u20ac1bn daily deficit figure and rare earth export curbs",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "0885933b8040ceb6",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "c7d68db959018304": {
+  "id": "c7d68db959018304",
+  "class": "DEVELOPMENT",
+  "what_new": "Dominion has pending defamation lawsuits against election deniers including Giuliani and Powell",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c7d68db959018304",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "4fa88a80b0f3e766": {
+  "id": "4fa88a80b0f3e766",
+  "class": "DEVELOPMENT",
+  "what_new": "A country musician publicly urges fellow artists to oppose assault rifles, per CNN podcast.",
+  "unique": "Podcast format featuring a country musician's call to action.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "4fa88a80b0f3e766",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "c1e2fb98094768e5": {
+  "id": "c1e2fb98094768e5",
+  "class": "DEVELOPMENT",
+  "what_new": "Tax filing deadline is tomorrow; explains how to file for a filing extension.",
+  "unique": "Practical how-to guidance on filing an extension.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c1e2fb98094768e5",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "0ad5b1df9e64b487": {
+  "id": "0ad5b1df9e64b487",
+  "class": "DEVELOPMENT",
+  "what_new": "Ecosia dropped Mistral for open-source models, including Chinese ones, over quality complaints.",
+  "unique": "On-record CEO quote expressing disappointment with Mistral's quality.",
+  "credits": [
+   "Politico"
+  ],
+  "contradicts": "",
+  "ledger_id": "0ad5b1df9e64b487",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "522a8fa42b74cd50": {
+  "id": "522a8fa42b74cd50",
+  "class": "DEVELOPMENT",
+  "what_new": "New story: 18-year-old Twin Cities man arrested in Richfield, MN for planning Mall of America attack, tried to buy assault rifle from FBI informant",
+  "unique": "First report with arrest details and federal criminal complaint reference",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "111101a32cf2691b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "e194e61f9a07efbe": {
+  "id": "e194e61f9a07efbe",
+  "class": "DEVELOPMENT",
+  "what_new": "Names suspect Sheikhdoon Abdullahi Mohamud, 18, charged with knowingly receiving a firearm via DOJ complaint",
+  "unique": "Official DOJ press release naming suspect and specific charge",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "111101a32cf2691b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "5d91586fd464221a": {
+  "id": "5d91586fd464221a",
+  "class": "DEVELOPMENT",
+  "what_new": "GOP Senate candidate Michele Tafoya reacts, says Minnesotans feel under threat after the plot",
+  "unique": "Political reaction quote from Senate hopeful Michele Tafoya",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "111101a32cf2691b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "2ecf006eb6dc3c90": {
+  "id": "2ecf006eb6dc3c90",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "111101a32cf2691b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "ec40234b64a22a7a": {
+  "id": "ec40234b64a22a7a",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "111101a32cf2691b",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "3bcb82bfb2a7ea17": {
+  "id": "3bcb82bfb2a7ea17",
+  "class": "DEVELOPMENT",
+  "what_new": "Trump recast Iran remarks at San Antonio rally, saying 'we protect our cities' amid midterm push.",
+  "unique": "Attributes recast to galvanizing Texas Republicans ahead of midterms.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "7d5992d16178dec9": {
+  "id": "7d5992d16178dec9",
+  "class": "DEVELOPMENT",
+  "what_new": "Report says Trump weighing major Iran strike to show power before midterms; approval sunk since Feb strikes.",
+  "unique": "New polling/favorability angle and timeline of strikes starting in February.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "f4ae06eafb2218ce": {
+  "id": "f4ae06eafb2218ce",
+  "class": "DEVELOPMENT",
+  "what_new": "Trump reframed 'take out' remark, saying Iran would only hit cities if it had nuclear weapons.",
+  "unique": "Clarifies the nuclear-weapons conditional added in the reframing.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "7733096e8475c84d": {
+  "id": "7733096e8475c84d",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "936af16bb7373dc1": {
+  "id": "936af16bb7373dc1",
+  "class": "DEVELOPMENT",
+  "what_new": "Original Nebraska rally comment where Trump suggested Iran could 'take out' LA and San Diego.",
+  "unique": "Links comment to Trump's remarks on prices of goods and services.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "689d06fe993c533f",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "2c6caddbeebfe956": {
+  "id": "2c6caddbeebfe956",
+  "class": "DEVELOPMENT",
+  "what_new": "New story: hard-Right 'migrant hunters' clash with French CRS police in Calais over small boat crossings",
+  "unique": "On-the-ground photos of activists clashing with riot police on Calais beaches",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "deb8c1b2e2d3f478",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "13ee7a0e9be62201": {
+  "id": "13ee7a0e9be62201",
+  "class": "DEVELOPMENT",
+  "what_new": "Cites a new Wall Street Journal poll showing most Americans support price controls.",
+  "unique": "Opinion piece arguing against popular support for price controls using WSJ poll data.",
+  "credits": [
+   "Wall Street Journal"
+  ],
+  "contradicts": "",
+  "ledger_id": "13ee7a0e9be62201",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "83a5f1b8298b7dc7": {
+  "id": "83a5f1b8298b7dc7",
+  "class": "DEVELOPMENT",
+  "what_new": "Reveals a petition filed by Gillio Lopes's lawyer challenging AG Letitia James's appointment as special prosecutor.",
+  "unique": "Quotes petition alleging James showed bias and presumption of guilt against defendants.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "d92ae1b9717a28d6",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "07a42f5a1a76eeef": {
+  "id": "07a42f5a1a76eeef",
+  "class": "DEVELOPMENT",
+  "what_new": "Reports a lawyer for one of the accused wants Letitia James removed from leading a 2024 Cornell sexual assault investigation.",
+  "unique": "Specifies the underlying case involves a 2024 sexual assault claim by a former Cornell student.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "d92ae1b9717a28d6",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ }
+}
