@@ -1,0 +1,415 @@
+{
+ "c95cb40b1392ec32:4": {
+  "verdict": "YES",
+  "rationale": "Structural power abuse with named stakes (26 workers, Meta) affecting household rights (job security, parental leave protections) in ongoing pattern of algorithmic discrimination.",
+  "pillars": [
+   "power & corruption",
+   "affordability",
+   "democracy & society"
+  ],
+  "anchor": "Meta",
+  "solo": "",
+  "at": "2026-07-15T10:31:22.228356+00:00"
+ },
+ "7eeffe71eebdb2bf:4": {
+  "verdict": "NO",
+  "rationale": "Ceremonial currency decision with no economic impact, budget effect, or structural consequence; pure symbolic provocation disguised as news.",
+  "pillars": [
+   "power & corruption"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-15T19:51:19.956070+00:00"
+ },
+ "d0c75fe5ea8b996c:4": {
+  "verdict": "MAYBE",
+  "rationale": "Terrorism charge signals structural relevance, but early-stage arrest with minimal named stakes or household impact beyond headline alarm.",
+  "pillars": [
+   "democracy & society",
+   "power & corruption"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-15T19:51:41.974076+00:00"
+ },
+ "677e6f082af809be:4": {
+  "verdict": "NO",
+  "rationale": "Statements, reactions, and horse-race framing with no structural act. James Norton headline is pure noise.",
+  "pillars": [
+   "power & corruption"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-15T21:04:26.717725+00:00"
+ },
+ "d151b4703ae6986a:4": {
+  "verdict": "NO",
+  "rationale": "Celebrity entertainment churn with zero structural relevance, named stakes, or household impact beyond gossip.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-15T22:20:23.717326+00:00"
+ },
+ "026a76f425f33f0f:4": {
+  "verdict": "NO",
+  "rationale": "Pure consumer/lifestyle churn with no structural significance, named stakes, or household impact beyond shopping.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-15T23:20:14.424603+00:00"
+ },
+ "b49bfca98c7a2df8:4": {
+  "verdict": "MAYBE",
+  "rationale": "Daylight saving permanence is structural (health/rights pillar), has named congressional actors, affects households. But headlines mix substance with celebrity churn.",
+  "pillars": [
+   "democracy & society",
+   "affordability"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-15T23:20:28.753500+00:00"
+ },
+ "3fbc4e288503845e:4": {
+  "verdict": "YES",
+  "rationale": "Immediate health/safety impact across multiple U.S. states; visible climate disruption affecting millions; ongoing structural problem worsening.",
+  "pillars": [
+   "climate & rights",
+   "affordability",
+   "household health & safety"
+  ],
+  "anchor": "air quality alerts across Northeast/Midwest; evacuation orders in Minnesota",
+  "solo": "",
+  "at": "2026-07-16T00:18:16.805737+00:00"
+ },
+ "6681291fa25b0f5f:4": {
+  "verdict": "NO",
+  "rationale": "Trump aesthetic complaints and NPS maintenance disputes lack structural significance or household impact for most readers.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T03:46:30.154769+00:00"
+ },
+ "79bcd47283fffd54:4": {
+  "verdict": "MAYBE",
+  "rationale": "Rate hike affects household borrowing costs; adoptee justice story has structural significance but limited U.S. household impact.",
+  "pillars": [
+   "affordability",
+   "power & corruption"
+  ],
+  "anchor": "2.75%",
+  "solo": "",
+  "at": "2026-07-16T06:22:11.094233+00:00"
+ },
+ "60e85e6b66475b0f:4": {
+  "verdict": "MAYBE",
+  "rationale": "Tariff escalation affects prices and trade patterns, but headlines lack specifics on which goods, economic impact scale, or enforcement mechanism.",
+  "pillars": [
+   "power & corruption",
+   "affordability"
+  ],
+  "anchor": "25% tariff rate; July 22 start date",
+  "solo": "",
+  "at": "2026-07-16T06:22:33.214267+00:00"
+ },
+ "5cf349f5892fca01:4": {
+  "verdict": "MAYBE",
+  "rationale": "Iran release is a named act with potential household impact, but lacks structural context. China-NK ties warrant monitoring but show no immediate civilian consequences.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T10:38:39.729086+00:00"
+ },
+ "db28489009321a06:4": {
+  "verdict": "NO",
+  "rationale": "Tragic incident with named victims, but no structural significance, no policy/institutional failure pattern, and no household impact beyond individual tragedy.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T10:38:42.429576+00:00"
+ },
+ "e9faf6935ad62b51:4": {
+  "verdict": "NO",
+  "rationale": "Celebrity death notice with no structural impact, named stakes, or household relevance beyond grief.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T12:11:11.284353+00:00"
+ },
+ "6b8a5ed0874307ff:4": {
+  "verdict": "MAYBE",
+  "rationale": "Sentencing closes a chapter, but broader TfL vulnerability and teen hacking epidemic remain unresolved structural issues.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society",
+   "affordability"
+  ],
+  "anchor": "\u00a329-39m",
+  "solo": "",
+  "at": "2026-07-16T12:11:24.136859+00:00"
+ },
+ "cdc0f99dba2e3a78:4": {
+  "verdict": "YES",
+  "rationale": "AG nominee's confirmation hinges on named senator conditions; structural stakes for DOJ leadership and Epstein case oversight are material.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society"
+  ],
+  "anchor": "Todd Blanche AG nomination",
+  "solo": "",
+  "at": "2026-07-16T22:19:38.657943+00:00"
+ },
+ "f687b085549fdae7:4": {
+  "verdict": "MAYBE",
+  "rationale": "Trump speech on elections is structural (democracy pillar) with named stakes, but headline mix suggests mostly process/reaction noise around an undelivered event.",
+  "pillars": [
+   "democracy & society",
+   "power & corruption"
+  ],
+  "anchor": "",
+  "solo": "ProPublica scoop on Paxton election law violation stands alone as named act with accountability mechanism (investigation request); rest is speech-anticipation churn.",
+  "at": "2026-07-16T22:19:40.516042+00:00"
+ },
+ "c280e918f926fe5c:4": {
+  "verdict": "NO",
+  "rationale": "Pure reaction cycle to a speech event with no structural consequences, named stakes changes, or household impact beyond commentary theater.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:19:42.142347+00:00"
+ },
+ "0c154c3861093dd3:4": {
+  "verdict": "YES",
+  "rationale": "Insider trading structure: White House staffer used position access for predictable financial gain. Tests democracy/corruption pillar and household trust in institutions.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society"
+  ],
+  "anchor": "$100,000",
+  "solo": "",
+  "at": "2026-07-16T22:19:43.550998+00:00"
+ },
+ "daa511fd324325d9:4": {
+  "verdict": "MAYBE",
+  "rationale": "Wildfire air quality is structural (climate) with household impact, but coverage conflates unrelated events (sports scheduling, Trump attendance, counterfeit goods) into noise.",
+  "pillars": [
+   "climate & rights",
+   "household impact"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:19:45.223205+00:00"
+ },
+ "d3ec2ec21290d86b:4": {
+  "verdict": "YES",
+  "rationale": "Multiple ICE killings with conflicting evidence on grounds for force; structural pattern of lethal authority with minimal accountability.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society",
+   "affordability"
+  ],
+  "anchor": "ICE",
+  "solo": "",
+  "at": "2026-07-16T22:19:46.701904+00:00"
+ },
+ "3b63f2ee1323e544:4": {
+  "verdict": "YES",
+  "rationale": "Power struggle over immigration enforcement with direct safety implications; structural pattern of Trump overriding agency guardrails.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society",
+   "safety"
+  ],
+  "anchor": "ICE traffic stops policy",
+  "solo": "",
+  "at": "2026-07-16T22:19:48.050788+00:00"
+ },
+ "3473e491f6fc4534:4": {
+  "verdict": "YES",
+  "rationale": "Ongoing U.S.-Iran escalation directly threatens global oil prices, shipping costs, and American military exposure with structural precedent.",
+  "pillars": [
+   "power & corruption",
+   "affordability",
+   "recurring patterns of American history"
+  ],
+  "anchor": "global oil prices; Strait of Hormuz shipping",
+  "solo": "",
+  "at": "2026-07-16T22:19:49.296489+00:00"
+ },
+ "a92a9e5127006c1c:4": {
+  "verdict": "NO",
+  "rationale": "Managerial statements and celebrity gossip with no structural consequence to American readers.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:19:50.081933+00:00"
+ },
+ "5fc559d1311dde6c:4": {
+  "verdict": "NO",
+  "rationale": "Sports event noise with no structural consequence, named stakes limited to athletes' statements/reactions, zero household impact beyond entertainment.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:19:51.120734+00:00"
+ },
+ "2a895039ceccbdb9:4": {
+  "verdict": "MAYBE",
+  "rationale": "Epstein files release is structurally significant (power/corruption pillar), but dominant framing is Vance's statements rather than concrete acts or household impact.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:19:52.805741+00:00"
+ },
+ "099328e95eafee73:4": {
+  "verdict": "YES",
+  "rationale": "Escalating US-Iran military conflict with direct implications for oil prices, regional stability, and potential draft/deployment of US forces.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society",
+   "affordability"
+  ],
+  "anchor": "oil markets; US military deployment",
+  "solo": "",
+  "at": "2026-07-16T22:19:54.078243+00:00"
+ },
+ "7d0ac7b6be601c08:4": {
+  "verdict": "MAYBE",
+  "rationale": "Defense spending and GOP nominee vetting touch power/democracy pillars, but headlines mix structural budget fights with horse-race scandal noise.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society"
+  ],
+  "anchor": "$1.5T",
+  "solo": "",
+  "at": "2026-07-16T22:19:55.232049+00:00"
+ },
+ "7fe494a997c1c789:4": {
+  "verdict": "MAYBE",
+  "rationale": "Teleprompter operator profiting off market-moving speeches suggests structural corruption, but needs confirmation it actually happened and affected policy/markets.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society"
+  ],
+  "anchor": "$100,000",
+  "solo": "",
+  "at": "2026-07-16T22:19:57.094066+00:00"
+ },
+ "7457851e8277136d:4": {
+  "verdict": "MAYBE",
+  "rationale": "Named act (Rubio hosting international summit) with structural significance for democracy rhetoric, but unclear if this changes material outcomes or represents substantive policy shift.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society"
+  ],
+  "anchor": "67 countries",
+  "solo": "",
+  "at": "2026-07-16T22:19:58.386183+00:00"
+ },
+ "dbcc3fd6364b5701:4": {
+  "verdict": "NO",
+  "rationale": "Novelty incident with no structural consequences, no named stakes beyond vague 'investigation,' no household impact beyond spectacle.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:19:59.296730+00:00"
+ },
+ "302a0611291e10c1:4": {
+  "verdict": "NO",
+  "rationale": "Horse-race sports coverage with geopolitical theater masking lack of consequential acts affecting readers.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:20:00.382625+00:00"
+ },
+ "2f52082b692636c4:4": {
+  "verdict": "YES",
+  "rationale": "Active weather disaster with named casualties, rescue operations, and immediate household safety threat to millions.",
+  "pillars": [
+   "climate & rights",
+   "affordability",
+   "safety"
+  ],
+  "anchor": "6 million residents",
+  "solo": "",
+  "at": "2026-07-16T22:20:01.409171+00:00"
+ },
+ "a836fa77b846c52e:4": {
+  "verdict": "YES",
+  "rationale": "Structural shift in global trade routes with direct household energy/cost impact; multiple named actors taking irreversible infrastructure actions.",
+  "pillars": [
+   "power & corruption",
+   "affordability",
+   "structural instability"
+  ],
+  "anchor": "oil prices; strait closure; port construction",
+  "solo": "",
+  "at": "2026-07-16T22:20:02.907893+00:00"
+ },
+ "303cf889c3cc964d:4": {
+  "verdict": "MAYBE",
+  "rationale": "Stock manipulation and affordability trends are structurally significant, but headlines mix real acts with polling noise and celebrity churn.",
+  "pillars": [
+   "power & corruption",
+   "affordability"
+  ],
+  "anchor": "grocery prices; stock purchases",
+  "solo": "",
+  "at": "2026-07-16T22:20:04.169435+00:00"
+ },
+ "cf5aa17f96e4ea7d:4": {
+  "verdict": "MAYBE",
+  "rationale": "Escalating US-Iran military exchanges touch national security and spending, but lack named acts\u2014only warnings, predictions, and hypotheticals.",
+  "pillars": [
+   "power & corruption",
+   "affordability"
+  ],
+  "anchor": "$100 billion",
+  "solo": "",
+  "at": "2026-07-16T22:20:05.474447+00:00"
+ },
+ "6be11e58b93af7a6:4": {
+  "verdict": "NO",
+  "rationale": "Sports tournament coverage with personality drama; no structural stakes, no household impact, pure horse-race framing.",
+  "pillars": [],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:20:06.398109+00:00"
+ },
+ "57ffc249109f4f1d:4": {
+  "verdict": "MAYBE",
+  "rationale": "Escalating US-Iran military conflict has structural significance and household impact (energy prices, war risk), but headlines mix war acts with Trump statements and commentary.",
+  "pillars": [
+   "power & corruption",
+   "affordability"
+  ],
+  "anchor": "energy exports; regional oil markets",
+  "solo": "",
+  "at": "2026-07-16T22:20:08.239780+00:00"
+ },
+ "1421b982eaa29e05:4": {
+  "verdict": "MAYBE",
+  "rationale": "Structural significance unclear: is this a meaningful policy reversal or typical Trump-era plan inflation/deflation cycle? Named stakes exist but acts are ambiguous.",
+  "pillars": [
+   "power & corruption",
+   "democracy & society"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:20:09.435152+00:00"
+ },
+ "2999a59501f03237:4": {
+  "verdict": "NO",
+  "rationale": "Conditional hypothetical statement from one senator with no named act, combined with speculation-driven commentary and tangential funding stories.",
+  "pillars": [
+   "democracy & society"
+  ],
+  "anchor": "",
+  "solo": "",
+  "at": "2026-07-16T22:20:13.563666+00:00"
+ }
+}

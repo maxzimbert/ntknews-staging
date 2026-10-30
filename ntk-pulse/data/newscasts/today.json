@@ -1,0 +1,405 @@
+{
+  "generated_at": "2026-10-30T23:17:38.751467+00:00",
+  "date": "20261030",
+  "episodes": [
+    {
+      "id": "nx-s1-20261030-0900",
+      "hour": "09:00"
+    },
+    {
+      "id": "nx-s1-20261030-1000",
+      "hour": "10:00"
+    },
+    {
+      "id": "nx-s1-20261030-1100",
+      "hour": "11:00"
+    },
+    {
+      "id": "nx-s1-20261030-1200",
+      "hour": "12:00"
+    },
+    {
+      "id": "nx-s1-20261030-1300",
+      "hour": "13:00"
+    },
+    {
+      "id": "nx-s1-20261030-1400",
+      "hour": "14:00"
+    },
+    {
+      "id": "nx-s1-20261030-1500",
+      "hour": "15:00"
+    },
+    {
+      "id": "nx-s1-20261030-1600",
+      "hour": "16:00"
+    },
+    {
+      "id": "nx-s1-20261030-1700",
+      "hour": "17:00"
+    },
+    {
+      "id": "nx-s1-20261030-1800",
+      "hour": "18:00"
+    }
+  ],
+  "latest_hour": "18:00",
+  "latest_topics": [
+    "Trump reverses course and will rally in Iowa and Kansas on Sunday after GOP requests",
+    "Netanyahu's bloc loses parliamentary majority in Israel's election; coalition talks begin",
+    "New FDA-approved blood tests can help doctors determine whether patients have Alzheimer's disease",
+    "Krista Pike says she is no longer in constant pain after botched Tennessee lethal injection",
+    "Dockworkers in six countries strike against arms shipments and for better working conditions",
+    "Arizona officials and Governor Katie Hobbs respond to flood damage on Navajo and Hopi reservations",
+    "Five Spanish Franciscan missionaries killed in 1597 in Georgia set for beatification in Savannah"
+  ],
+  "threads": [
+    {
+      "text": "Trump to phone into nearly 20 GOP rallies instead of in-person trips to Iowa and Kansas",
+      "hours": [
+        "09:00",
+        "10:00",
+        "11:00",
+        "12:00",
+        "13:00",
+        "16:00",
+        "18:00"
+      ],
+      "count": 7
+    },
+    {
+      "text": "Milwaukee schools close today to celebrate the Brewers' World Series title over Tampa Bay",
+      "hours": [
+        "10:00",
+        "12:00",
+        "13:00",
+        "15:00",
+        "16:00"
+      ],
+      "count": 5
+    },
+    {
+      "text": "Justice Department subpoenas Los Angeles County election workers over California voter rolls",
+      "hours": [
+        "09:00",
+        "14:00",
+        "16:00",
+        "17:00"
+      ],
+      "count": 4
+    },
+    {
+      "text": "Mary Peltola denies New York Times allegation about recruiting spoiler candidate Dan Sullivan in Alaska",
+      "hours": [
+        "12:00",
+        "15:00",
+        "16:00",
+        "17:00"
+      ],
+      "count": 4
+    },
+    {
+      "text": "Vatican says Pope Leo returned his mail-in ballot, voting by mail from Peru",
+      "hours": [
+        "10:00",
+        "12:00",
+        "16:00"
+      ],
+      "count": 3
+    },
+    {
+      "text": "Iran's Revolutionary Guard says three oil tankers hit mines in Strait of Hormuz",
+      "hours": [
+        "09:00",
+        "13:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Tech stocks slide on Wall Street after Amazon and Intel earnings and AI spending worries",
+      "hours": [
+        "11:00",
+        "15:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Israel's election results show Netanyahu's bloc lost its parliamentary majority",
+      "hours": [
+        "12:00",
+        "18:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Binance suffers over $6 billion cryptocurrency cyber heist, likely tied to North Korean hackers",
+      "hours": [
+        "14:00",
+        "16:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Scottish police investigate Andrew's hosting of Jeffrey Epstein at Balmoral Estate",
+      "hours": [
+        "14:00",
+        "17:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "ICE activity reportedly surges in Illinois, Oregon, Detroit, California, and New York City ahead of midterms",
+      "hours": [
+        "15:00",
+        "17:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Krista Pike speaks publicly for first time since botched Tennessee execution",
+      "hours": [
+        "15:00",
+        "18:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Netanyahu's block loses Knesset majority; both sides lack 61 seats needed to form government",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Binance suspends withdrawals after thieves stole more than $6 billion from the company",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Candy and gum prices rise sharply as chocolate costs stay elevated amid cocoa shortages",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Russian drone attack kills at least 14 at a train station in central Ukraine",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "China expels 33 Communist Party members, including former top general Zhang Youxia, in anti-corruption drive",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Cryptocurrency exchange Binance halts trading after more than $6 billion in assets stolen",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Life Magazine returns to newsstands next month as a quarterly print publication under Bedford Media",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Atlanta Dream force a deciding Game Seven against Golden State Valkyries in WNBA Finals",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "California high-speed rail CEO Ian Choudry resigns amid spending scrutiny and project delays",
+      "hours": [
+        "11:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Federal judge blocks parts of Trump administration's Medicaid work requirements rules",
+      "hours": [
+        "11:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Students and workers in Italy protest in nationwide strike over cost of living",
+      "hours": [
+        "11:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Cruise ship MB Odyssey remains docked in Cambodia after passengers disembark over fuel costs",
+      "hours": [
+        "11:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "NPR analysis finds 70 competitive House districts where both parties are spending heavily",
+      "hours": [
+        "12:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "New blood tests can detect Alzheimer's-linked amyloid plaques, offering alternative to costly PET scans",
+      "hours": [
+        "12:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Hegseth fires Lieutenant General Brett Sylvia over a Pentagon leak investigation",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Israel's parliamentary election results leave no bloc with a majority to form government",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Rubio hosts G20 foreign ministers in Atlanta; family photo canceled amid Russia dispute",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "YouGov poll finds 63 percent of Americans want to end twice-yearly clock changes",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Clocks set to fall back an hour this Sunday as Congress stalls on daylight saving bill",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Tech stocks drop sharply as investors doubt payoff from AI spending; Nasdaq falls over 3%",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "University of Michigan student describes struggle finding political home; Bridge USA dialogue group",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Senator Chris Murphy warns of insane U.S. and Israeli plan to strike Iran after midterms",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Study finds younger colorectal cancer patients have tumors rich in stromal cells, resisting treatment",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Actors Patrick Stewart and Walter Koenig, of Star Trek fame, die within days of each other",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Florida Election Lab reports over 45 million people have already voted early",
+      "hours": [
+        "16:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Nasdaq closes down about 2.8% as investors dump tech shares after Amazon and Alphabet earnings",
+      "hours": [
+        "16:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "ExxonMobil, Chevron and Shell report soaring quarterly profits amid high fuel prices",
+      "hours": [
+        "16:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Nasdaq posts worst month in over a year as investors question massive AI spending",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "El Paso Matters sues to unseal records from 2019 El Paso Walmart mass shooting",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Greenland opens new international airport at Ilulissat to grow tourism ahead of Denmark independence",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "New FDA-approved blood tests can help doctors determine whether patients have Alzheimer's disease",
+      "hours": [
+        "18:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Dockworkers in six countries strike against arms shipments and for better working conditions",
+      "hours": [
+        "18:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Arizona officials and Governor Katie Hobbs respond to flood damage on Navajo and Hopi reservations",
+      "hours": [
+        "18:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Five Spanish Franciscan missionaries killed in 1597 in Georgia set for beatification in Savannah",
+      "hours": [
+        "18:00"
+      ],
+      "count": 1
+    }
+  ]
+}
