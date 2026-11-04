@@ -1,0 +1,1034 @@
+{
+ "2195ed34b6208967": {
+  "title": "Judge dismisses complaint against ex-FBI officials accused of lying about Hunter Biden",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "administrate",
+   "against",
+   "alaska",
+   "ask",
+   "associat",
+   "ballot",
+   "benav",
+   "benavid",
+   "biden",
+   "bradley",
+   "california",
+   "case",
+   "charg",
+   "cnbc",
+   "court",
+   "dan",
+   "deal",
+   "depa",
+   "department",
+   "dilanian",
+   "doj",
+   "donald",
+   "f.b.i",
+   "faruqui",
+   "fbi",
+   "field",
+   "flori",
+   "former",
+   "hunter",
+   "intervene",
+   "joe",
+   "judge",
+   "justice",
+   "kash",
+   "ken",
+   "laptop",
+   "lindsay",
+   "los",
+   "magistrate",
+   "mangan",
+   "massive",
+   "monday",
+   "nbc",
+   "nicole",
+   "nikki",
+   "nov",
+   "now",
+   "obsession",
+   "offic",
+   "patel",
+   "pres",
+   "supreme",
+   "throw",
+   "trump",
+   "u.s",
+   "washington",
+   "whitehurst"
+  ],
+  "seen_ids": [
+   "3a770946b2408349",
+   "4cb38594bc31b744",
+   "caff604edccb8874",
+   "13f1fb8b6ba76d0a",
+   "871768d8740de398",
+   "2195ed34b6208967",
+   "86aca9117ae0a794",
+   "2cdce35538dffe0d",
+   "cf2f62e31b11ce37",
+   "9ad11193a53a4aa3",
+   "00b3e526257c54cd",
+   "81fb1bc3cd42f2cd",
+   "daa86061b07ae75a",
+   "ceb7929815ef2d48",
+   "d234813815d58093",
+   "ac97e2f880509eb3",
+   "c60f97983acee4bb",
+   "71ff4255f6c5c8ac",
+   "029fa8c4005ea685"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Nicole (Nikki) Floris",
+     "role": "Former FBI official who ran the intelligence division at the Washington Field Office; defendant"
+    },
+    {
+     "name": "Bradley Benavides",
+     "role": "Former FBI official; defendant"
+    },
+    {
+     "name": "Zia M. Faruqui",
+     "role": "U.S. Magistrate Judge who dismissed the case"
+    },
+    {
+     "name": "Kash Patel",
+     "role": "Accused by the judge of directing a rushed prosecution"
+    },
+    {
+     "name": "Donald Trump",
+     "role": "Accused by the judge of directing a rushed prosecution"
+    },
+    {
+     "name": "Ken Dilanian",
+     "role": "MS NOW reporter credited for the judge's quotes"
+    },
+    {
+     "name": "Trump administration / Department of Justice",
+     "role": "Applicant asking the Supreme Court to make California set aside about 20,000 mail-in ballots"
+    },
+    {
+     "name": "State of California",
+     "role": "Respondent in the ballot dispute"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "20,000",
+     "what": "California mail-in ballots from voters the federal government suspects may not be U.S. citizens"
+    }
+   ],
+   "documents": [
+    "Criminal complaint charging false statements to Congress about knowledge of Hunter Biden investigations, dismissed for lack of probable cause",
+    "Emergency application to the U.S. Supreme Court seeking to block rulings denying the bid to segregate California mail-in ballots",
+    "DOJ appeal of dismissal of a lawsuit over Alaska's Senate election"
+   ],
+   "quotes": [
+    {
+     "who": "Zia Faruqui",
+     "gist": "The prosecution was rushed and political, ordered by the White House to affect the midterms"
+    },
+    {
+     "who": "Zia Faruqui",
+     "gist": "The case was \"weaponization\" and the government's arguments were \"slapdash\""
+    },
+    {
+     "who": "FBI agent (unnamed)",
+     "gist": "Testified he was concerned the investigation would be seen as \"political\""
+    }
+   ],
+   "state_of_play": "On Monday, the day before the Nov. 3 midterms, the Trump administration filed an emergency application asking the Supreme Court to reverse lower courts, including an appeals court, that rejected its request to make California set aside about 20,000 mail-in ballots from voters it says are likely noncitizens. DOJ is also appealing dismissal of an Alaska Senate election lawsuit."
+  },
+  "credits": [
+   "NBC News",
+   "MS NOW",
+   "Associated Press"
+  ],
+  "contradictions": []
+ },
+ "993570a5e9b2d212": {
+  "title": "Shop fridges and freezers across Europe hit by fresh suspected cyber-attack",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "all",
+   "belgium",
+   "british",
+   "chain",
+   "dozen",
+   "estonia",
+   "europe",
+   "european",
+   "finland",
+   "france",
+   "french",
+   "ireland",
+   "luxembourg",
+   "monday",
+   "netherland",
+   "october",
+   "pil",
+   "retailer",
+   "shop",
+   "stor",
+   "supermarket",
+   "suspect",
+   "sweden",
+   "temperature",
+   "three"
+  ],
+  "seen_ids": [
+   "1803802034fe0b71",
+   "6732416b18d63e05",
+   "993570a5e9b2d212",
+   "cba2b5c4a1f8c00b",
+   "b6af05e249a56c9d",
+   "8056d4f91c8e0e2a",
+   "3891d8b1706f305d",
+   "63cefec1fc51a372",
+   "9f98a02574f8d4ca",
+   "2bbdae702ea12751"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Supermarket chains in Belgium, Estonia, Ireland, Finland, Luxembourg, the Netherlands and Sweden",
+     "role": "Victims reporting refrigeration temperature spikes"
+    },
+    {
+     "name": "Unidentified attackers",
+     "role": "Suspected perpetrators; attribution not given, attack described as apparent or suspected"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "50C (122F)",
+     "what": "Reported peak temperature in affected fridges and freezers"
+    },
+    {
+     "value": "7",
+     "what": "European countries with affected retailers"
+    },
+    {
+     "value": "Dozens",
+     "what": "Supermarkets affected in the new wave"
+    },
+    {
+     "value": "Hundreds",
+     "what": "French supermarkets hit in the October attack"
+    },
+    {
+     "value": "Millions of euros",
+     "what": "Damage from the October French attack"
+    },
+    {
+     "value": "About 3 weeks",
+     "what": "Gap between the French attack and the new wave"
+    }
+   ],
+   "documents": [],
+   "quotes": [],
+   "state_of_play": "A second wave of suspected cyberattacks hit supermarket fridges and freezers overnight into Monday in seven European countries, raising temperatures as high as 50C and spoiling food. It follows an October attack on French supermarkets that caused food loss, fires and millions of euros in damage. Attackers are unidentified; UK retailers have been warned to patch vulnerabilities."
+  },
+  "credits": [],
+  "contradictions": []
+ },
+ "94f3a475eae4e9f0": {
+  "title": "Haley Stevens backs Mike Rogers. And, Gulf states brace for potential attack on Iran",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "abdul",
+   "alaska",
+   "alexandria",
+   "anyone",
+   "august",
+   "away",
+   "beast",
+   "before",
+   "being",
+   "betray",
+   "call",
+   "carville",
+   "cbs",
+   "chao",
+   "chuck",
+   "college",
+   "cortez",
+   "crash",
+   "daily",
+   "day",
+   "debbie",
+   "democrat",
+   "democratic",
+   "detroit",
+   "did",
+   "dingell",
+   "donald",
+   "douthat",
+   "election",
+   "endorsement",
+   "ever",
+   "face",
+   "fianc",
+   "france",
+   "fraser",
+   "freak",
+   "friend",
+   "gary",
+   "gen",
+   "gulf"
+  ],
+  "seen_ids": [
+   "0367731a20200cf1",
+   "a717b372e61ac072",
+   "0c1cee198340670a",
+   "af4957dd4f100e37",
+   "91fa58108fc3e521",
+   "f326dd645376f8cf",
+   "34d5201eb65e98ee",
+   "37805dae549ed54e",
+   "6f5af7c2966470a4",
+   "4fe99bd089c4648c",
+   "091b4ae3011b1fe0",
+   "de3172ff78d0e07a"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Abdul El-Sayed",
+     "role": "Democratic nominee for Michigan US Senate"
+    },
+    {
+     "name": "Mike Rogers",
+     "role": "Republican, Trump-backed nominee for Michigan US Senate"
+    },
+    {
+     "name": "Haley Stevens",
+     "role": "Democratic congresswoman who pulled her El-Sayed endorsement and endorsed Rogers"
+    },
+    {
+     "name": "Jason Turkish",
+     "role": "Stevens's fianc\u00e9, disabilities and civil rights attorney, announced he would vote for Rogers"
+    },
+    {
+     "name": "Gary Peters",
+     "role": "Retiring Democratic senator whose seat is contested"
+    },
+    {
+     "name": "Debbie Dingell",
+     "role": "Democratic representative who tried to dissuade Stevens"
+    },
+    {
+     "name": "Alexandria Ocasio-Cortez",
+     "role": "Democratic representative who phoned Stevens for 25 minutes"
+    },
+    {
+     "name": "Chuck Schumer",
+     "role": "Senate Democratic leader who criticized Stevens"
+    },
+    {
+     "name": "Hakeem Jeffries",
+     "role": "House Democratic leader who criticized Stevens"
+    },
+    {
+     "name": "Zohran Mamdani",
+     "role": "Left-wing figure reacting angrily to Stevens"
+    },
+    {
+     "name": "Hasan Piker",
+     "role": "Left-wing streamer reacting angrily to Stevens"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "$2.4m",
+     "what": "El-Sayed campaign fundraising on Sunday, a record day"
+    },
+    {
+     "value": "11 points",
+     "what": "El-Sayed lead over Rogers in final NYT/Siena poll, outside margin of error"
+    },
+    {
+     "value": "47",
+     "what": "Senate seats Democrats currently hold, including two independents"
+    },
+    {
+     "value": "51",
+     "what": "Seats Democrats need to win the Senate"
+    },
+    {
+     "value": "25 minutes",
+     "what": "Length of Ocasio-Cortez phone call with Stevens"
+    },
+    {
+     "value": "Nov. 3",
+     "what": "Election Day"
+    }
+   ],
+   "documents": [
+    "Final New York Times/Siena College pre-midterm poll",
+    "Politico Playbook report on Ocasio-Cortez call with Stevens"
+   ],
+   "quotes": [
+    {
+     "who": "Haley Stevens",
+     "gist": "Asked about backing Rogers, said 'nothing is perfect' before being interrupted by a protester"
+    },
+    {
+     "who": "Protester",
+     "gist": "Called Stevens a traitor to her face in Detroit"
+    },
+    {
+     "who": "Democrats (Yahoo headline)",
+     "gist": "Called Stevens's endorsement 'a despicable betrayal'"
+    }
+   ],
+   "state_of_play": "Days before the Nov. 3 Michigan Senate election, Rep. Haley Stevens pulled her endorsement of Democrat Abdul El-Sayed and backed Republican Mike Rogers after a feud over an ad she called anti-Semitic. Party leaders and activists condemned her. El-Sayed raised a record $2.4m and leads the final NYT/Siena poll by 11 points."
+  },
+  "credits": [
+   "New York Times",
+   "Siena College",
+   "Politico Playbook"
+  ],
+  "contradictions": []
+ },
+ "1880b3dbdc2e98de": {
+  "title": "Lindsay Clancy back in court seeking to dismiss murder charges after mistrial",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "cbs",
+   "clancy",
+   "continue",
+   "kaul",
+   "lawyer",
+   "lindsay",
+   "march",
+   "massachusett",
+   "monday",
+   "prosecutor",
+   "september",
+   "shanelle"
+  ],
+  "seen_ids": [
+   "43f5f12d6466fe30",
+   "1880b3dbdc2e98de",
+   "f3af2c91574d99b6",
+   "82a6a35678978439",
+   "6e70a0acfe534784",
+   "bef0904e3c8df9c2",
+   "76d518ddf2eae60d"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Lindsay Clancy",
+     "role": "Massachusetts mother charged with murdering her three children in 2023; first trial ended in mistrial"
+    },
+    {
+     "name": "Prosecutors/DA",
+     "role": "Plan to retry Clancy; undecided on whether to pursue murder charges again"
+    },
+    {
+     "name": "Clancy's defense lawyers",
+     "role": "Argue retrial violates double jeopardy; describe her condition after the mistrial"
+    },
+    {
+     "name": "Trial judge",
+     "role": "Leaning toward a March retrial; no date set on Monday"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "3",
+     "what": "children Clancy is accused of killing in 2023"
+    },
+    {
+     "value": "September",
+     "what": "month the first trial ended with a deadlocked jury"
+    },
+    {
+     "value": "March",
+     "what": "retrial timing the judge is leaning toward"
+    },
+    {
+     "value": "spring 2027",
+     "what": "retrial timing reportedly sought by a lawyer per Daily Mail live updates"
+    }
+   ],
+   "documents": [
+    "Defense motion to dismiss murder charges on double jeopardy grounds"
+   ],
+   "quotes": [],
+   "state_of_play": "After a September mistrial from a deadlocked jury, Clancy was back in court Monday on motions. Prosecutors plan a retrial but have not said if murder charges will be repeated. The defense seeks dismissal on double jeopardy grounds. The judge leans toward a March retrial; no date is set."
+  },
+  "credits": [
+   "CBS News"
+  ],
+  "contradictions": [
+   {
+    "at": "2026-11-02T17:56:21.571934+00:00",
+    "item_id": "1880b3dbdc2e98de",
+    "publisher": "The Guardian",
+    "text": "Ledger held defense lawyer wanting a spring 2027 retrial; this says the defense is seeking dismissal and opposing any new trial."
+   }
+  ]
+ },
+ "b98972249986cabd": {
+  "title": "What we know about the alert app hack in Ukraine and Russia",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "authority",
+   "both",
+   "cloonan",
+   "donald",
+   "down",
+   "emergency",
+   "europe",
+   "evan",
+   "fake",
+   "filing",
+   "gershkovich",
+   "hack",
+   "immediately",
+   "israel",
+   "jail",
+   "joe",
+   "journal",
+   "kelly",
+   "kherson",
+   "kremlin",
+   "kyiv",
+   "leak",
+   "ministry",
+   "monday",
+   "moscow",
+   "neither",
+   "oracle",
+   "orcl",
+   "plot",
+   "putin",
+   "russia",
+   "russian",
+   "september",
+   "situate",
+   "slap",
+   "street",
+   "sunday",
+   "tidy",
+   "trump",
+   "ukraine",
+   "ukrainian",
+   "vladimir",
+   "wall",
+   "washington",
+   "watch",
+   "western",
+   "wsj",
+   "wwii"
+  ],
+  "seen_ids": [
+   "fd1dd9244683a67b",
+   "5916ec6e788cd4e2",
+   "6db3ee753423a0f7",
+   "513169a5683f45e9",
+   "f1a33ecff5dfbccf",
+   "c157e658749d86d3",
+   "916d6f4fd9360b90",
+   "1e8783da994d0ccc",
+   "b98972249986cabd"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Russian Emergency Situations Ministry",
+     "role": "Operator of the Russian emergency alert app that was hacked"
+    },
+    {
+     "name": "Ukrainian air alert app authorities",
+     "role": "Operator of the Ukrainian alert app that was hacked"
+    },
+    {
+     "name": "Russian spies",
+     "role": "Accused Ukraine of booby-trapping goggles for Putin's drone pilots"
+    },
+    {
+     "name": "Evan Gershkovich",
+     "role": "Jailed WSJ reporter whose detention appeal was denied in Moscow"
+    },
+    {
+     "name": "Kremlin",
+     "role": "Rejected resuming gas deliveries to Europe via Ukraine"
+    },
+    {
+     "name": "Western officials",
+     "role": "Say Russia is going backwards in equipment, deploying post-WWII-era tanks"
+    }
+   ],
+   "numbers": [],
+   "documents": [],
+   "quotes": [],
+   "state_of_play": "Ukrainian and Russian emergency/air alert apps were hacked hours apart on Sunday evening, sending false chemical, missile and nuclear warnings. Russia's Emergency Situations Ministry says it is restoring its app. Neither government has said who is responsible. Separately, Russian spies accuse Ukraine of sabotaging goggles meant for Russian drone pilots."
+  },
+  "credits": [
+   "Wall Street Journal"
+  ],
+  "contradictions": []
+ },
+ "9b248aa7ed19b443": {
+  "title": "Russell Brand is not a \u2018psychopath who rapes people and thinks it\u2019s normal\u2019, court told",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "brand",
+   "channel",
+   "court",
+   "crown",
+   "daily",
+   "defence",
+   "follow",
+   "ian",
+   "mail",
+   "russell",
+   "southwark",
+   "trial",
+   "winter"
+  ],
+  "seen_ids": [
+   "9b248aa7ed19b443",
+   "cd56ca114baaf81e",
+   "0c54b4c24e0fd7af"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Russell Brand",
+     "role": "Comedian, defendant in rape trial at Southwark Crown Court"
+    },
+    {
+     "name": "Ian Winter KC",
+     "role": "Brand's defence barrister"
+    },
+    {
+     "name": "Channel 4",
+     "role": "Broadcaster of documentary the defence says poisoned the well against Brand"
+    }
+   ],
+   "numbers": [],
+   "documents": [
+    "Channel 4 documentary about Brand, cited by the defence as prejudicial"
+   ],
+   "quotes": [
+    {
+     "who": "Ian Winter KC",
+     "gist": "Brand 'had an immense amount of sex', but none of it was unlawful"
+    },
+    {
+     "who": "Ian Winter KC",
+     "gist": "Brand is not a 'psychopath who rapes people and thinks it's normal' and is respectful when women say no"
+    },
+    {
+     "who": "Ian Winter KC",
+     "gist": "Allegations about Brand's conduct in 2023 'poisoned the wells' of justice"
+    },
+    {
+     "who": "Ian Winter KC",
+     "gist": "There were 'monstrous delays' in the women coming forward to police"
+    }
+   ],
+   "state_of_play": "Russell Brand is on trial for rape at Southwark Crown Court. The defence, led by Ian Winter KC, argues that the 2023 Channel 4 documentary and journalists poisoned the well against him and that complainants delayed going to police. It says Brand had much sex but none of it was unlawful."
+  },
+  "credits": [],
+  "contradictions": []
+ },
+ "a2a6983e29e4c591": {
+  "title": "Lumentum CEO touts 'enormous' opportunity in massive AI connectivity deal with Marvell",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "ceo",
+   "lumentum",
+   "marvell",
+   "nvidia"
+  ],
+  "seen_ids": [
+   "654d300021e80f6e",
+   "a2a6983e29e4c591"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Marvell",
+     "role": "Acquirer in planned $115B purchase of Lumentum"
+    },
+    {
+     "name": "Lumentum",
+     "role": "Acquisition target; its CEO touts the AI connectivity opportunity"
+    },
+    {
+     "name": "Nvidia",
+     "role": "Strategic investor in both Marvell and Lumentum"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "$115B",
+     "what": "Reported value of Marvell's planned acquisition of Lumentum"
+    },
+    {
+     "value": "First half of 2028",
+     "what": "Expected closing window for the deal"
+    }
+   ],
+   "documents": [],
+   "quotes": [
+    {
+     "who": "Lumentum CEO",
+     "gist": "Called the AI connectivity opportunity from the Marvell deal 'enormous'"
+    }
+   ],
+   "state_of_play": "Marvell has announced a planned $115B acquisition of Lumentum, among the largest tech deals ever, with Nvidia a strategic investor in both companies. Closing is expected in the first half of 2028. Lumentum's CEO is touting the AI connectivity opportunity."
+  },
+  "credits": [],
+  "contradictions": []
+ },
+ "cd893af7a0965f1b": {
+  "title": "John Oliver on Maga\u2019s James Talarico smears: \u2018middle school level homophobia\u2019",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "attorney",
+   "camilo",
+   "cbs",
+   "continue",
+   "county",
+   "democrat",
+   "democratic",
+   "five",
+   "frederick",
+   "galvez",
+   "general",
+   "greater",
+   "harri",
+   "hayn",
+   "hbo",
+   "houston",
+   "ice",
+   "iii",
+   "islamophobia",
+   "jam",
+   "john",
+   "ken",
+   "kkk",
+   "latino",
+   "maga",
+   "montoya",
+   "oliver",
+   "paxton",
+   "rep",
+   "republican",
+   "sunday",
+   "talarico",
+   "texa",
+   "trump",
+   "u.s",
+   "unit",
+   "vance"
+  ],
+  "seen_ids": [
+   "289eddbcd4122332",
+   "b39661ad85c5ec6d",
+   "0184637c9cfc0016",
+   "57d2b020f49c3684",
+   "cd893af7a0965f1b",
+   "8b69e6b9cea71f45",
+   "5de1d4e9783d38b5",
+   "3e4a10f63fc66b8c"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Donald Trump",
+     "role": "President campaigning on the last day before the midterms"
+    },
+    {
+     "name": "JD Vance",
+     "role": "Vice President campaigning on the last day before the midterms"
+    },
+    {
+     "name": "Ken Paxton",
+     "role": "Republican Senate candidate in Texas"
+    },
+    {
+     "name": "James Talarico",
+     "role": "Democratic Texas Senate candidate, target of MAGA smears"
+    },
+    {
+     "name": "John Oliver",
+     "role": "HBO host who criticized the smears of Talarico and Trump's stunts"
+    },
+    {
+     "name": "Frederick Haynes III",
+     "role": "Democratic congressional candidate in Texas who compared ICE to the KKK"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "1.8 million",
+     "what": "Early votes cast across Greater Houston, close to a quarter of Texas's early voting total"
+    }
+   ],
+   "documents": [],
+   "quotes": [
+    {
+     "who": "John Oliver",
+     "gist": "MAGA smears of Talarico are 'middle school level homophobia'"
+    },
+    {
+     "who": "Frederick Haynes III",
+     "gist": "ICE is the 'new KKK' and should be abolished"
+    }
+   ],
+   "state_of_play": "On the last day before the US midterms, Republicans and Democrats held final rallies and polls point to a tight congressional race. In Texas, Talarico faces MAGA smears and Republican attacks over a Democratic ally's anti-ICE comments, while Paxton's rally drew a sparse crowd."
+  },
+  "credits": [
+   "CBS News"
+  ],
+  "contradictions": []
+ },
+ "c5ba1d6d3e249fdc": {
+  "title": "Anthropic Reveals $17 Billion in Revenue as I.P.O. Approaches",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "a.i",
+   "anthropic",
+   "approach",
+   "billion",
+   "i.p.o",
+   "reveal",
+   "revenue"
+  ],
+  "seen_ids": [
+   "c5ba1d6d3e249fdc",
+   "d822a9117e89beba"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Anthropic",
+     "role": "AI company preparing an IPO, filed S-1 and then a revised S-1"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "$17 billion",
+     "what": "Anthropic Q3 revenue, about 12 times the same quarter a year earlier"
+    },
+    {
+     "value": "$895.4 billion",
+     "what": "Anthropic purchase commitments disclosed in revised S-1"
+    },
+    {
+     "value": "$23 billion",
+     "what": "Anthropic Q3 net loss (per NYT)"
+    }
+   ],
+   "documents": [
+    "Anthropic initial S-1 prospectus (financials through first half of year)",
+    "Anthropic revised S-1 (adds Q3 financials)"
+   ],
+   "quotes": [],
+   "state_of_play": "Anthropic filed an initial S-1 last week with financials through H1, then a revised S-1 adding Q3 results: $17B revenue (12x year over year), a $23B net loss, and $895.4B in purchase commitments, as its IPO approaches."
+  },
+  "credits": [],
+  "contradictions": []
+ },
+ "94474594db17a892": {
+  "title": "Fox hawks say new Iran strikes are coming \"after the midterms\" (Matt Gertz/Media Matters for America)",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "america",
+   "donald",
+   "election",
+   "fox",
+   "gertz",
+   "iran",
+   "june",
+   "matt",
+   "matter",
+   "media",
+   "republican",
+   "trump"
+  ],
+  "seen_ids": [
+   "fa0d803ea67a7808",
+   "94474594db17a892"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Iran",
+     "role": "says intensive negotiations with the US are underway to avert war"
+    },
+    {
+     "name": "Donald Trump",
+     "role": "US President; threatened to renew strikes on Iran after the midterm elections"
+    },
+    {
+     "name": "Fox News hawks",
+     "role": "suggested in June that the Iran war be slow-walked until after the midterms, then resumed"
+    },
+    {
+     "name": "Matt Gertz / Media Matters for America",
+     "role": "analyzed Fox hawks' claims that new strikes are coming after the midterms"
+    }
+   ],
+   "numbers": [],
+   "documents": [],
+   "quotes": [
+    {
+     "who": "Iran",
+     "gist": "'Intensive' negotiations are underway with the US to avert war"
+    }
+   ],
+   "state_of_play": "The US-Iran war is in a pause. Iran says intensive negotiations with the US are underway to avert renewed war. President Trump has threatened to renew strikes on Iran after this week's midterm elections, and Fox News hawks say new strikes will come after the midterms."
+  },
+  "credits": [
+   "Media Matters for America"
+  ],
+  "contradictions": []
+ },
+ "4acccaef9caba3cd": {
+  "title": "Iran says US talks could resume \u2018within a short period\u2019 if demands are met",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "baghaei",
+   "esmaeil",
+   "foreign",
+   "hormuz",
+   "iran",
+   "iranian",
+   "monday",
+   "qatar",
+   "strait",
+   "tehran",
+   "washington"
+  ],
+  "seen_ids": [
+   "21a34d091e7a32ba",
+   "4acccaef9caba3cd"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Esmaeil Baghaei",
+     "role": "Iranian foreign ministry spokesperson"
+    },
+    {
+     "name": "Qatar",
+     "role": "Facilitator of indirect Iran-US talks"
+    },
+    {
+     "name": "Iran",
+     "role": "Party in indirect talks with the US; demands to be met before reopening Hormuz"
+    },
+    {
+     "name": "United States",
+     "role": "Counterpart in indirect talks; Iran seeks to avert fresh US attacks"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "7",
+     "what": "Steps in Iran's peace plan, the basis for the indirect talks"
+    }
+   ],
+   "documents": [
+    "Iran's seven-step peace plan"
+   ],
+   "quotes": [
+    {
+     "who": "Esmaeil Baghaei",
+     "gist": "Iran is holding 'intensive' indirect talks with Washington to avoid a fresh round of US attacks"
+    },
+    {
+     "who": "Esmaeil Baghaei",
+     "gist": "Talks with the US could resume 'within a short period' if Iran's demands are met"
+    }
+   ],
+   "state_of_play": "Iran says it is holding indirect talks with the US, facilitated by Qatar and based on its seven-step peace plan, to avert fresh US attacks before the US midterms. Iran says it would reopen the blockaded Strait of Hormuz if its demands are met."
+  },
+  "credits": [],
+  "contradictions": []
+ },
+ "df540285b08d9eae": {
+  "title": "Huntingdon train attacker said 'I am the baddest', trial hears",
+  "created": "2026-11-02T17:56:21.571934+00:00",
+  "last_active": "2026-11-02T17:56:21.571934+00:00",
+  "entities": [
+   "anthony",
+   "barber",
+   "dockland",
+   "huntingdon",
+   "light",
+   "london",
+   "peterborough",
+   "police",
+   "railway",
+   "ritzy",
+   "teenager",
+   "william"
+  ],
+  "seen_ids": [
+   "feed0b1914e17284",
+   "df540285b08d9eae"
+  ],
+  "facts": {
+   "actors": [
+    {
+     "name": "Anthony Williams",
+     "role": "33-year-old defendant on trial over the Huntingdon train mass stabbing and a Dockland Light Railway attack"
+    },
+    {
+     "name": "Unnamed 17-year-old",
+     "role": "Victim slashed in face and hand on a DLR train after a theme park day out"
+    },
+    {
+     "name": "Ritzy Barbers, Peterborough",
+     "role": "Location where Williams drew a knife"
+    }
+   ],
+   "numbers": [
+    {
+     "value": "33",
+     "what": "Age of Anthony Williams"
+    },
+    {
+     "value": "17",
+     "what": "Age of teenage victim on DLR train"
+    }
+   ],
+   "documents": [],
+   "quotes": [
+    {
+     "who": "Anthony Williams",
+     "gist": "I am the baddest (as heard by the jury at trial)"
+    }
+   ],
+   "state_of_play": "Anthony Williams, 33, is on trial over the Huntingdon train mass stabbing. Jurors heard he slashed a 17-year-old on a DLR train in London, drew a knife at a Peterborough barbers, said 'I am the baddest', and that police responded to fears about him on a train the day before the attack."
+  },
+  "credits": [],
+  "contradictions": []
+ }
+}

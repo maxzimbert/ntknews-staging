@@ -1,0 +1,835 @@
+{
+ "c7d68db959018304": {
+  "id": "c7d68db959018304",
+  "class": "DEVELOPMENT",
+  "what_new": "Dominion has pending defamation lawsuits against election deniers including Giuliani and Powell",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c7d68db959018304",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "4fa88a80b0f3e766": {
+  "id": "4fa88a80b0f3e766",
+  "class": "DEVELOPMENT",
+  "what_new": "A country musician publicly urges fellow artists to oppose assault rifles, per CNN podcast.",
+  "unique": "Podcast format featuring a country musician's call to action.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "4fa88a80b0f3e766",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "c1e2fb98094768e5": {
+  "id": "c1e2fb98094768e5",
+  "class": "DEVELOPMENT",
+  "what_new": "Tax filing deadline is tomorrow; explains how to file for a filing extension.",
+  "unique": "Practical how-to guidance on filing an extension.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c1e2fb98094768e5",
+  "at": "2026-10-08T04:54:21.188099+00:00"
+ },
+ "871768d8740de398": {
+  "id": "871768d8740de398",
+  "class": "DEVELOPMENT",
+  "what_new": "Case dismissed against ex-FBI officials Nicole Floris and Bradley Benavides, accused of falsely suggesting to Congress they were unaware of Hunter Biden probes.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "caff604edccb8874": {
+  "id": "caff604edccb8874",
+  "class": "DEVELOPMENT",
+  "what_new": "Magistrate Judge Zia Faruqui dismissed the case for failure to establish probable cause.",
+  "unique": "",
+  "credits": [
+   "NBC News"
+  ],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "d234813815d58093": {
+  "id": "d234813815d58093",
+  "class": "DEVELOPMENT",
+  "what_new": "Faruqui called it a rushed, political prosecution ordered by the White House to affect the midterms.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "029fa8c4005ea685": {
+  "id": "029fa8c4005ea685",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "86aca9117ae0a794": {
+  "id": "86aca9117ae0a794",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "4cb38594bc31b744": {
+  "id": "4cb38594bc31b744",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Source is an unnamed person familiar confirming the dismissal to NBC.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "71ff4255f6c5c8ac": {
+  "id": "71ff4255f6c5c8ac",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "9ad11193a53a4aa3": {
+  "id": "9ad11193a53a4aa3",
+  "class": "DEVELOPMENT",
+  "what_new": "Faruqui reportedly called the case \"weaponization\" and the government's arguments \"slapdash\"; Floris ran the Washington Field Office intelligence division.",
+  "unique": "Quotes and Floris's role, relayed from MS NOW's Ken Dilanian.",
+  "credits": [
+   "MS NOW"
+  ],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "2195ed34b6208967": {
+  "id": "2195ed34b6208967",
+  "class": "DEVELOPMENT",
+  "what_new": "At a dramatic hearing Faruqui scolded prosecutors; an FBI agent testified he feared the probe would be seen as \"political.\"",
+  "unique": "Hearing scene: judge scolding prosecutors and an FBI agent's testimony.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "3a770946b2408349": {
+  "id": "3a770946b2408349",
+  "class": "DEVELOPMENT",
+  "what_new": "Faruqui accused Trump and FBI Director Kash Patel of directing a rush job.",
+  "unique": "Names Trump and Kash Patel as directing the prosecution.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "cf2f62e31b11ce37": {
+  "id": "cf2f62e31b11ce37",
+  "class": "DEVELOPMENT",
+  "what_new": "Trump administration filed emergency Supreme Court application asking it to order California to set aside 20,000 mail-in ballots.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "13f1fb8b6ba76d0a": {
+  "id": "13f1fb8b6ba76d0a",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [
+   "Associated Press"
+  ],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "c60f97983acee4bb": {
+  "id": "c60f97983acee4bb",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "CNBC framing: DOJ suggests the roughly 20,000 voters may not be citizens.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "ceb7929815ef2d48": {
+  "id": "ceb7929815ef2d48",
+  "class": "DEVELOPMENT",
+  "what_new": "DOJ is also appealing dismissal of a lawsuit over Alaska's Senate election.",
+  "unique": "Links the California request to the parallel Alaska Senate election litigation.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "00b3e526257c54cd": {
+  "id": "00b3e526257c54cd",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "ac97e2f880509eb3": {
+  "id": "ac97e2f880509eb3",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [
+   "Associated Press"
+  ],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "2cdce35538dffe0d": {
+  "id": "2cdce35538dffe0d",
+  "class": "DEVELOPMENT",
+  "what_new": "Lower courts had already rejected the request to set aside ballots of people the government calls \"likely\" noncitizens; election is Nov. 3.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "81fb1bc3cd42f2cd": {
+  "id": "81fb1bc3cd42f2cd",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [
+   "Associated Press"
+  ],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "daa86061b07ae75a": {
+  "id": "daa86061b07ae75a",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Fox framing: DOJ seeks to segregate, not discard, the ballots.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2195ed34b6208967",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "9f98a02574f8d4ca": {
+  "id": "9f98a02574f8d4ca",
+  "class": "DEVELOPMENT",
+  "what_new": "Dozens of supermarkets in Sweden and Belgium hit; freezer temperatures rose overnight; UK retailers warned to patch vulnerabilities.",
+  "unique": "UK-alert angle: British retailers urged to patch before it happens here.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "b6af05e249a56c9d": {
+  "id": "b6af05e249a56c9d",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "2bbdae702ea12751": {
+  "id": "2bbdae702ea12751",
+  "class": "DEVELOPMENT",
+  "what_new": "Attack spans seven European countries; freezer temperatures reportedly rose as high as 50C.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "63cefec1fc51a372": {
+  "id": "63cefec1fc51a372",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "On-the-ground scene of piles of discarded food outside shops.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "993570a5e9b2d212": {
+  "id": "993570a5e9b2d212",
+  "class": "DEVELOPMENT",
+  "what_new": "Seven countries named (BE, EE, IE, FI, LU, NL, SE); earlier French attack caused millions of euros of damage.",
+  "unique": "Full country list and the link to the earlier French attack's cost.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "8056d4f91c8e0e2a": {
+  "id": "8056d4f91c8e0e2a",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "3891d8b1706f305d": {
+  "id": "3891d8b1706f305d",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "1803802034fe0b71": {
+  "id": "1803802034fe0b71",
+  "class": "DEVELOPMENT",
+  "what_new": "Earlier October French attack hit hundreds of supermarkets, causing food loss and fires; new spikes reported early Monday.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "cba2b5c4a1f8c00b": {
+  "id": "cba2b5c4a1f8c00b",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "6732416b18d63e05": {
+  "id": "6732416b18d63e05",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "993570a5e9b2d212",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "091b4ae3011b1fe0": {
+  "id": "091b4ae3011b1fe0",
+  "class": "DEVELOPMENT",
+  "what_new": "El-Sayed raised $2.4m Sunday after Stevens endorsed Rogers; final NYT/Siena poll has El-Sayed up 11 points.",
+  "unique": "Fundraising surge and final NYT/Siena poll figure.",
+  "credits": [
+   "New York Times",
+   "Siena College"
+  ],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "de3172ff78d0e07a": {
+  "id": "de3172ff78d0e07a",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Both candidates interviewed by 60 Minutes.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "0367731a20200cf1": {
+  "id": "0367731a20200cf1",
+  "class": "DEVELOPMENT",
+  "what_new": "Senate stakes: Democrats hold 47 seats, need 51; Peters retiring; Vance breaks a 50-50 tie.",
+  "unique": "Senate-control arithmetic and Democratic anger framing.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "af4957dd4f100e37": {
+  "id": "af4957dd4f100e37",
+  "class": "DEVELOPMENT",
+  "what_new": "Stevens's fianc\u00e9 Jason Turkish announced he would vote for Rogers, citing El-Sayed's Israel criticism; allies worried by his behavior.",
+  "unique": "Account of Stevens's friends and staffers worried about her fianc\u00e9.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "0c1cee198340670a": {
+  "id": "0c1cee198340670a",
+  "class": "DEVELOPMENT",
+  "what_new": "Dingell and Ocasio-Cortez lobbied Stevens; AOC spoke with her for 25 minutes the day Turkish announced.",
+  "unique": "Behind-the-scenes effort to stop Stevens from endorsing Rogers.",
+  "credits": [
+   "Politico Playbook"
+  ],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "37805dae549ed54e": {
+  "id": "37805dae549ed54e",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Partisan strategist commentary from Payne and Sullivan.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "f326dd645376f8cf": {
+  "id": "f326dd645376f8cf",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Voter explainer, with the Nov. 3 vote date.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "91fa58108fc3e521": {
+  "id": "91fa58108fc3e521",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "4fe99bd089c4648c": {
+  "id": "4fe99bd089c4648c",
+  "class": "DEVELOPMENT",
+  "what_new": "Schumer, Jeffries, Mamdani and Hasan Piker publicly condemned Stevens's endorsement switch.",
+  "unique": "Names the party leaders and left-wing voices reacting.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "a717b372e61ac072": {
+  "id": "a717b372e61ac072",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Gen Z and youth-voter enthusiasm angle.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "6f5af7c2966470a4": {
+  "id": "6f5af7c2966470a4",
+  "class": "DEVELOPMENT",
+  "what_new": "At a Sunday Detroit event with Rogers, Stevens said 'nothing is perfect' and left after a protester called her a traitor.",
+  "unique": "On-the-ground scene of Stevens fleeing a press conference.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "34d5201eb65e98ee": {
+  "id": "34d5201eb65e98ee",
+  "class": "DEVELOPMENT",
+  "what_new": "Stevens and El-Sayed had feuded publicly over a campaign ad Stevens called anti-Semitic.",
+  "unique": "Identifies the ad dispute that preceded the endorsement.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "43f5f12d6466fe30": {
+  "id": "43f5f12d6466fe30",
+  "class": "DEVELOPMENT",
+  "what_new": "After a mistrial, prosecutors plan to retry Clancy; judge leans toward a March retrial.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "1880b3dbdc2e98de",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "76d518ddf2eae60d": {
+  "id": "76d518ddf2eae60d",
+  "class": "DEVELOPMENT",
+  "what_new": "Prosecutors unsure whether they will seek murder charges again; no retrial date set at Monday hearing.",
+  "unique": "Prosecutors' uncertainty over whether retrial will include murder charges.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "1880b3dbdc2e98de",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "f3af2c91574d99b6": {
+  "id": "f3af2c91574d99b6",
+  "class": "DEVELOPMENT",
+  "what_new": "Lawyer reportedly asked for a spring 2027 retrial date; DA declined to say if murder charges return.",
+  "unique": "Live-updates format from the courtroom.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "1880b3dbdc2e98de",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "6e70a0acfe534784": {
+  "id": "6e70a0acfe534784",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [
+   "CBS News"
+  ],
+  "contradicts": "",
+  "ledger_id": "1880b3dbdc2e98de",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "1880b3dbdc2e98de": {
+  "id": "1880b3dbdc2e98de",
+  "class": "DEVELOPMENT",
+  "what_new": "Defense moved to dismiss charges, arguing a retrial violates double jeopardy; jury deadlocked in September.",
+  "unique": "Double jeopardy argument framing; names September as the deadlock month.",
+  "credits": [],
+  "contradicts": "Ledger held defense lawyer wanting a spring 2027 retrial; this says the defense is seeking dismissal and opposing any new trial.",
+  "ledger_id": "1880b3dbdc2e98de",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "82a6a35678978439": {
+  "id": "82a6a35678978439",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "1880b3dbdc2e98de",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "bef0904e3c8df9c2": {
+  "id": "bef0904e3c8df9c2",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Attorneys as the source on her condition; she has never spoken publicly.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "1880b3dbdc2e98de",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "c157e658749d86d3": {
+  "id": "c157e658749d86d3",
+  "class": "DEVELOPMENT",
+  "what_new": "Ukrainian and Russian emergency alert apps were hacked hours apart, sending civilians false chemical and nuclear attack warnings.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "f1a33ecff5dfbccf": {
+  "id": "f1a33ecff5dfbccf",
+  "class": "DEVELOPMENT",
+  "what_new": "Russian spies accuse Ukraine of booby-trapping goggles meant for Russian frontline drone pilots (separate story from the alert hacks).",
+  "unique": "Separate sabotage allegation, compared to Israel's exploding pagers attack.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "513169a5683f45e9": {
+  "id": "513169a5683f45e9",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "fd1dd9244683a67b": {
+  "id": "fd1dd9244683a67b",
+  "class": "DEVELOPMENT",
+  "what_new": "Russian Emergency Situations Ministry's app was breached; Moscow says efforts are under way to restore it.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "5916ec6e788cd4e2": {
+  "id": "5916ec6e788cd4e2",
+  "class": "DEVELOPMENT",
+  "what_new": "Attacks happened Sunday evening; neither government has confirmed who was responsible.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "b98972249986cabd": {
+  "id": "b98972249986cabd",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "BBC cyber correspondent Joe Tidy's explainer on what is known.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "1e8783da994d0ccc": {
+  "id": "1e8783da994d0ccc",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Frames the hacks within AI security concerns.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "cd56ca114baaf81e": {
+  "id": "cd56ca114baaf81e",
+  "class": "DEVELOPMENT",
+  "what_new": "Russell Brand is on trial for rape at Southwark Crown Court; the Daily Mail is covering it with a Trial podcast.",
+  "unique": "Daily Mail promotes its own Trial podcast on the case.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "0c54b4c24e0fd7af": {
+  "id": "0c54b4c24e0fd7af",
+  "class": "DEVELOPMENT",
+  "what_new": "Defence told jurors a Channel 4 documentary and journalists 'poisoned the well'; Brand had much sex, none unlawful.",
+  "unique": "Defence blames the Channel 4 documentary and journalists specifically.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "9b248aa7ed19b443": {
+  "id": "9b248aa7ed19b443",
+  "class": "DEVELOPMENT",
+  "what_new": "Defence barrister named as Ian Winter KC; he cited 'monstrous delays' in complainants going to police and denied Brand is a 'psychopath'.",
+  "unique": "Adds the barrister's name and the delay-in-reporting argument.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "654d300021e80f6e": {
+  "id": "654d300021e80f6e",
+  "class": "DEVELOPMENT",
+  "what_new": "Marvell plans to acquire Lumentum for $115B, one of tech's largest deals; Nvidia is strategic investor in both.",
+  "unique": "Highlights Nvidia as shared strategic investor in both companies.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "a2a6983e29e4c591",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "a2a6983e29e4c591": {
+  "id": "a2a6983e29e4c591",
+  "class": "DEVELOPMENT",
+  "what_new": "Deal expected to close in first half of 2028; Lumentum CEO calls the opportunity 'enormous'.",
+  "unique": "Lumentum CEO on-record comment and expected closing timeline.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "a2a6983e29e4c591",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "6db3ee753423a0f7": {
+  "id": "6db3ee753423a0f7",
+  "class": "DEVELOPMENT",
+  "what_new": "Western officials say Russia is deploying post-WWII-era tanks; Moscow court denied jailed WSJ reporter Evan Gershkovich's detention appeal.",
+  "unique": "Western officials' assessment of Russian equipment decline; live-blog video of Gershkovich court appearance.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "916d6f4fd9360b90": {
+  "id": "916d6f4fd9360b90",
+  "class": "DEVELOPMENT",
+  "what_new": "Kremlin said Monday it has no intention of resuming gas deliveries to Europe via Ukraine, rebuffing a reported US proposal.",
+  "unique": "Kremlin rejection of the US plan for Ukraine to collect gas transit fees.",
+  "credits": [
+   "Wall Street Journal"
+  ],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "0184637c9cfc0016": {
+  "id": "0184637c9cfc0016",
+  "class": "DEVELOPMENT",
+  "what_new": "Trump, Vance and candidates held final rallies on the last day before the US midterms; polls show a tight congressional race.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cd893af7a0965f1b",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "cd893af7a0965f1b": {
+  "id": "cd893af7a0965f1b",
+  "class": "DEVELOPMENT",
+  "what_new": "John Oliver called MAGA smears of Talarico 'middle school level homophobia'; Paxton urged a sparse Texas rally crowd to stay.",
+  "unique": "Scene of Paxton pleading with a thin Texas crowd not to leave.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cd893af7a0965f1b",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "8b69e6b9cea71f45": {
+  "id": "8b69e6b9cea71f45",
+  "class": "DEVELOPMENT",
+  "what_new": "Talarico praised Frederick Haynes III at a Texas rally; Haynes called ICE the 'new KKK' and urged abolishing it.",
+  "unique": "Conservative framing tying Talarico to a candidate's ICE-abolition stance.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cd893af7a0965f1b",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "d822a9117e89beba": {
+  "id": "d822a9117e89beba",
+  "class": "DEVELOPMENT",
+  "what_new": "Anthropic's revised S-1 reports $17B Q3 revenue and $895.4B in purchase commitments, extending financials beyond first half.",
+  "unique": "Discloses the $895.4 billion purchase commitments figure.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c5ba1d6d3e249fdc",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "c5ba1d6d3e249fdc": {
+  "id": "c5ba1d6d3e249fdc",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Adds Q3 net loss of $23B and 12x year-over-year revenue growth.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c5ba1d6d3e249fdc",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "3e4a10f63fc66b8c": {
+  "id": "3e4a10f63fc66b8c",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Latino-voter angle: prices and immigration policy as swing factors in Texas",
+  "credits": [
+   "CBS News"
+  ],
+  "contradicts": "",
+  "ledger_id": "cd893af7a0965f1b",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "b39661ad85c5ec6d": {
+  "id": "b39661ad85c5ec6d",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cd893af7a0965f1b",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "289eddbcd4122332": {
+  "id": "289eddbcd4122332",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cd893af7a0965f1b",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "5de1d4e9783d38b5": {
+  "id": "5de1d4e9783d38b5",
+  "class": "DEVELOPMENT",
+  "what_new": "More than 1.8 million Greater Houston voters cast early ballots, close to a quarter of Texas's early total.",
+  "unique": "Houston-focused final pitches by Paxton and Talarico with early-vote turnout figure",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cd893af7a0965f1b",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "57d2b020f49c3684": {
+  "id": "57d2b020f49c3684",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Watch-list of election-night trends: Latino swing, Harris County turnout, Republicans skipping the race",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cd893af7a0965f1b",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "fa0d803ea67a7808": {
+  "id": "fa0d803ea67a7808",
+  "class": "DEVELOPMENT",
+  "what_new": "Iran says 'intensive' negotiations with US are underway to avert war, while Trump threatens to renew strikes after the midterms.",
+  "unique": "Iranian government claim of active talks alongside Trump's post-midterm strike threat.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94474594db17a892",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "94474594db17a892": {
+  "id": "94474594db17a892",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Media Matters analysis: Fox hawks floated slow-walking the war until after the midterms, in June.",
+  "credits": [
+   "Media Matters for America"
+  ],
+  "contradicts": "",
+  "ledger_id": "94474594db17a892",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "21a34d091e7a32ba": {
+  "id": "21a34d091e7a32ba",
+  "class": "DEVELOPMENT",
+  "what_new": "Iran says it is in 'intensive' indirect talks with the US to avert new strikes, and would reopen Hormuz if its demands are met.",
+  "unique": "Links the talks to the US midterms and to a Hormuz reopening offer.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "4acccaef9caba3cd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "4acccaef9caba3cd": {
+  "id": "4acccaef9caba3cd",
+  "class": "DEVELOPMENT",
+  "what_new": "Qatar is facilitating the indirect talks, which are based on Iran's seven-step peace plan and could resume shortly if demands are met.",
+  "unique": "Names Qatar as mediator and the seven-step plan as the basis for talks.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "4acccaef9caba3cd",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "feed0b1914e17284": {
+  "id": "feed0b1914e17284",
+  "class": "DEVELOPMENT",
+  "what_new": "Trial hears Anthony Williams, 33, slashed a 17-year-old in face and hand on a DLR train; also drew knife at Ritzy Barbers, Peterborough.",
+  "unique": "DLR attack on teenager returning from theme park; separate Peterborough barbershop knife incident.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "df540285b08d9eae",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ },
+ "df540285b08d9eae": {
+  "id": "df540285b08d9eae",
+  "class": "DEVELOPMENT",
+  "what_new": "Williams reportedly said 'I am the baddest'; police responded to fears about him on a train the day before the attack.",
+  "unique": "Prior-day police response and Williams's on-record quote heard by jurors.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "df540285b08d9eae",
+  "at": "2026-11-02T17:56:21.571934+00:00"
+ }
+}

@@ -1,0 +1,335 @@
+{
+ "assembled_at": "2026-11-04T19:28:45.099231+00:00",
+ "slot_plan": "A",
+ "displacement": "MANUAL",
+ "daytype": "weekday",
+ "target_size": [
+  8,
+  10
+ ],
+ "actual_size": 10,
+ "lint_failures": [
+  "under 3 fully self-contained items",
+  "no item answers 'what do I do with this'"
+ ],
+ "slots_unfilled": [],
+ "stories": [
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "4489d5564e1c6aae",
+   "title": "Democrats take Congress in midterm rebuke of Trump",
+   "beat": "national",
+   "publisher_count": 14,
+   "publishers": [
+    "Financial Times",
+    "NPR",
+    "Politico Congress",
+    "The Guardian",
+    "Yahoo News",
+    "CBS News",
+    "CNBC",
+    "Daily Beast",
+    "Fox News",
+    "France 24",
+    "NBC News",
+    "The New Yorker",
+    "Daily Mail",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 5
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Democrats won the House in the midterms as voter anger over corruption and the Iran war drove a broad rebuke of Trump.",
+   "assembly_score": 15.05
+  },
+  {
+   "slot": "money_me",
+   "slot_label": "Money & me",
+   "key": "b31ceff3137fc7bf",
+   "title": "Voters reject data centers in nearly every 2026 ballot measure",
+   "beat": "business",
+   "publisher_count": 8,
+   "publishers": [
+    "Financial Times",
+    "404 Media",
+    "CNBC",
+    "Semafor",
+    "The Atlantic",
+    "The New Republic",
+    "The Verge",
+    "Wired"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Voters in 2026 midterm ballot measures rejected nearly every local proposal to build data centers, a sign of growing public resistance to the AI buildout.",
+   "assembly_score": 7.81
+  },
+  {
+   "slot": "body_mind",
+   "slot_label": "Body & mind",
+   "key": "cb164236c7b7e2fe",
+   "title": "British health worker with Ebola in DR Congo to be flown home to UK",
+   "beat": "health",
+   "publisher_count": 3,
+   "publishers": [
+    "BBC",
+    "The Telegraph",
+    "Daily Mail"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "A British healthcare worker infected with Ebola in DR Congo will be flown to the UK, the first UK case in this outbreak.",
+   "assembly_score": 4.82
+  },
+  {
+   "slot": "work_machines",
+   "slot_label": "Work & machines",
+   "key": "ca70ab29b22d7345",
+   "title": "Hackers tampered with French blood storage freezers, part of a wider European attack wave",
+   "beat": "tech",
+   "publisher_count": 5,
+   "publishers": [
+    "BBC",
+    "CBS News",
+    "CNBC",
+    "Deutsche Welle",
+    "Techmeme"
+   ],
+   "scores": {
+    "emotional_load": 4,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Hackers reportedly raised temperatures on blood cold-storage units at French providers, threatening stored blood supplies in a wave of European fridge attacks.",
+   "assembly_score": 5.49
+  },
+  {
+   "slot": "group_chat",
+   "slot_label": "The group chat",
+   "key": "e2020643548dee3c",
+   "title": "California voters pass Prop 3, sending billions to schools",
+   "beat": "education",
+   "publisher_count": 2,
+   "publishers": [
+    "LAist",
+    "ABC News"
+   ],
+   "scores": {
+    "emotional_load": 1,
+    "explainability": 4,
+    "actionability": 3,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Prop 3 passage will send billions in state funding to California schools, though the full impact depends on how the money is allocated.",
+   "assembly_score": 4.17
+  },
+  {
+   "slot": "elsewhere",
+   "slot_label": "Elsewhere, but here",
+   "key": "4cb8658e319829a8",
+   "title": "Veteran actor, 74, who is part of the most iconic sci-fi franchise in TV history breaks cover in LA... can you guess who?",
+   "beat": "international",
+   "publisher_count": 1,
+   "publishers": [
+    "Daily Mail"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 3,
+    "actionability": 3,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "",
+   "assembly_score": 4.5
+  },
+  {
+   "slot": "close",
+   "slot_label": "The close",
+   "key": "f794b0bdb2571d49",
+   "title": "GOP suffers midterm losses as Vance and Don Jr. turn on Trump over Iran war",
+   "beat": "national",
+   "publisher_count": 15,
+   "publishers": [
+    "Financial Times",
+    "The Guardian",
+    "Yahoo News",
+    "ABC News",
+    "Al Jazeera",
+    "CBS News",
+    "CNBC",
+    "Daily Beast",
+    "Fox News",
+    "France 24",
+    "NBC News",
+    "ABC Australia",
+    "Daily Mail",
+    "Houston Public Media",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 5
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Republicans lost badly in the midterms, and Vance and Trump's son now publicly blame the Iran war, with Trump defending it.",
+   "assembly_score": 12.99
+  },
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "dbe78ce98f3f1619",
+   "title": "Musk's $445M midterm bet fails as Democrats take the House",
+   "beat": "national",
+   "publisher_count": 8,
+   "publishers": [
+    "NPR",
+    "New York Times",
+    "CNBC",
+    "Semafor",
+    "The Atlantic",
+    "Wired",
+    "Daily Mail",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 4
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Musk spent roughly $445 million backing Republicans in the midterms, and Democrats won the House; Democrats now plan investigations of the Trump administration.",
+   "assembly_score": 8.68
+  },
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "232977060ef0c882",
+   "title": "Midterms bring record gains for women and Black candidates in key races",
+   "beat": "national",
+   "publisher_count": 7,
+   "publishers": [
+    "LAist",
+    "Yahoo News",
+    "CBS News",
+    "France 24",
+    "Glamour",
+    "Memeorandum",
+    "Vogue"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 4
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Democratic women pass 100 House seats while Republican women lose ground, and several Black candidates win governor races in the 2026 midterms.",
+   "assembly_score": 8.42
+  },
+  {
+   "slot": "flex",
+   "slot_label": "Flex",
+   "key": "9ab2af0f08b38aba",
+   "title": "Democrats take Congress in midterms; Dow jumps over 1,300 points",
+   "beat": "national",
+   "publisher_count": 6,
+   "publishers": [
+    "The Guardian",
+    "Yahoo News",
+    "ABC News",
+    "Al Jazeera",
+    "CBS News",
+    "Daily Beast"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 4
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Democrats won control of Congress in the 2026 midterms, and stock markets rallied sharply in response.",
+   "assembly_score": 7.59
+  }
+ ],
+ "excluded_sample": [
+  {
+   "title": "Presidents for Dummies and Harry Potter mania: photos of the day \u2013 Wednesday",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "The 7 best high-yield savings accounts of April 2023",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Lions\u2019 Jack Campbell making progress on movement in upper body after injury during game",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Goalkeeper Jes\u00fas Owono experiencing \u2018hardest days of my life\u2019 after De Miguel\u2019s death",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Mars isn't dead \u2014 recent volcanic activity reveals it's just sleeping",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Google Pixel 11, 11 Pro, and 11 Pro XL Sale: Save Up to $350",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Billions in revenue proves Fifa right on the World Cup \u2013 but only on things it cares about",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "After Martha Stewart\u2019s Halloween homeless costume disaster, I have to know: celebrities, why do you risk it? | Coco Khan",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Bidets save you money and reduce waste \u2014 we tested the best options out there",
+   "why": "triage verdict NO"
+  }
+ ]
+}

@@ -1,0 +1,471 @@
+{
+  "generated_at": "2026-11-04T23:13:43.179045+00:00",
+  "date": "20261104",
+  "episodes": [
+    {
+      "id": "nx-s1-20261104-0700",
+      "hour": "07:00"
+    },
+    {
+      "id": "nx-s1-20261104-0800",
+      "hour": "08:00"
+    },
+    {
+      "id": "nx-s1-20261104-0900",
+      "hour": "09:00"
+    },
+    {
+      "id": "nx-s1-20261104-1000",
+      "hour": "10:00"
+    },
+    {
+      "id": "nx-s1-20261104-1200",
+      "hour": "12:00"
+    },
+    {
+      "id": "nx-s1-20261104-1300",
+      "hour": "13:00"
+    },
+    {
+      "id": "nx-s1-20261104-1400",
+      "hour": "14:00"
+    },
+    {
+      "id": "nx-s1-20261104-1500",
+      "hour": "15:00"
+    },
+    {
+      "id": "nx-s1-20261104-1600",
+      "hour": "16:00"
+    },
+    {
+      "id": "nx-s1-20261104-1700",
+      "hour": "17:00"
+    }
+  ],
+  "latest_hour": "17:00",
+  "latest_topics": [
+    "Democrats flip 29 House seats and seven Senate seats; Alaska and Mississippi races remain too close to call",
+    "House Speaker Mike Johnson will not stay on as Republican leader in the new Congress",
+    "Iranian officials celebrate U.S. midterm results, crediting opposition to war for Democratic gains",
+    "Former federal prosecutor Jacqueline Kelly appointed to lead New York investigation into Cornell sexual assault case",
+    "U.S. stocks surge, with the Dow gaining more than 1,500 points after Republicans lose sole control of Congress",
+    "Cyberattack on three plasma blood bank cold storage sites attempting to raise temperatures is stopped",
+    "Nebraska and Arizona voters approve restrictions on trans athletes; Colorado and Washington measures too close to call",
+    "NASA's Swift Observatory plunges to Earth, ending its 22-year mission studying cosmic explosions"
+  ],
+  "threads": [
+    {
+      "text": "Democrats win redrawn GOP congressional districts in Florida, North Carolina, Alabama and Texas",
+      "hours": [
+        "07:00",
+        "08:00",
+        "12:00",
+        "15:00",
+        "16:00"
+      ],
+      "count": 5
+    },
+    {
+      "text": "Trump says Republicans did poorly because he was not on the ballot, speaking on Fox News",
+      "hours": [
+        "08:00",
+        "09:00",
+        "12:00",
+        "14:00",
+        "16:00"
+      ],
+      "count": 5
+    },
+    {
+      "text": "Abdul El Sayed wins Michigan Senate seat over Republican Mike Rogers, citing affordability",
+      "hours": [
+        "09:00",
+        "14:00",
+        "16:00",
+        "17:00"
+      ],
+      "count": 4
+    },
+    {
+      "text": "Democrats flip control of Congress in midterm elections, with Senate races in Alaska and Mississippi still uncalled",
+      "hours": [
+        "08:00",
+        "09:00",
+        "17:00"
+      ],
+      "count": 3
+    },
+    {
+      "text": "Iran's parliament speaker says Americans rejected war in midterm results, warns of nightmare",
+      "hours": [
+        "07:00",
+        "12:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Google Classroom lets schools turn off AI features, including Gemini, and even Google Search",
+      "hours": [
+        "07:00",
+        "12:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Central bank in Paraguay seizes major digital bank tied to President Santiago Pena, freezing funds",
+      "hours": [
+        "07:00",
+        "10:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Dow Jones jumps over 800 points in premarket trading after midterm election results",
+      "hours": [
+        "08:00",
+        "14:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Vance says voters showed up but many backed Democrats over inflation and the Iran war",
+      "hours": [
+        "12:00",
+        "13:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "NASA's SWIFT space telescope re-enters Earth's atmosphere after 22 years detecting gamma-ray bursts",
+      "hours": [
+        "12:00",
+        "17:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "New York AG appoints Jacqueline Kelly to lead investigation into 2024 Cornell sexual assault case",
+      "hours": [
+        "13:00",
+        "17:00"
+      ],
+      "count": 2
+    },
+    {
+      "text": "Trump reacts negatively at first to Democrats' midterm wins, later congratulates them",
+      "hours": [
+        "07:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Trump likely to face confrontation with Democrats in upcoming Congress, NPR's Franco Ordonez reports",
+      "hours": [
+        "07:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Some Florida polling stations relocated after torrential rain flooded or damaged them",
+      "hours": [
+        "07:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Democrats plan investigations into Epstein connections, presidential finances, immigration enforcement violence, and the Iran war",
+      "hours": [
+        "08:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "North Korea launches multiple missiles in fourth test in a week, as Kim Yo-jong says talks with U.S. remain possible",
+      "hours": [
+        "08:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "European investigators unable to identify hackers who sabotaged supermarket freezers across several countries",
+      "hours": [
+        "08:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Midterm results show big Democratic gains in South, driven by increased Black voter turnout",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Few polling site problems reported, including weather-related relocations in Florida due to flooding",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Israel publishes final election results; Netanyahu disputes them and his party abstains from certifying",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Investigators recover jet fuselage piece miles from Palm Beach, Florida crash that killed nine",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Tennessee convicted murderer Jacob Morley recaptured near Kansas City after escaping prison",
+      "hours": [
+        "09:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Democrats flip control of Congress in midterms, picking up Senate seats and House seats",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Annie Andrews defeats Senator Darlene Graham in South Carolina Senate race",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Keisha Lance Bottoms becomes Georgia's first Black female governor; several other governor races won by Democrats",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Congressional Democrats plan oversight of White House and bills on affordability, data centers, and AI",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Stocks open sharply higher as investors react to election results; Dow jumps over 1,200 points",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Elon Musk loses in election after spending over $400 million backing Republicans; SpaceX and Tesla stock open lower",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "McDonald's reports customer traffic decline in latest quarter amid cost-of-living concerns",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Florida investigators locate fuselage of small jet that crashed into neighborhood, killing nine",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "WHO estimates most adolescents worldwide fail to get recommended daily physical activity",
+      "hours": [
+        "10:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Speaker Mike Johnson will not remain minority leader when Democrats take House majority in January",
+      "hours": [
+        "12:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Democrats plan congressional oversight, affordability bills, and AI and data center guardrails in January",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Latino voters swung back to Democrats 62-35, a key 2028 swing group",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Gina Hosa elected Texas governor, first Latina governor; Talarico wins Senate race over Paxton",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Saudi Aramco reports Q3 profits up nearly 10% on higher oil prices despite Hormuz disruptions",
+      "hours": [
+        "13:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Trump spends first 20 minutes of post-election remarks describing White House ballroom renovations",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Exit polls find three-quarters of voters angry or dissatisfied with direction of the country",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Jamie Raskin in line to chair House Judiciary Committee after Democrats win Congress",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Kremlin says it counts on Trump to continue Ukraine peace efforts despite Congress shift",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Israeli President Herzog accepts certified results of parliamentary election, begins government consultations",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "WHO report finds only 14 percent of adolescents worldwide get recommended daily physical activity",
+      "hours": [
+        "14:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Democrats win House majority and flip at least seven Senate seats in midterm elections",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Midterm voter turnout appears among highest for a midterm since 1914, per early data",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Several Democratic midterm winners are pastors, clergy, or seminarians, including Adam Hamilton and Frederick Haines",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "US allies Japan, Philippines, Taiwan, and South Korea watch midterms for impact on defense and tech",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "CVS Health splits into two companies, separating retail pharmacy from Aetna and Caremark insurance",
+      "hours": [
+        "15:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Trump says he'd probably get along with Democrats in Congress but retains veto power",
+      "hours": [
+        "16:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Schumer calls Democratic midterm victories a generational remake of the Senate map",
+      "hours": [
+        "16:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Dow closes up more than 1,500 points as markets react to peaceful election outcome and divided government",
+      "hours": [
+        "16:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "World Health Organization report finds adolescents worldwide are not getting enough physical exercise",
+      "hours": [
+        "16:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Girls less likely than boys to be physically active in almost every country, according to WHO survey",
+      "hours": [
+        "16:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Iranian officials celebrate U.S. midterm results, crediting opposition to war for Democratic gains",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "U.S. stocks surge, with the Dow gaining more than 1,500 points after Republicans lose sole control of Congress",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Cyberattack on three plasma blood bank cold storage sites attempting to raise temperatures is stopped",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    },
+    {
+      "text": "Nebraska and Arizona voters approve restrictions on trans athletes; Colorado and Washington measures too close to call",
+      "hours": [
+        "17:00"
+      ],
+      "count": 1
+    }
+  ]
+}
