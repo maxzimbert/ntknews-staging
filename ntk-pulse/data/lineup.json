@@ -1,0 +1,359 @@
+{
+ "assembled_at": "2026-11-10T21:56:49.093865+00:00",
+ "slot_plan": "A",
+ "displacement": "MANUAL",
+ "daytype": "weekday",
+ "target_size": [
+  8,
+  10
+ ],
+ "actual_size": 10,
+ "lint_failures": [
+  "under 3 fully self-contained items",
+  "no item answers 'what do I do with this'"
+ ],
+ "slots_unfilled": [],
+ "stories": [
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "ed2e83230fd9e8a3",
+   "title": "House GOP elects Jim Jordan as leader; Thune returns as Senate minority leader",
+   "beat": "national",
+   "publisher_count": 15,
+   "publishers": [
+    "Financial Times",
+    "New York Times",
+    "Politico Congress",
+    "The Guardian",
+    "ABC News",
+    "Al Jazeera",
+    "CBS News",
+    "CNBC",
+    "Daily Beast",
+    "NBC News",
+    "Semafor",
+    "Talking Points Memo",
+    "The New Republic",
+    "Fox 5 DC",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 1,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 3
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "House Republicans chose Jim Jordan as their next leader and Senate Republicans re-elected John Thune, setting up the next Congress's GOP leadership.",
+   "assembly_score": 16.07
+  },
+  {
+   "slot": "money_me",
+   "slot_label": "Money & me",
+   "key": "728902a41063df10",
+   "title": "Nvidia CEO's alleged affair with suspected Chinese spy draws congressional demands for answers",
+   "beat": "business",
+   "publisher_count": 14,
+   "publishers": [
+    "BBC",
+    "Financial Times",
+    "New York Times",
+    "Yahoo News",
+    "ABC News",
+    "CNBC",
+    "Fox News",
+    "Jeff Stein (SpyTalk)",
+    "NBC News",
+    "TechCrunch",
+    "Techmeme",
+    "The New Yorker",
+    "The Verge",
+    "Daily Mail"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 4
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Nvidia's CEO is accused of an affair with an alleged Chinese spy who allegedly helped chip shipments to China reach $7.5 billion.",
+   "assembly_score": 13.62
+  },
+  {
+   "slot": "body_mind",
+   "slot_label": "Body & mind",
+   "key": "0ff008a9e91b3fbe",
+   "title": "Teen boys taking cancer drugs to grow taller in viral 'heightmaxxing' trend, doctors warn",
+   "beat": "health",
+   "publisher_count": 2,
+   "publishers": [
+    "Fox News",
+    "MedPage Today"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 4,
+    "actionability": 3,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "A viral 'heightmaxxing' trend is pushing some teen boys to take cancer drugs to grow taller, and doctors warn of serious risks.",
+   "assembly_score": 5.29
+  },
+  {
+   "slot": "work_machines",
+   "slot_label": "Work & machines",
+   "key": "36d97d92fb10d12d",
+   "title": "Oura to buy AI primary care startup Counsel Health for $625 million",
+   "beat": "tech",
+   "publisher_count": 4,
+   "publishers": [
+    "STAT News",
+    "TechCrunch",
+    "Techmeme",
+    "The Verge"
+   ],
+   "scores": {
+    "emotional_load": 1,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 2
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Oura, the wearable ring maker, agreed to buy AI doctor-chat startup Counsel Health for $625 million, betting on AI-driven primary care.",
+   "assembly_score": 5.23
+  },
+  {
+   "slot": "group_chat",
+   "slot_label": "The group chat",
+   "key": "4fa88a80b0f3e766",
+   "title": "Country musician Ketch Secor urges artists to break silence on gun debate",
+   "beat": "culture",
+   "publisher_count": 1,
+   "publishers": [
+    "CNN"
+   ],
+   "scores": {
+    "emotional_load": 3,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 2
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Country musician Ketch Secor is urging other artists to speak out on gun violence despite fear of fan backlash after the Nashville school shooting.",
+   "assembly_score": 0.2
+  },
+  {
+   "slot": "elsewhere",
+   "slot_label": "Elsewhere, but here",
+   "key": "dd0db016b7b3725d",
+   "title": "US Army soldier arrested in UK on suspicion of spying for Russia",
+   "beat": "international",
+   "publisher_count": 12,
+   "publishers": [
+    "BBC",
+    "Financial Times",
+    "The Guardian",
+    "Yahoo News",
+    "Al Jazeera",
+    "Deutsche Welle",
+    "France 24",
+    "NBC News",
+    "ABC Australia",
+    "Daily Mail",
+    "Fox 5 DC",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 3
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "A senior US Army soldier was arrested in the UK on suspicion of spying for Russian intelligence, a national-security case with NATO ties.",
+   "assembly_score": 9.98
+  },
+  {
+   "slot": "close",
+   "slot_label": "The close",
+   "key": "54748d1c78e19f39",
+   "title": "Lawmakers push to impeach Defense Secretary Hegseth; Hegseth calls it a policy dispute",
+   "beat": "national",
+   "publisher_count": 16,
+   "publishers": [
+    "BBC",
+    "Financial Times",
+    "New York Times",
+    "Post and Courier",
+    "The Guardian",
+    "Yahoo News",
+    "ABC News",
+    "CBS News",
+    "CNBC",
+    "Daily Beast",
+    "Fox News",
+    "France 24",
+    "Talking Points Memo",
+    "The Atlantic",
+    "Daily Mail",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 4
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "House Democrats and at least one Republican are pushing articles of impeachment against Defense Secretary Pete Hegseth over the Iran war and related conduct.",
+   "assembly_score": 12.08
+  },
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "49bafff93b608e49",
+   "title": "Meghan Markle's father detained again after allegedly cutting off ankle monitor",
+   "beat": "national",
+   "publisher_count": 9,
+   "publishers": [
+    "BBC",
+    "The Guardian",
+    "Yahoo News",
+    "ABC News",
+    "CBS News",
+    "Daily Beast",
+    "NBC News",
+    "ABC Australia",
+    "Daily Mail"
+   ],
+   "scores": {
+    "emotional_load": 4,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 4
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Thomas Markle Sr., awaiting trial on child pornography charges, was detained again after prosecutors say he cut off his ankle monitor.",
+   "assembly_score": 13.73
+  },
+  {
+   "slot": "unavoidable",
+   "slot_label": "Unavoidable",
+   "key": "c5664f96126e1a35",
+   "title": "US charges three Iran-backed men with plotting attacks on US troops and a UK air base",
+   "beat": "national",
+   "publisher_count": 7,
+   "publishers": [
+    "BBC",
+    "Yahoo News",
+    "Al Jazeera",
+    "Fox News",
+    "ABC Australia",
+    "Daily Mail",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 4,
+    "explainability": 4,
+    "actionability": 2,
+    "conversational_currency": 4
+   },
+   "politician_led": false,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "US prosecutors say three Iran-backed men plotted attacks on US troops and a UK air base hosting American aircraft.",
+   "assembly_score": 9.33
+  },
+  {
+   "slot": "flex",
+   "slot_label": "Flex",
+   "key": "67d54bab42096157",
+   "title": "Senate Republicans reelect Thune as leader after midterm losses",
+   "beat": "national",
+   "publisher_count": 5,
+   "publishers": [
+    "Politico Congress",
+    "CBS News",
+    "Fox News",
+    "Semafor",
+    "Memeorandum"
+   ],
+   "scores": {
+    "emotional_load": 2,
+    "explainability": 4,
+    "actionability": 1,
+    "conversational_currency": 2
+   },
+   "politician_led": true,
+   "ledger_class": null,
+   "new_facts": [],
+   "line": "Senate Republicans reelected John Thune as leader after midterm losses, rejecting a push to delay the leadership vote.",
+   "assembly_score": 8.79
+  }
+ ],
+ "excluded_sample": [
+  {
+   "title": "Jon Stewart on Trump\u2019s testy 60 Minutes interview: \u2018Was that sass?\u2019",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Australia DID tamper with the ball during 2017-18 Ashes just before 'Sandpapergate' scandal - and the whole team knew, admits former player Usman Khawaja",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Barbara Tfank Spring 2027 Ready-to-Wear",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Balmain Resort 2027",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Amazon announced its Black Friday sale dates \u2014 here are the early deals you can shop now",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "The 7 best high-yield savings accounts of April 2023",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Bidets save you money and reduce waste \u2014 we tested the best options out there",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "50+ products to make your life easier and our planet cleaner",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Mother's Day is around the corner. Here are 50+ thoughtful gifts she'll love",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "A head-to-toe guide of how men should dress this spring, and where they should shop",
+   "why": "triage verdict NO"
+  },
+  {
+   "title": "Composting is an easy way to reduce food waste. Here's how to do it",
+   "why": "triage verdict NO"
+  }
+ ]
+}
