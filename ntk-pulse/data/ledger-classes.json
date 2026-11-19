@@ -1,0 +1,794 @@
+{
+ "56673e8fb67a197f": {
+  "id": "56673e8fb67a197f",
+  "class": "DEVELOPMENT",
+  "what_new": "Anthropic IPO priced at $83 a share, raising a record $81.3 billion.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "5d22113908f25b4b": {
+  "id": "5d22113908f25b4b",
+  "class": "DEVELOPMENT",
+  "what_new": "Anthropic scheduled to begin trading Thursday; IPO framed as affecting 401(k) retirement savings.",
+  "unique": "Retirement-savings angle for ordinary investors.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "c4da92541f779d4f": {
+  "id": "c4da92541f779d4f",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "cd59702caf3401b5": {
+  "id": "cd59702caf3401b5",
+  "class": "DEVELOPMENT",
+  "what_new": "Valuation is well above $1 trillion at the $83 price.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "c6d87bb33ae78f6a": {
+  "id": "c6d87bb33ae78f6a",
+  "class": "DEVELOPMENT",
+  "what_new": "Debut valuation put at more than $1.4 trillion.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "92cdbaff4de0991d": {
+  "id": "92cdbaff4de0991d",
+  "class": "DEVELOPMENT",
+  "what_new": "Ticker is ANT on Nasdaq; the offering is the largest on record, topping SpaceX.",
+  "unique": "Names the ticker and the SpaceX comparison.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "b7ed276b63ab5121": {
+  "id": "b7ed276b63ab5121",
+  "class": "DEVELOPMENT",
+  "what_new": "Seven Anthropic founders are set to become multi-billionaires through the IPO.",
+  "unique": "Focus on the founders' personal wealth.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "e63a8b73029d9f65": {
+  "id": "e63a8b73029d9f65",
+  "class": "DEVELOPMENT",
+  "what_new": "IPO to create thousands of paper millionaires among current and former employees.",
+  "unique": "Employee wealth windfall angle.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "cde09778f361158a": {
+  "id": "cde09778f361158a",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "ac31746ebecb99a6": {
+  "id": "ac31746ebecb99a6",
+  "class": "DEVELOPMENT",
+  "what_new": "Retail investor enthusiasm reportedly rivals the SpaceX debut.",
+  "unique": "Retail investor demand angle.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "d8e2012a1d2456d1": {
+  "id": "d8e2012a1d2456d1",
+  "class": "DEVELOPMENT",
+  "what_new": "IPO priced above the target range; Anthropic is the first frontier lab to IPO.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "6b4b11d8558c175e": {
+  "id": "6b4b11d8558c175e",
+  "class": "DEVELOPMENT",
+  "what_new": "Reportedly values Anthropic at $1.5 trillion on a fully diluted basis.",
+  "unique": "Fully diluted valuation figure.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "cd1b6a4456623f65": {
+  "id": "cd1b6a4456623f65",
+  "class": "DEVELOPMENT",
+  "what_new": "Trilateral Trump-Xi-Putin summit set for Shenzhen, China; US-North Korea meeting now described as uncertain.",
+  "unique": "Yonhap's Korean-peninsula angle on whether Kim attends.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "ccf2be7458ed41a6": {
+  "id": "ccf2be7458ed41a6",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Opinion thesis: China trip is Trump's best chance in a decade to curb a three-way arms race.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "278d192fddba2755": {
+  "id": "278d192fddba2755",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Nancy Cordes preview with Patrick McGee as analyst.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "70c5bca06fd6441d": {
+  "id": "70c5bca06fd6441d",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Frames the meeting from Putin's perspective, against Ukrainian drone strikes and casualties.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "a331b37a604ed63d": {
+  "id": "a331b37a604ed63d",
+  "class": "DEVELOPMENT",
+  "what_new": "Putin brought nuclear briefcase; trilateral agenda reportedly covers limiting nuclear weapons and ending the Ukraine war.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "b426663acf3b2ce2": {
+  "id": "b426663acf3b2ce2",
+  "class": "DEVELOPMENT",
+  "what_new": "China's arsenal doubled from 300 warheads in 2020 to over 600; New START expired Feb. 5.",
+  "unique": "Arms-control numbers framing Trump's leverage.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "be0687d9086349c6": {
+  "id": "be0687d9086349c6",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "China watchdog thesis of a 2-on-1 dynamic against Trump over Taiwan and Ukraine.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "b849a499be6a7344": {
+  "id": "b849a499be6a7344",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "d50e2bba6753f27d": {
+  "id": "d50e2bba6753f27d",
+  "class": "DEVELOPMENT",
+  "what_new": "Kremlin TV filmed a Russian naval officer carrying the Cheget nuclear briefcase a day before the trilateral meeting.",
+  "unique": "Detail on the Cheget briefcase and its Kremlin-TV sourcing.",
+  "credits": [
+   "Kremlin-controlled TV"
+  ],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "9a78c1a57e72bdd8": {
+  "id": "9a78c1a57e72bdd8",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Ties the Thursday Xi meeting to the widening Huang scandal.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "4545189a5b2fe722": {
+  "id": "4545189a5b2fe722",
+  "class": "DEVELOPMENT",
+  "what_new": "H.R. McMaster says Putin and Xi see the US as weak, decadent and divided.",
+  "unique": "Former Trump adviser's assessment of how the rivals view the US.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "207025939c65c289": {
+  "id": "207025939c65c289",
+  "class": "DEVELOPMENT",
+  "what_new": "Trump and Putin to hold a one-on-one meeting in China on Thursday, covering Ukraine and post-war security guarantees.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "94f3a475eae4e9f0",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "a40bab2dbc024556": {
+  "id": "a40bab2dbc024556",
+  "class": "DEVELOPMENT",
+  "what_new": "Russian national charged with spying on a Silicon Valley defense contractor over its aid to Ukraine",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "19a789dac9e55fa8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "7be904d25de84978": {
+  "id": "7be904d25de84978",
+  "class": "DEVELOPMENT",
+  "what_new": "DOJ names defendant Igor D'iu, indicted by a federal grand jury after covertly traveling to the US",
+  "unique": "Primary-source DOJ announcement of the indictment",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "19a789dac9e55fa8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "bdc28a1687307d47": {
+  "id": "bdc28a1687307d47",
+  "class": "DEVELOPMENT",
+  "what_new": "Company identified as Palantir; defendant allegedly stalked and harassed workers over Ukraine's use of its software",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "19a789dac9e55fa8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "da609ca952039fd1": {
+  "id": "da609ca952039fd1",
+  "class": "DEVELOPMENT",
+  "what_new": "Charges include conspiracy to act as a foreign agent; D'iu allegedly entered the US unlawfully",
+  "unique": "",
+  "credits": [
+   "US Department of Justice"
+  ],
+  "contradicts": "",
+  "ledger_id": "19a789dac9e55fa8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "40942ef4a24b5821": {
+  "id": "40942ef4a24b5821",
+  "class": "DEVELOPMENT",
+  "what_new": "Affidavit says D'iu bought laptops, remote-access software and phones, and sat in a Palo Alto coffee shop near Palantir HQ",
+  "unique": "Affidavit details of his equipment purchases and Palo Alto stakeout",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "19a789dac9e55fa8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "19a789dac9e55fa8": {
+  "id": "19a789dac9e55fa8",
+  "class": "DEVELOPMENT",
+  "what_new": "Prosecutors say D'iu entered the US from Mexico",
+  "unique": "Entry route from Mexico",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "19a789dac9e55fa8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "21e6910f47b54708": {
+  "id": "21e6910f47b54708",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "19a789dac9e55fa8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "d2cb25e8bf7044cb": {
+  "id": "d2cb25e8bf7044cb",
+  "class": "DEVELOPMENT",
+  "what_new": "Four students filed a lawsuit a year after the incident against Omnilert, Baltimore County police and the school board.",
+  "unique": "Reports the lawsuit and its named defendants, with the plaintiffs' own words.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "aae1359823af44e8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "81ea05f4427de7b2": {
+  "id": "81ea05f4427de7b2",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Unrelated story: a Coweta County, Georgia police chase crash. Nothing for the Doritos ledger.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "aae1359823af44e8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "6333102fbb64cef5": {
+  "id": "6333102fbb64cef5",
+  "class": "DEVELOPMENT",
+  "what_new": "Names Taki Allen, 16, at Kenwood High on Oct 20, 2025; at least six police vehicles; Omnilert Gun Detect.",
+  "unique": "Gives a scene-level account of the detention, with the date and a named student.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "aae1359823af44e8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "8c07544f89df34ae": {
+  "id": "8c07544f89df34ae",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Describes the plaintiffs as Black teenagers, which frames the case around race.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "aae1359823af44e8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "6f64192690cac4ab": {
+  "id": "6f64192690cac4ab",
+  "class": "DEVELOPMENT",
+  "what_new": "Israel shared an Al Jazeera video of Palestinians swimming to downplay winter storm hardships in Gaza.",
+  "unique": "Israeli messaging use of Al Jazeera footage, a separate thread from the incursion.",
+  "credits": [
+   "Al Jazeera"
+  ],
+  "contradicts": "",
+  "ledger_id": "ed1c71a21e198285",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "a2c3574e4f0cbe70": {
+  "id": "a2c3574e4f0cbe70",
+  "class": "DEVELOPMENT",
+  "what_new": "Israeli tanks crossed the yellow line into central Gaza along Salah al-Din road, the first such ground operation since the October ceasefire.",
+  "unique": "Names the Salah al-Din road and links the incursion to Eisenkot's bid to form a government without Netanyahu.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "ed1c71a21e198285",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "c3261a1d086e0f1f": {
+  "id": "c3261a1d086e0f1f",
+  "class": "DEVELOPMENT",
+  "what_new": "The IDF says it is dismantling a terror tunnel; Hamas calls the incursion a flagrant ceasefire violation.",
+  "unique": "Gives both the Israeli military justification and Hamas's on-record response.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "ed1c71a21e198285",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "ee161c60c8272b65": {
+  "id": "ee161c60c8272b65",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Explainer angle on what the offensive means for displaced Palestinians.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "ed1c71a21e198285",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "8e9345fbc4a4f5b3": {
+  "id": "8e9345fbc4a4f5b3",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "AFP journalist saw tanks positioned east of Nuseirat camp; inconclusive-election context.",
+  "credits": [
+   "AFP"
+  ],
+  "contradicts": "",
+  "ledger_id": "ed1c71a21e198285",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "a7dc8cc4ab0068a9": {
+  "id": "a7dc8cc4ab0068a9",
+  "class": "DEVELOPMENT",
+  "what_new": "An Israeli settler killed a Palestinian grandmother in the occupied West Bank.",
+  "unique": "West Bank settler violence, a separate story from the Gaza incursion.",
+  "credits": [
+   "Al Jazeera"
+  ],
+  "contradicts": "",
+  "ledger_id": "ed1c71a21e198285",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "ebee197c44b51a8c": {
+  "id": "ebee197c44b51a8c",
+  "class": "DEVELOPMENT",
+  "what_new": "Huang has left as Nvidia CEO; Colette Kress is interim CEO; Microsoft's Nadella voiced confidence in her.",
+  "unique": "Microsoft CEO's on-record reaction to the leadership change.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "f58aac49692ddcf7",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "4b835e60b6c65815": {
+  "id": "4b835e60b6c65815",
+  "class": "DEVELOPMENT",
+  "what_new": "Kress held an all-hands meeting; Huang's exit followed his indiscretions, which she sought to put behind the company.",
+  "unique": "Account of what Kress told employees at the all-hands.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "f58aac49692ddcf7",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "25e810fd0ee0ebbb": {
+  "id": "25e810fd0ee0ebbb",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Running tally of Kress's repeated assurances that Nvidia has things under control.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "f58aac49692ddcf7",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "879c59d879df20bf": {
+  "id": "879c59d879df20bf",
+  "class": "DEVELOPMENT",
+  "what_new": "Kress told staff 'let's move forward' and offered pay raises at the first all-hands since Huang's exit.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "f58aac49692ddcf7",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "f58aac49692ddcf7": {
+  "id": "f58aac49692ddcf7",
+  "class": "DEVELOPMENT",
+  "what_new": "Huang is reportedly manoeuvring for a return to Nvidia; pay rises are being accelerated.",
+  "unique": "Only item showing Huang actively seeking a comeback.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "f58aac49692ddcf7",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "453218a7180736ce": {
+  "id": "453218a7180736ce",
+  "class": "RECYCLED",
+  "what_new": "",
+  "unique": "",
+  "credits": [
+   "Wired"
+  ],
+  "contradicts": "",
+  "ledger_id": "f58aac49692ddcf7",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "d141b192150f9376": {
+  "id": "d141b192150f9376",
+  "class": "DEVELOPMENT",
+  "what_new": "At DealBook, Musk said he feels \"pretty foolish\" after spending nearly $500M backing Republicans in midterms Democrats won, and \"I'm not MAGA\".",
+  "unique": "Musk's on-record regret over the midterm spending, at the DealBook event.",
+  "credits": [
+   "Variety"
+  ],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "f5a361187888be9d": {
+  "id": "f5a361187888be9d",
+  "class": "DEVELOPMENT",
+  "what_new": "Musk distanced himself from MAGA while travelling with Trump, 80, to Shenzhen, China; described as the first trillionaire.",
+  "unique": "Frames the remarks as a break with Trump while Musk is on Trump's China trip.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "59144df23584680d": {
+  "id": "59144df23584680d",
+  "class": "DEVELOPMENT",
+  "what_new": "Skydance CEO David Ellison called reports that Trump pushed for Rush Hour 4 \"made-up stories\", saying an executive started the talks.",
+  "unique": "Ellison's on-record denial of Trump pressure over Rush Hour 4, at DealBook.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "7f5dccfcc1fb8c9b": {
+  "id": "7f5dccfcc1fb8c9b",
+  "class": "DEVELOPMENT",
+  "what_new": "Third attack this week on Kerch bridge, reported Wednesday by Russian-installed governor; earlier strikes destroyed a road section.",
+  "unique": "Official Russian-installed confirmation of a fresh strike and ongoing damage assessment.",
+  "credits": [
+   "Russian-installed governor"
+  ],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "71d6205e3dcbac0b": {
+  "id": "71d6205e3dcbac0b",
+  "class": "DEVELOPMENT",
+  "what_new": "Ukraine used homegrown relay drones to bypass Starlink limits in the bridge strike.",
+  "unique": "Technical explanation of the strike method and adaptation of Russian battlefield lessons.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "d79b3a7c4ca057bd": {
+  "id": "d79b3a7c4ca057bd",
+  "class": "DEVELOPMENT",
+  "what_new": "AI-generated videos falsely showing the bridge collapsed circulated, some using branding resembling a Ukrainian news agency.",
+  "unique": "Fact-check separating fabricated AI footage from the real bridge damage.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "99795a8c473b111f": {
+  "id": "99795a8c473b111f",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Analysis of consequences for Russian military logistics and Putin's prestige.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "b98972249986cabd",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "a7943b00e9874354": {
+  "id": "a7943b00e9874354",
+  "class": "DEVELOPMENT",
+  "what_new": "Kash Patel skipped the House Homeland Security Committee's annual worldwide threats hearing for a second year; chairman Andrew Garbarino criticized him.",
+  "unique": "Republican committee chairman's rebuke of Patel over the missed hearing.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "189b4c7faa749674",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "01afe1235676b8d5": {
+  "id": "01afe1235676b8d5",
+  "class": "DEVELOPMENT",
+  "what_new": "Patel attended a Mar-a-Lago gala the night before, offering donors $50,000 access to top officials.",
+  "unique": "Links Patel's absence to a Mar-a-Lago donor gala with $50,000 access.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "189b4c7faa749674",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "b8b8b0108a6881a4": {
+  "id": "b8b8b0108a6881a4",
+  "class": "DEVELOPMENT",
+  "what_new": "Wife visited Brand for about two hours at HMP Littlehey; he reportedly faces prison transfer and a ban on speaking to her.",
+  "unique": "On-the-ground scene of the wife arriving at HMP Littlehey's visitors' centre.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2470cf887dbd6441",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "c8d94c32e48f484b": {
+  "id": "c8d94c32e48f484b",
+  "class": "DEVELOPMENT",
+  "what_new": "Google rejected the UK government's request to remove Brand's YouTube video, according to sources.",
+  "unique": "Only item reporting Google's refusal.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2470cf887dbd6441",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "9257e4ccaec3ebd7": {
+  "id": "9257e4ccaec3ebd7",
+  "class": "DEVELOPMENT",
+  "what_new": "A justice minister met Google to ask it to deactivate Brand's YouTube; Meta had disabled his Instagram and Facebook.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "2470cf887dbd6441",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "406359353ab9e696": {
+  "id": "406359353ab9e696",
+  "class": "RECYCLED",
+  "what_new": "",
+  "unique": "",
+  "credits": [
+   "Sky News"
+  ],
+  "contradicts": "",
+  "ledger_id": "2470cf887dbd6441",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "d8abb0b94743f7a0": {
+  "id": "d8abb0b94743f7a0",
+  "class": "DEVELOPMENT",
+  "what_new": "Unvaccinated Pennsylvania resident died, the eighth measles death of 2026, a day after the US lost its 26-year measles elimination status.",
+  "unique": "Reports the death itself and the timing relative to the loss of elimination status.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "e03f69fbf8bf2bd8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "e03f69fbf8bf2bd8": {
+  "id": "e03f69fbf8bf2bd8",
+  "class": "DEVELOPMENT",
+  "what_new": "RFK Jr. under fire for telling a Lancaster Amish community the measles cure is \"chicken soup\"; 2021 footage resurfaced.",
+  "unique": "Resurfaced 2021 video of Kennedy applauding Amish parents for not vaccinating their children.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "e03f69fbf8bf2bd8",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "6820aed82388153a": {
+  "id": "6820aed82388153a",
+  "class": "DEVELOPMENT",
+  "what_new": "First items of a new story: investigators say Bayesian crew were unaware of risks before the sinking off Sicily that killed seven, including Mike Lynch.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "8a80a14053f22bd3",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "8a80a14053f22bd3": {
+  "id": "8a80a14053f22bd3",
+  "class": "DEVELOPMENT",
+  "what_new": "MAIB final report: Bayesian was vulnerable to knockdown, never assessed at anchor with sails down; 56m vessel; Lynch's teenage daughter among dead.",
+  "unique": "Details of the MAIB final report's stability finding: no assessment at anchor with sails down.",
+  "credits": [
+   "Marine Accident Investigations Branch"
+  ],
+  "contradicts": "",
+  "ledger_id": "8a80a14053f22bd3",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "37938fc8163d31b7": {
+  "id": "37938fc8163d31b7",
+  "class": "DEVELOPMENT",
+  "what_new": "Senate committee approved Trump's FCC nominee Thumann 15-0 as Democrats boycotted, alleging he lied about not working on media issues.",
+  "unique": "Democrats' quorum-denial tactic and their lying allegation against Thumann.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "7dd67c227c8c7f1c": {
+  "id": "7dd67c227c8c7f1c",
+  "class": "DEVELOPMENT",
+  "what_new": "Carr says he has the votes on the three-member FCC to repeal the 1934 ban on state cellphone jamming in prisons.",
+  "unique": "South Carolina local angle: Carr meeting state law enforcement before the vote.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "018e3f2464e1e539": {
+  "id": "018e3f2464e1e539",
+  "class": "DEVELOPMENT",
+  "what_new": "Thune said it is an \"open question\" whether Senate Republicans have the votes for the Trump administration's large defense package.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "afeb4fa99a1cd3e3": {
+  "id": "afeb4fa99a1cd3e3",
+  "class": "DEVELOPMENT",
+  "what_new": "All 14 committee Republicans, including Thune, attended; about a dozen Democratic chairs sat empty; the nominee is Carr's adviser.",
+  "unique": "On-the-ground scene of the lopsided dais; identifies nominee as Carr's adviser.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "845734dc495c43ef": {
+  "id": "845734dc495c43ef",
+  "class": "DEVELOPMENT",
+  "what_new": "Cornyn blocked Trump's nominee T. Elliot Gaiser, head of DOJ's Office of Legal Counsel, for a Dallas-area federal district court seat.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "1b363f3fa066bbbc": {
+  "id": "1b363f3fa066bbbc",
+  "class": "DEVELOPMENT",
+  "what_new": "Cruz and outgoing Sen. Cornyn shouted at each other on the Senate floor over the blocked judicial nominee; Cornyn said \"I don't find you credible.\"",
+  "unique": "Eyewitness account of the shouting match, with direct quotes.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "6228b01ea20a101f": {
+  "id": "6228b01ea20a101f",
+  "class": "DEVELOPMENT",
+  "what_new": "Cornyn withheld support for Gaiser's Judiciary Committee hearing, a setback as Trump races to confirm judges before Democrats take the Senate.",
+  "unique": "Reuters framing: Democrats about to take control of the chamber, limiting judicial confirmations.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "9b248aa7ed19b443",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "c69230f311164d88": {
+  "id": "c69230f311164d88",
+  "class": "DEVELOPMENT",
+  "what_new": "Coalition says it destroyed a missile platform in Saada; Iran claims three ships hit mines in Hormuz.",
+  "unique": "Live-blog pairing of Yemen coalition strikes with Iranian claim of ship mine strikes.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c697da3e7332f8ef",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "8b069159513b0b61": {
+  "id": "8b069159513b0b61",
+  "class": "DEVELOPMENT",
+  "what_new": "Iran and the U.S. are renewing strikes; a tanker has been engulfed in flames, per video.",
+  "unique": "Video of a burning tanker with correspondent Charlie D'Agata explaining.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c697da3e7332f8ef",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "7ab40838ae16e90f": {
+  "id": "7ab40838ae16e90f",
+  "class": "DEVELOPMENT",
+  "what_new": "U.S. struck a key island in the Strait of Hormuz; Iran appears to retaliate against Gulf states and tankers.",
+  "unique": "",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "c697da3e7332f8ef",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "cb025945b716cc7d": {
+  "id": "cb025945b716cc7d",
+  "class": "DEVELOPMENT",
+  "what_new": "NYC, LA and Chicago school districts weigh dropping Google Search after Google refused to unbundle AI features for students.",
+  "unique": "Original NYT reporting on the three districts' deliberations.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cb025945b716cc7d",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "b429cb510b698793": {
+  "id": "b429cb510b698793",
+  "class": "RECYCLED",
+  "what_new": "",
+  "unique": "",
+  "credits": [
+   "The New York Times"
+  ],
+  "contradicts": "",
+  "ledger_id": "cb025945b716cc7d",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ },
+ "151f108c50ba18a8": {
+  "id": "151f108c50ba18a8",
+  "class": "INCREMENT",
+  "what_new": "",
+  "unique": "Framing that Google's AI ultimatum is backfiring, with educators unsatisfied by its rationale.",
+  "credits": [],
+  "contradicts": "",
+  "ledger_id": "cb025945b716cc7d",
+  "at": "2026-11-19T00:35:46.349100+00:00"
+ }
+}
